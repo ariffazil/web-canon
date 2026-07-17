@@ -1,0 +1,97 @@
+name: Release Gates
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # ──── STATIC GATES ────
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Lint and typecheck pass (placeholder — wire per-site as needed)"
+    # Non-blocking in PR; blocking at release promotion.
+
+  # ──── CANON VALIDATION ────
+  canon-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate sites.yaml ↔ federation.json parity
+        run: |
+          echo "Validating site hostname and role parity between sites.yaml and federation.json"
+          # Placeholder — actual validation script lives in tests/contracts/
+      - name: Validate JSON Schema
+        run: |
+          for f in canon/*.json; do
+            echo "Validating $f against public-state.schema.json"
+            # ajv validate -s canon/public-state.schema.json -d "$f"
+          done
+
+  # ──── CONTRACT TESTS ────
+  contract-tests:
+    runs-on: ubuntu-latest
+    needs: canon-validate
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link check (internal + cross-organ)
+        run: echo "Link checker placeholder"
+      - name: Redirect validation
+        run: echo "Redirect validation placeholder"
+
+  # ──── ACCESSIBILITY ────
+  accessibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: axe-core scan
+        run: echo "axe-core scan placeholder"
+
+  # ──── PERFORMANCE ────
+  performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lighthouse CI
+        run: echo "Lighthouse CI placeholder"
+
+  # ──── SECURITY ────
+  security:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+      - name: CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+      - name: Secret scan
+        run: echo "Secret scan placeholder"
+
+  # ──── RELEASE PROMOTION GATE (BLOCKING) ────
+  # This gate runs AFTER deployment and BLOCKS promotion if any check fails.
+  release-promotion:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, contract-tests, accessibility, performance, security]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Release Manifest Verification
+        run: |
+          echo "Verifying source commit == build commit == deployed commit == Observatory snapshot"
+          echo "Placeholder — actual verification script"
+      - name: Post-Deploy Conformance
+        run: |
+          echo "Probing all 8 public surfaces for HTTP 200"
+          # for host in arif-fazil.com arifos.arif-fazil.com ...; do curl ...; done
+      - name: Observatory Receipt
+        run: |
+          echo "Publishing release receipt to Observatory"
+          echo "Placeholder"

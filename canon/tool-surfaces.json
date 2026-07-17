@@ -1,0 +1,64 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "1.0.0",
+  "observed_at": "2026-07-17T20:40:00Z",
+  "description": "Declared MCP tool surfaces per organ. Validated against live tools/list at release time.",
+  "rule": "Tool counts and names must match live MCP servers at deploy time. Drift = fail.",
+
+  "organs": [
+    {
+      "organ": "arifOS",
+      "host": "arifos.arif-fazil.com",
+      "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+      "health_endpoint": "https://arifos.arif-fazil.com/health",
+      "tool_prefix": "arif_",
+      "declared_tool_count": 8,
+      "public_tools": [
+        "arif_init",
+        "arif_observe",
+        "arif_think",
+        "arif_route",
+        "arif_critique",
+        "arif_judge",
+        "arif_forge",
+        "arif_seal"
+      ]
+    },
+    {
+      "organ": "GEOX",
+      "host": "geox.arif-fazil.com",
+      "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "health_endpoint": "https://geox.arif-fazil.com/health",
+      "tool_prefix": "geox_",
+      "declared_tool_count": null,
+      "note": "Tool count validated at release time via tools/list probe"
+    },
+    {
+      "organ": "WEALTH",
+      "host": "wealth.arif-fazil.com",
+      "mcp_endpoint": "https://wealth.arif-fazil.com/mcp",
+      "health_endpoint": "https://wealth.arif-fazil.com/health",
+      "tool_prefix": "wealth_",
+      "declared_tool_count": null,
+      "note": "Tool count validated at release time via tools/list probe"
+    },
+    {
+      "organ": "WELL",
+      "host": "well.arif-fazil.com",
+      "mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "health_endpoint": "https://well.arif-fazil.com/health",
+      "tool_prefix": "well_",
+      "declared_tool_count": null,
+      "note": "Tool count validated at release time via tools/list probe"
+    },
+    {
+      "organ": "A-FORGE",
+      "host": "forge.arif-fazil.com",
+      "mcp_endpoint": "https://forge.arif-fazil.com/mcp",
+      "health_endpoint": "https://forge.arif-fazil.com/health",
+      "tool_prefix": "forge_",
+      "declared_tool_count": null,
+      "note": "Runtime-owned; internal agents only"
+    }
+  ]
+}

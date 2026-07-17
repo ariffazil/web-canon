@@ -1,0 +1,146 @@
+# arifOS Federation — Canonical Site Registry
+# ONE source of truth for site identity, ownership, and audience.
+# Updated: 2026-07-17. DITEMPA BUKAN DIBERI.
+# Schema: canon/public-state.schema.json
+
+version: "1.0.0"
+observed_at: "2026-07-17T20:40:00Z"
+rule: "One hostname, one role, one canonical audience. No site may claim another site's authority."
+
+surfaces:
+  - host: arif-fazil.com
+    role: SOUL
+    canonical_role: human-sovereign-root
+    primary_audience:
+      - public
+      - institutions
+      - collaborators
+    must_not_become:
+      - operations-dashboard
+    source: sites/arif-fazil.com
+    build: "npm run build"
+    stack: [React 19, TypeScript, Vite, Tailwind CSS, Framer Motion]
+    webroot: /var/www/html/arif
+    deployable: true
+
+  - host: arifos.arif-fazil.com
+    role: MIND
+    canonical_role: observatory-and-proof
+    primary_audience:
+      - auditors
+      - developers
+    must_not_become:
+      - execution-surface
+    source: sites/arifos.arif-fazil.com
+    snapshot_generator: /root/arifOS/scripts/emit_observatory_snapshot.py
+    webroot: /var/www/html/arifos
+    deployable: true
+
+  - host: aaa.arif-fazil.com
+    role: BODY
+    canonical_role: operator-cockpit
+    primary_audience:
+      - arif
+      - trusted-operators
+    must_not_become:
+      - public-homepage
+    source_owner: /root/AAA
+    snapshot_reference: sites/aaa.arif-fazil.com
+    webroot: /var/www/html/aaa
+    deployable: false
+
+  - host: geox.arif-fazil.com
+    role: EARTH
+    canonical_role: earth-evidence
+    primary_audience:
+      - geoscientists
+      - energy-professionals
+    must_not_become:
+      - capital-authority
+    source: sites/geox.arif-fazil.com
+    webroot: /var/www/html/geox
+    route: "127.0.0.1:18081"
+    deployable: true
+
+  - host: wealth.arif-fazil.com
+    role: CAPITAL
+    canonical_role: capital-computation
+    primary_audience:
+      - investors
+      - economists
+      - institutions
+    must_not_become:
+      - trading-oracle
+    source: sites/wealth.arif-fazil.com
+    webroot: /var/www/html/wealth
+    route: "127.0.0.1:18082"
+    deployable: true
+
+  - host: well.arif-fazil.com
+    role: READINESS
+    canonical_role: human-and-machine-readiness
+    primary_audience:
+      - operators
+      - researchers
+    must_not_become:
+      - medical-diagnosis
+    route: "127.0.0.1:18083"
+    deployable: false
+    kind: runtime-owned-organ
+
+  - host: mcp.arif-fazil.com
+    role: GATEWAY
+    canonical_role: mcp-transport
+    primary_audience:
+      - ai-clients
+      - developers
+    must_not_become:
+      - marketing-site
+    landing_source: sites/mcp.arif-fazil.com/index.html
+    deployable: false
+    kind: runtime-owned-gateway
+
+  - host: forge.arif-fazil.com
+    role: EXECUTION
+    canonical_role: controlled-execution
+    primary_audience:
+      - internal-agents
+    must_not_become:
+      - self-authorizing-builder
+    route: "127.0.0.1:7071"
+    deployable: false
+    kind: runtime-owned-gateway
+
+special_paths:
+  - path: /000
+    host: arif-fazil.com
+    role: genesis-and-identity
+    primary_audience: [researchers]
+    must_not_become: [live-state-source]
+
+  - path: /999
+    host: arif-fazil.com
+    role: receipt-verification
+    primary_audience: [auditors, agents]
+    must_not_become: [judgment-engine]
+
+  - path: /mcp
+    host: arif-fazil.com
+    role: human-connection-guide
+    primary_audience: [developers]
+    must_not_become: [duplicate-observatory]
+
+redirects:
+  - host: www.arif-fazil.com
+    target: https://arif-fazil.com
+  - host: wiki.arif-fazil.com
+    target: https://arifos.arif-fazil.com/wiki/
+  - host: apex.arif-fazil.com
+    target: https://arif-fazil.com
+    status: retired-runtime-pending-caddy-cleanup
+
+retired:
+  - host: arifosmcp.arif-fazil.com
+    reason: "No DNS; mcp.arif-fazil.com is canonical"
+  - host: makcikgpt.arif-fazil.com
+    reason: "Content merged under arif-fazil.com/wealth/makcikgpt"

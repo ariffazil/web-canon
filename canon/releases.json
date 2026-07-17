@@ -1,0 +1,25 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "1.0.0",
+  "description": "Release manifest — every deployed release must be recorded here.",
+  "rule": "source commit == build commit == deployed commit == manifest hash == Observatory snapshot",
+  "releases": [
+    {
+      "version": "v2026.07.17",
+      "date": "2026-07-17",
+      "type": "continuous",
+      "sites_deployed": [
+        "arif-fazil.com",
+        "arifos.arif-fazil.com",
+        "geox.arif-fazil.com",
+        "wealth.arif-fazil.com",
+        "mcp.arif-fazil.com"
+      ],
+      "commit": "a4d4252",
+      "observatory_snapshot": "latest",
+      "status": "operational"
+    }
+  ],
+  "tag_format": "vYYYY.MM.DD",
+  "iron_rule": "NEVER arbitrary version numbers. Software matures by date, not counter."
+}

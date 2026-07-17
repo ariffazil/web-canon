@@ -1,0 +1,51 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "1.0.0",
+  "description": "Shared design tokens for the arifOS federation. Theory of Anomalous Contrast — no two Trinity rings look alike.",
+  "rule": "Every site consumes these tokens. No one-off colors, spacing, or typography without canon update.",
+
+  "trinity_palette": {
+    "soul": {
+      "primary": "#FF3333",
+      "secondary": "#3366FF",
+      "accent": "#FFCC00",
+      "geometry": "jagged-polygon",
+      "motion": "fractal-drift",
+      "font": "Space Grotesk",
+      "metaphor": "human-igneous"
+    },
+    "mind": {
+      "primary": "#00D4AA",
+      "secondary": "#008866",
+      "accent": "#00FFAA",
+      "geometry": "rectilinear-grid",
+      "motion": "precise-snap",
+      "font": "JetBrains Mono",
+      "metaphor": "machine-governance"
+    },
+    "body": {
+      "primary": "#D4A853",
+      "secondary": "#C4791A",
+      "accent": "#E3B341",
+      "geometry": "rounded-organic",
+      "motion": "smooth-ease",
+      "font": "Inter",
+      "metaphor": "wire-connection"
+    }
+  },
+
+  "global": {
+    "radius": { "sm": "4px", "md": "8px", "lg": "16px" },
+    "spacing": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "32px", "xl": "64px" },
+    "shadow": {
+      "sm": "0 1px 3px rgba(0,0,0,0.08)",
+      "md": "0 4px 12px rgba(0,0,0,0.1)",
+      "lg": "0 8px 24px rgba(0,0,0,0.12)"
+    },
+    "breakpoints": {
+      "mobile": "640px",
+      "tablet": "1024px",
+      "desktop": "1280px"
+    }
+  }
+}

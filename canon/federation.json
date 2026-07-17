@@ -1,0 +1,43 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "1.0.0",
+  "observed_at": "2026-07-17T20:40:00Z",
+  "federation": "arifOS Federation",
+  "sovereign": "Muhammad Arif bin Fazil",
+  "doctrine": "DITEMPA BUKAN DIBERI",
+  "motto": "Forged, Not Given",
+
+  "trinity": {
+    "soul": { "host": "arif-fazil.com", "symbol": "Ψ", "role": "human-sovereign-root" },
+    "mind": { "host": "arifos.arif-fazil.com", "symbol": "Ω", "role": "observatory-and-proof" },
+    "body": { "host": "aaa.arif-fazil.com", "symbol": "Δ", "role": "operator-cockpit" }
+  },
+
+  "organs": [
+    { "id": "arifOS", "port": 8088, "role": "constitutional-kernel", "host": "arifos.arif-fazil.com", "mutates": false },
+    { "id": "A-FORGE", "port": 7071, "role": "execution-shell", "host": "forge.arif-fazil.com", "mutates": true },
+    { "id": "GEOX", "port": 18081, "role": "earth-intelligence", "host": "geox.arif-fazil.com", "mutates": false },
+    { "id": "WEALTH", "port": 18082, "role": "capital-intelligence", "host": "wealth.arif-fazil.com", "mutates": false },
+    { "id": "WELL", "port": 18083, "role": "human-readiness", "host": "well.arif-fazil.com", "mutates": false },
+    { "id": "AAA", "port": 3001, "role": "control-plane", "host": "aaa.arif-fazil.com", "mutates": false },
+    { "id": "VAULT999", "role": "immutable-audit-memory", "host": null, "mutates": "append-only" }
+  ],
+
+  "shared_truths": [
+    "The root explains the whole.",
+    "Organ sites deepen one domain.",
+    "MCP connects machines.",
+    "arifOS governs authority.",
+    "A-FORGE executes only after approval.",
+    "The Observatory proves current state.",
+    "VAULT999 preserves receipts.",
+    "Arif remains final authority.",
+    "Unknown must remain unknown.",
+    "Live state must never be hard-coded into page copy."
+  ],
+
+  "permanent_separation": {
+    "rule": "No single agent should possess all three: production secrets, merge authority, deployment authority.",
+    "enforcement": "GitHub Environments + Rulesets + arifOS judge gate"
+  }
+}
