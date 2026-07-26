@@ -7,21 +7,21 @@
   "trinity_nav": {
     "items": [
       { "label": "Ψ SOUL", "href": "https://arif-fazil.com", "symbol": "Ψ", "role": "human-sovereign-root" },
-      { "label": "Ω MIND", "href": "https://arifos.arif-fazil.com", "symbol": "Ω", "role": "observatory-and-proof" },
-      { "label": "Δ BODY", "href": "https://aaa.arif-fazil.com", "symbol": "Δ", "role": "operator-cockpit" }
+      { "label": "Ω MIND", "href": "https://arif-fazil.com/arifos/", "symbol": "Ω", "role": "observatory-and-proof" },
+      { "label": "Δ BODY", "href": "https://arif-fazil.com/aaa/", "symbol": "Δ", "role": "operator-cockpit" }
     ]
   },
 
   "domain_nav": [
-    { "label": "🌊 Earth", "href": "https://geox.arif-fazil.com", "organ": "GEOX" },
-    { "label": "💰 Capital", "href": "https://wealth.arif-fazil.com", "organ": "WEALTH" },
-    { "label": "🫀 Readiness", "href": "https://well.arif-fazil.com", "organ": "WELL" },
+    { "label": "🌊 Earth", "href": "https://arif-fazil.com/geox/", "organ": "GEOX" },
+    { "label": "💰 Capital", "href": "https://arif-fazil.com/wealth/", "organ": "WEALTH" },
+    { "label": "🫀 Readiness", "href": "https://arif-fazil.com/well/", "organ": "WELL" },
     { "label": "🔮 Bridge", "href": "https://t.me/arifos", "organ": "HERMES" }
   ],
 
   "infra_nav": [
-    { "label": "MCP Gateway", "href": "https://mcp.arif-fazil.com", "audience": "developers" },
-    { "label": "Forge", "href": "https://forge.arif-fazil.com", "audience": "internal-agents" }
+    { "label": "MCP Gateway", "href": "https://arif-fazil.com/mcp/", "audience": "developers" },
+    { "label": "Forge", "href": "https://arif-fazil.com/forge/", "audience": "internal-agents" }
   ],
 
   "special_routes": [
@@ -34,9 +34,9 @@
     "copyright": "Muhammad Arif bin Fazil",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "links": [
-      { "label": "Observatory", "href": "https://arifos.arif-fazil.com" },
+      { "label": "Observatory", "href": "https://arif-fazil.com/arifos/" },
       { "label": "GitHub", "href": "https://github.com/ariffazil" },
-      { "label": "MCP", "href": "https://mcp.arif-fazil.com" },
+      { "label": "MCP", "href": "https://arif-fazil.com/mcp/" },
       { "label": "HERMES", "href": "https://t.me/arifos" }
     ]
   }

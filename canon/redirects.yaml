@@ -1,5 +1,6 @@
-# Canonical redirect map. Generated from config/sites.json — never hand-edit.
-# Updated: 2026-07-17. DITEMPA BUKAN DIBERI.
+# Canonical redirect map. Generated from web-canon sites.yaml — never hand-edit.
+# Updated: 2026-07-26 — WEB UNIFICATION: all subdomains → paths under arif-fazil.com
+# DITEMPA BUKAN DIBERI.
 
 redirects:
   - from: www.arif-fazil.com
@@ -7,8 +8,53 @@ redirects:
     code: 301
     permanent: true
 
+  - from: arifos.arif-fazil.com
+    to: https://arif-fazil.com/arifos/
+    code: 301
+    permanent: true
+
+  - from: aaa.arif-fazil.com
+    to: https://arif-fazil.com/aaa/
+    code: 301
+    permanent: true
+
+  - from: geox.arif-fazil.com
+    to: https://arif-fazil.com/geox/
+    code: 301
+    permanent: true
+
+  - from: wealth.arif-fazil.com
+    to: https://arif-fazil.com/wealth/
+    code: 301
+    permanent: true
+
+  - from: well.arif-fazil.com
+    to: https://arif-fazil.com/well/
+    code: 301
+    permanent: true
+
+  - from: forge.arif-fazil.com
+    to: https://arif-fazil.com/forge/
+    code: 301
+    permanent: true
+
+  - from: mcp.arif-fazil.com
+    to: https://arif-fazil.com/mcp/
+    code: 301
+    permanent: true
+
   - from: wiki.arif-fazil.com
-    to: https://arifos.arif-fazil.com/wiki/
+    to: https://arif-fazil.com/wiki/
+    code: 301
+    permanent: true
+
+  - from: makcikgpt.arif-fazil.com
+    to: https://arif-fazil.com/wealth/makcikgpt/
+    code: 301
+    permanent: true
+
+  - from: arifosmcp.arif-fazil.com
+    to: https://arif-fazil.com/mcp/
     code: 301
     permanent: true
 
@@ -19,24 +65,14 @@ redirects:
     note: "Runtime decommissioned; Caddy route pending cleanup"
 
   - from: ai.arif-fazil.com
-    to: https://mcp.arif-fazil.com
+    to: https://arif-fazil.com/mcp/
     code: 301
     permanent: true
 
-  - from: arifosmcp.arif-fazil.com
-    to: null
-    code: null
-    note: "No DNS record. Canonical is mcp.arif-fazil.com."
-
-  - from: makcikgpt.arif-fazil.com
-    to: https://arif-fazil.com/wealth/makcikgpt
-    code: 301
-    note: "Content merged under root surface."
-
 retired:
   - host: arifosmcp.arif-fazil.com
-    reason: "No DNS; mcp.arif-fazil.com is canonical MCP gateway"
+    reason: "Redirected to /mcp/"
   - host: makcikgpt.arif-fazil.com
-    reason: "Content merged under arif-fazil.com/wealth/makcikgpt"
+    reason: "Redirected to /wealth/makcikgpt/"
   - host: apex.arif-fazil.com
-    reason: "APEX runtime decommissioned; redirect to root; Caddy cleanup pending"
+    reason: "APEX runtime decommissioned; redirect to root"
