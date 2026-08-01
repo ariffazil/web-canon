@@ -92,6 +92,11 @@ log "5. Emit ariflow receipt"
 emit_receipt "333-AGI/dynamic-gate" "dynamic layer gate" "federation" \
   "$TOTAL" "fq=${FQ};state=${FQ_STATE}" "$VERDICT"
 
+# ── 5b. Emit Verify step to arifflow (FQ cooling) ─────────────────────────
+curl -sf -X POST http://127.0.0.1:7073/ingest \
+  -H "Content-Type: application/json" \
+  -d "{\"actor_id\":\"333-AGI/dynamic-gate\",\"session_id\":\"dynamic-gate-$(date -u +%Y%m%dT%H%M%SZ)\",\"step_type\":\"Verify\",\"step_number\":2,\"cost_ns\":$(date +%s%N | head -c 13),\"epistemic_label\":\"Observation\",\"floor_verdict\":\"$VERDICT\",\"payload\":{\"fq\":\"$FQ\",\"state\":\"$FQ_STATE\",\"verdict\":\"$VERDICT\"}}" > /dev/null 2>&1 || true
+
 # ── 6. Exit code ────────────────────────────────────────────────────────────
 if [ "$FAIL" -eq 0 ]; then
   exit 0

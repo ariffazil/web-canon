@@ -89,6 +89,10 @@ if [ "$STATIC_RC" -eq 0 ] && [ "$DYNAMIC_RC" -eq 0 ]; then
   log "   dynamic: PASS"
   emit_receipt "333-AGI/agentic-web" "agentic-web full cycle" "federation" \
     "0" "clean" "Pass"
+  # FQ cooling: emit Verify step
+  curl -sf -X POST http://127.0.0.1:7073/ingest \
+    -H "Content-Type: application/json" \
+    -d "{\"actor_id\":\"333-AGI/agentic-web\",\"session_id\":\"agentic-web-$(date -u +%Y%m%dT%H%M%SZ)\",\"step_type\":\"Verify\",\"step_number\":2,\"cost_ns\":$(date +%s%N | head -c 13),\"epistemic_label\":\"Observation\",\"floor_verdict\":\"Pass\",\"payload\":{\"verdict\":\"Pass\"}}" > /dev/null 2>&1 || true
   exit 0
 else
   VERDICT="Hold"
@@ -97,5 +101,9 @@ else
   log "   dynamic: rc=${DYNAMIC_RC}"
   emit_receipt "333-AGI/agentic-web" "agentic-web full cycle" "federation" \
     "0" "static=${STATIC_RC};dynamic=${DYNAMIC_RC}" "Hold"
+  # FQ cooling: emit Verify step even on degraded
+  curl -sf -X POST http://127.0.0.1:7073/ingest \
+    -H "Content-Type: application/json" \
+    -d "{\"actor_id\":\"333-AGI/agentic-web\",\"session_id\":\"agentic-web-$(date -u +%Y%m%dT%H%M%SZ)\",\"step_type\":\"Verify\",\"step_number\":2,\"cost_ns\":$(date +%s%N | head -c 13),\"epistemic_label\":\"Observation\",\"floor_verdict\":\"Hold\",\"payload\":{\"verdict\":\"Hold\",\"static_rc\":\"${STATIC_RC}\",\"dynamic_rc\":\"${DYNAMIC_RC}\"}}" > /dev/null 2>&1 || true
   exit 1
 fi

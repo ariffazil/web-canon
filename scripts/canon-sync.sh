@@ -151,6 +151,20 @@ curl -sf -X POST http://127.0.0.1:7073/ingest \
     }
   }" > /dev/null 2>&1 && pass "arifflow: receipt emitted" || log "arifflow: unreachable (non-fatal)"
 
+# ── 9b. Emit Verify step to arifflow (FQ cooling) ────────────────────────
+curl -sf -X POST http://127.0.0.1:7073/ingest \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"actor_id\": \"333-AGI/canon-sync\",
+    \"session_id\": \"canon-sync-${TS}\",
+    \"step_type\": \"Verify\",
+    \"step_number\": 2,
+    \"cost_ns\": $(date +%s%N | head -c 13),
+    \"epistemic_label\": \"Observation\",
+    \"floor_verdict\": \"Pass\",
+    \"payload\": {\"drift\": \"$([ -z "$DRIFT" ] && echo 'clean' || echo 'diverged')\", \"ts\": \"$TS\"}
+  }" > /dev/null 2>&1 || true
+
 # ── Summary ──────────────────────────────────────────────────────────────
 if [ "$FAIL" -ne 0 ]; then
   log "DRIFT after sync — review $BACKUP"
