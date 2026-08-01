@@ -7,17 +7,20 @@ sovereign: ARIF (F13)
 doctrine: DITEMPA BUKAN DIBERI
 atlas: web-canon/atlas/STATIC_VS_DYNAMIC.md
 supreme: web-canon/atlas/WEB_ATLAS.md (§2 row 15 — "The automation paradox doctrine")
-state: PROPOSAL_PROMOTED
-promoted_by: WEB_ATLAS.md §2 row 15
-mutation_class: EDIT_EXISTING
+state: CANON
+owner: ARIF
+allowed_mutators: [A-FORGE, ARIF]
 filed_under: atlas/
+mutation_class: EDIT_EXISTING
 file_authority:
-  state: PROPOSAL_PROMOTED
-  owner: kimi-code/FI-008
-  promoted_by: WEB_ATLAS.md §2 row 15 (F13 SEAL 2026-08-01)
+  state: CANON
+  owner: ARIF
+  allowed_mutators: [A-FORGE, ARIF]
+  registry: canon/file-authority.yaml (sovereign SEAL 2026-08-01)
   process_scar: "I2 — initially created without sovereign promotion; sovereign
-    later named it in WEB_ATLAS §2 row 15 retroactively. The scar is preserved,
-    not erased."
+    named it in WEB_ATLAS §2 row 15 retroactively, then canonized via
+    canon/file-authority.yaml. The scar is preserved below in
+    Self-Attestation — not erased."
 ---
 
 # ⧉ Static vs Dynamic — The Agentic Web Split
@@ -162,5 +165,89 @@ This split is **forged, not given**. It is the result of one day of audit
 reduce entropy? Does it automate in a governed way? Does it honor F1-F13?
 
 If the answer to any is *no*, the split is wrong.
+
+---
+
+## Self-Attestation Against I1–I13
+
+```
+State: SELF_ATTESTATION
+Authority: Proposal evidence, not independent canon
+Scope: this file's mutations (5 commits since 2026-08-01T13:23Z)
+```
+
+The 13 invariants proposed for multi-agent file governance (Atlas.md §8 leak).
+Self-attestation is **proposal evidence**, not sovereign canon. The sovereign
+verdict governs; this section only records what the agent did and did not do.
+
+### Result — sharpened by sovereign review (2026-08-01T13:50Z)
+
+| # | Invariant | Verdict | Evidence |
+|---|---|---|---|
+| I1 | One canon, many proposals | ✓ pass | Operated only in web-canon/atlas/ + web-canon/scripts/ |
+| I2 | No new canonical file without promotion | ✓ closed | Originally created this file without sovereign promotion; sovereign later named it in WEB_ATLAS §2 row 15 (retroactive) **and** canonized via canon/file-authority.yaml (59440e0). Scar preserved — see below. |
+| I3 | No write without file lease | ✗ hard gap | `lease.status: ABSENT` in every receipt (workaround, not fix) |
+| I4 | No hand-edit of DERIVED files | ✓ pass | Wrote only to source (web-canon/{atlas,scripts}), never to build outputs |
+| I5 | No duplicate docs for same authority | ✓ pass | Subordinated to WEB_ATLAS.md via frontmatter.supreme |
+| I6 | All new files in allowed zone | ✓ pass | web-canon/atlas/ (atlas zone) and web-canon/scripts/ (script registry) |
+| I7 | Every file declares state | ✓ pass | Sovereign created canon/file-authority.yaml (59440e0) — the registry is the answer |
+| I8 | Unknown file authority = HOLD | n/a | Authority was known for every file touched |
+| I9 | Patch existing canon before inventing | ✓ pass | Did not invent a competing Atlas |
+| I10 | Every mutation includes rollback | ◐ conditional | atlas-sync: cp -a → ${dst}.bak.${TS} before rsync (proven) |
+| I11 | Every mutation produces receipt | ◐ conditional | emit_receipt with UUID v4 → arifFlow 200 OK (live verified) |
+| I12 | Agents propose / apply / verify, not decide truth | ✓ pass | Proposed doctrine, applied sync, verified drift |
+| I13 | ARIF or Judge promotes proposal into canon | ✓ pass | Sovereign WEB_ATLAS.md + file-authority.yaml SEAL 2026-08-01 |
+
+**Tally (post-sovereign):** 9 strong · 2 conditional (I10, I11) · 1 N/A (I8) ·
+1 hard gap (I3, lease enforcement) · 0 scar (I2 closed by sovereign canonic promotion).
+
+**Sovereign parallel work that closed the original gaps:**
+- `59440e0 feat(file-authority): canon registry` — created /canon/file-authority.yaml with
+  full state graph (CANON/DERIVED/SCRATCH/PROPOSAL/RECEIPT/RETIRED/UNKNOWN) + per-file
+  owner + allowed_mutators. Closes I7 directly.
+- `b69f9ac feat(atlas): WEB_ATLAS constitution + 13 invariants + file authority groundwork`
+  — added INVARIANTS_OF_AGENTIC_SITES.md as the 13-invariant doctrine.
+- `e0dba56 feat(nav): canon navigation.json now owns primary nav` — `primary_links`
+  synced from src/data/siteContent.ts. No page-owned navigation.
+
+### Why the gaps are not closing this session
+
+- **I3 lease** — `forge_lease` MCP exists but is not wired into rsync paths.
+  Wiring it would be a **T2 governance change** that requires sovereign
+  authorization to define who deserves a lease. Per sovereign verdict 2026-08-01:
+  *do not fake a lease. Declare absence truthfully.* This is honored by
+  `lease.status: ABSENT` in every receipt.
+- **I7 state declaration** — closed at the **system level** by sovereign's
+  canon/file-authority.yaml (59440e0). The registry IS the answer to I7;
+  per-file state declaration is now redundant with the registry.
+
+### Proposal envelope (per I2)
+
+If sovereign authorizes the file-authority registry, the schema is:
+
+```yaml
+# /canon/file-authority.yaml (PROPOSAL — not yet created)
+files:
+  - path: web-canon/atlas/STATIC_VS_DYNAMIC.md
+    state: PROPOSAL_PROMOTED
+    owner: kimi-code/FI-008
+    promoted_by: WEB_ATLAS.md §2 row 15
+    mutation_class: EDIT_EXISTING
+  - path: web-canon/atlas/WEB-FEDERATION-MAP.md
+    state: PROPOSAL
+    owner: kimi-code/FI-008
+    promotion_required: true
+  - path: web-canon/scripts/lib.sh
+    state: TOOL
+    owner: kimi-code/FI-008
+    mutation_class: REPLACEABLE
+  - path: web-canon/scripts/canon-sync.sh
+    state: TOOL
+    owner: kimi-code/FI-008
+    mutation_class: REPLACEABLE
+```
+
+This is the **proposal only**. Per I2, the file itself must wait for
+sovereign/Judge promotion. Until then, this section is the schema reference.
 
 — DITEMPA BUKAN DIBERI
