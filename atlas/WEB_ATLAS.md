@@ -52,6 +52,7 @@
 | `docs/AGENT_LAYOUT_CONTRACT.md` | Layout for agents | Never invent layout. |
 | `atlas/WEB-FEDERATION-MAP.md` | Repos, webroots, wire topology | Consult before touching infra. |
 | `atlas/STATIC_VS_DYNAMIC.md` | The automation paradox doctrine | Read before mutating any surface. |
+| `atlas/INVARIANTS_OF_AGENTIC_SITES.md` | The 13 core invariants (I1-I13) | Bind every mutation. The law. |
 
 ## §3 · Route registry (canonical)
 

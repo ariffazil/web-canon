@@ -33,6 +33,7 @@ REQUIRED_FILES=(
   "redirects.yaml"
   "releases.json"
   "sites.yaml"
+  "atlas.yaml"
   "templates.json"
   "tool-surfaces.json"
   "typography.json"
