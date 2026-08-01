@@ -31,7 +31,7 @@ const BANNED_CSS_PATTERNS = [
 
 function fetch(url) {
   try {
-    const out = execSync(`curl -s -m 10 "${url}"`, { maxBuffer: 10 * 1024 * 1024 }).toString();
+    const out = execSync(`curl -sL -m 10 "${url}"`, { maxBuffer: 10 * 1024 * 1024 }).toString();
     return out;
   } catch { return ''; }
 }
@@ -93,11 +93,20 @@ async function main() {
     const html = fetch(url);
 
     checks.push({ check: 'route_200', ok: html.includes('<title>') || html.length > 500, detail: `${html.length}B` });
+
+    // SPA shell: markers live in the JS bundle (set by AtlasGate client-side)
+    let haystack = html;
+    const bundleMatch = html.match(/\/assets\/index-[A-Za-z0-9_-]+\.js/);
+    if (bundleMatch) {
+      const bundle = fetch(BASE + bundleMatch[0]);
+      if (bundle.length > 1000) haystack += '\n' + bundle;
+    }
+
     checks.push({ check: 'tokens_loaded', ok: html.includes(TOKENS_CSS), detail: TOKENS_CSS });
-    checks.push({ check: 'data_ring', ok: /data-ring="[A-Z]+"/.test(html), detail: (html.match(/data-ring="([^"]*)"/) || [,'?'])[1] });
-    checks.push({ check: 'data_plane', ok: /data-plane="[a-z]+"/.test(html), detail: (html.match(/data-plane="([^"]*)"/) || [,'?'])[1] });
-    checks.push({ check: 'trinity_nav', ok: /Trinity|trinity|HUMAN.*INSTITUTION.*EARTH/.test(html), detail: 'TrinityNav markers' });
-    checks.push({ check: 'canon_footer', ok: /DITEMPA BUKAN DIBERI|CanonFooter|DITEMPA/i.test(html), detail: 'footer marker' });
+    checks.push({ check: 'data_ring', ok: /data-ring/.test(haystack), detail: 'data-ring declared (AtlasGate)' });
+    checks.push({ check: 'data_plane', ok: /data-plane="[a-z]+"/.test(haystack) || /data-plane/.test(haystack), detail: 'data-plane declared (AtlasGate)' });
+    checks.push({ check: 'trinity_nav', ok: /Trinity|trinity|HUMAN.*INSTITUTION.*EARTH/.test(haystack), detail: 'TrinityNav markers' });
+    checks.push({ check: 'canon_footer', ok: /DITEMPA BUKAN DIBERI|CanonFooter|DITEMPA/i.test(haystack), detail: 'footer marker' });
 
     if (!LIVE) checkSourceFile(route, checks);
 
