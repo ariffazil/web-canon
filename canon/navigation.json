@@ -18,7 +18,7 @@
  "sovereign_strip": {
   "height": "32px",
   "position": "sticky top:0",
-  "background": "var(--blue-900) #0C1A45",
+  "background": "var(--r-700, #7A1F18)",
   "content": [
    {
     "label": "Ψ",
@@ -50,7 +50,7 @@
     "role": "shortcut_hint"
    }
   ],
-  "background_rationale": "rationed dark blue (not red — strip is sovereign-but-lawful, not alarm)"
+  "background_rationale": "rationed sovereign maroon; permanent red is allowed only for F13/sovereign strip, verdict, seal, warning, and VOID scopes — the distinction: rationed red, not no red"
  },
  "trinity_nav": {
   "tiles": [
