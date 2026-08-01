@@ -6,10 +6,15 @@ actor: kimi-code/FI-008
 sovereign: ARIF (F13)
 doctrine: DITEMPA BUKAN DIBERI
 atlas: web-canon/atlas/STATIC_VS_DYNAMIC.md
+supreme: web-canon/atlas/WEB_ATLAS.md (§2 row 15 — "The automation paradox doctrine")
 ---
 
 # ⧉ Static vs Dynamic — The Agentic Web Split
 
+> **SUPREME CONSTITUTION:** [`WEB_ATLAS.md`](./WEB_ATLAS.md) — F13 SEAL · 2026-08-01.
+> This doc is the *automation paradox layer* under §1 of the WEB_ATLAS.
+> All work below must obey the One Law: **inherit from Atlas — never invent.**
+>
 > **ATLAS333 self-note (P3):** This map is not the territory. The territory is the live federation
 > at `/var/www/html/*` and the 7 organ ports. The map is committed to be useful (P17).
 > The split is governance, not physics — static files *can* become dynamic, and dynamic
