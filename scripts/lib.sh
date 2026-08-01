@@ -156,7 +156,14 @@ emit_receipt() {
     "target": "${target}",
     "files": ${files},
     "drift": "${drift}",
-    "ts": "${ts}"
+    "ts": "${ts}",
+    "lane": "IMPL",
+    "lease": {
+      "status": "ABSENT",
+      "reason": "forge_lease_not_wired",
+      "required_by": "I3",
+      "note": "Decision per 2026-08-01 sovereign attestation: do not fake a lease. Declare absence truthfully so the system cannot pretend."
+    }
   }
 }
 EOF

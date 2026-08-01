@@ -7,6 +7,17 @@ sovereign: ARIF (F13)
 doctrine: DITEMPA BUKAN DIBERI
 atlas: web-canon/atlas/STATIC_VS_DYNAMIC.md
 supreme: web-canon/atlas/WEB_ATLAS.md (§2 row 15 — "The automation paradox doctrine")
+state: PROPOSAL_PROMOTED
+promoted_by: WEB_ATLAS.md §2 row 15
+mutation_class: EDIT_EXISTING
+filed_under: atlas/
+file_authority:
+  state: PROPOSAL_PROMOTED
+  owner: kimi-code/FI-008
+  promoted_by: WEB_ATLAS.md §2 row 15 (F13 SEAL 2026-08-01)
+  process_scar: "I2 — initially created without sovereign promotion; sovereign
+    later named it in WEB_ATLAS §2 row 15 retroactively. The scar is preserved,
+    not erased."
 ---
 
 # ⧉ Static vs Dynamic — The Agentic Web Split

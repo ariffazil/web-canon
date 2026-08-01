@@ -6,6 +6,16 @@ actor: kimi-code/FI-008
 sovereign: ARIF (F13)
 audit_basis: F1-F13 verifier verdict (this session)
 doctrine: DITEMPA BUKAN DIBERI
+state: PROPOSAL
+filed_under: atlas/
+file_authority:
+  state: PROPOSAL
+  owner: kimi-code/FI-008
+  origin: moved from /var/www/html/canon/WEB-FEDERATION-MAP.md (2026-08-01)
+          — was orphan, would have been deleted by next canon-sync --delete.
+          Now lives in web-canon/atlas/ where it survives sync.
+  promotion_required: true
+  awaiting: sovereign/Judge promotion to CANON
 ---
 
 # ⧉ Web Federation Map — 2026-08-01
