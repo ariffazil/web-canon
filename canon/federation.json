@@ -1,13 +1,174 @@
 {
-  "version": "v2026.07.24",
-  "seal_seq": "fed-phase-3",
+  "$schema": "./public-state.schema.json",
+  "version": "v2026.08.01",
+  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws. AI agents replace institutions, not humans.",
+  "ratified_by": "sovereign (F13) — D1-D9 ratified 2026-08-01",
+  "ratified_at": "2026-08-01T08:00:00Z",
+
+  "trinity_scopes": [
+    {
+      "scope": "HUMAN",
+      "canonical_path": "/human",
+      "domain_accent": "red",
+      "primary_organ": "WELL",
+      "port": 18083,
+      "github": "ariffazil/WELL",
+      "mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "kind": "runtime-owned-organ",
+      "doctrine": "Substrate, dignity, witness. The people-side of the federation. Sovereignty is preserved — humans are NOT replaced."
+    },
+    {
+      "scope": "INSTITUTION",
+      "canonical_path": "/institution",
+      "domain_accent": "yellow",
+      "primary_organ": "AAA",
+      "port": 3001,
+      "github": "ariffazil/AAA",
+      "mcp_endpoint": "https://aaa.arif-fazil.com/mcp",
+      "kind": "cockpit",
+      "doctrine": "Old + new institutions live here. WEALTH is the legacy. arifOS · A-FORGE · AAA are the agentic layer (the new institution). The transformation is visible: old beside new."
+    },
+    {
+      "scope": "EARTH",
+      "canonical_path": "/earth",
+      "domain_accent": "teal",
+      "primary_organ": "GEOX",
+      "port": 8081,
+      "github": "ariffazil/GEOX",
+      "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "kind": "evidence-organ",
+      "doctrine": "Known earth + the void. GEOX computes physical evidence. HERMES sits at the edge where known meets unknown. MCP is the membrane."
+    }
+  ],
+
+  "sovereign_anchor": {
+    "scope": "SOVEREIGN",
+    "canonical_path": "/arif",
+    "domain_accent": "void-dark",
+    "primary_organ": "arifOS-kernel",
+    "port": 8088,
+    "github": "ariffazil/arifOS",
+    "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+    "kind": "constitutional-kernel",
+    "doctrine": "F13 SOVEREIGN. The human's seat. The bare anchor that holds the federation. Patternless background = the absence of pattern is the marker."
+  },
+
+  "cross_cutting": {
+    "scope": "LAWS",
+    "canonical_path": "/laws",
+    "kind": "constitutional-floors",
+    "doctrine": "F1-F13 floors. Cross-cutting. The laws that govern. Quieter than scopes — laws are quiet."
+  },
+
   "organs": [
-    {"organ": "arifOS", "role": "constitutional_kernel", "domain": "arifos.arif-fazil.com", "port": 8088, "github": "ariffazil/arifos", "canonical_tools": 8},
-    {"organ": "A-FORGE", "role": "execution_shell", "domain": "forge.arif-fazil.com", "port": 7071, "github": "ariffazil/A-FORGE", "mcp_endpoint": "https://mcp.arif-fazil.com/mcp"},
-    {"organ": "AAA", "role": "cockpit_a2a", "domain": "aaa.arif-fazil.com", "port": 3001, "github": "ariffazil/AAA"},
-    {"organ": "GEOX", "role": "earth_intelligence", "domain": "geox.arif-fazil.com", "port": 8081, "github": "ariffazil/GEOX", "mcp_endpoint": "https://geox.arif-fazil.com/mcp"},
-    {"organ": "WEALTH", "role": "capital_intelligence", "domain": "wealth.arif-fazil.com", "port": 18082, "github": "ariffazil/WEALTH", "mcp_endpoint": "https://wealth.arif-fazil.com/mcp"},
-    {"organ": "WELL", "role": "vitality_guard", "domain": "well.arif-fazil.com", "port": 18083, "github": "ariffazil/WELL", "mcp_endpoint": "https://well.arif-fazil.com/mcp"},
-    {"organ": "HERMES", "role": "multi_modal_bridge", "domain": "t.me/arifos", "port": 8644, "github": "ariffazil/HERMES"}
-  ]
+    {
+      "organ": "arifOS",
+      "role": "constitutional_kernel",
+      "domain": "arif-fazil.com/institution/arifos",
+      "port": 8088,
+      "github": "ariffazil/arifOS",
+      "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+      "kind": "kernel",
+      "canonical_tools": 8,
+      "posture": "JUDGE_ONLY",
+      "doctrine": "L0 constitutional kernel. Judges, never executes. F1-F13 floor enforcement. VAULT999 seal chain."
+    },
+    {
+      "organ": "A-FORGE",
+      "role": "execution_shell",
+      "domain": "arif-fazil.com/institution/aforge",
+      "port": 7071,
+      "github": "ariffazil/A-FORGE",
+      "mcp_endpoint": "https://forge.arif-fazil.com/mcp",
+      "kind": "executor",
+      "posture": "EXECUTE_AFTER_SEAL",
+      "doctrine": "L1 execution shell. Hands. Never self-authorizes. Only acts after SEAL from arifOS."
+    },
+    {
+      "organ": "AAA",
+      "role": "cockpit_a2a",
+      "domain": "arif-fazil.com/institution/aaa",
+      "port": 3001,
+      "github": "ariffazil/AAA",
+      "mcp_endpoint": "https://aaa.arif-fazil.com/mcp",
+      "kind": "cockpit",
+      "posture": "DISPLAY_ONLY",
+      "doctrine": "L1 control plane. A2A gateway. Agent identity registry. The bridge — visually centered between the trinity tiles."
+    },
+    {
+      "organ": "arifFLOW",
+      "role": "metabolism",
+      "domain": "arifflow.arif-fazil.com (tombstoned publicly)",
+      "port": 7073,
+      "github": "ariffazil/arifFLOW",
+      "kind": "metabolism",
+      "posture": "METABOLIZE_ONLY",
+      "doctrine": "L1 metabolism. FQ pulse. Never judges, never executes. Schedules, routes, checkpoints."
+    },
+    {
+      "organ": "GEOX",
+      "role": "earth_intelligence",
+      "domain": "arif-fazil.com/earth/geox",
+      "port": 8081,
+      "github": "ariffazil/GEOX",
+      "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "kind": "evidence-organ",
+      "posture": "COMPUTE_ONLY",
+      "doctrine": "L2 earth. Seismic, wells, basins. Physics-gated geoscience. Falsification engine (K001-K007) before SEAL. The known earth."
+    },
+    {
+      "organ": "WEALTH",
+      "role": "capital_intelligence",
+      "domain": "arif-fazil.com/institution/wealth",
+      "port": 18082,
+      "github": "ariffazil/WEALTH",
+      "mcp_endpoint": "https://wealth.arif-fazil.com/mcp",
+      "kind": "compute-organ",
+      "posture": "COMPUTE_ONLY",
+      "doctrine": "L2 capital. NPV, EMV, risk, markets. The OLD institution that lives alongside the new (arifOS, A-FORGE, AAA). Visible in /institution to show the transformation."
+    },
+    {
+      "organ": "WELL",
+      "role": "vitality_guard",
+      "domain": "arif-fazil.com/human/well",
+      "port": 18083,
+      "github": "ariffazil/WELL",
+      "mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "kind": "reflect-organ",
+      "posture": "REFLECT_ONLY",
+      "doctrine": "L2 readiness. Vitality. Observes, never diagnoses, never prescribes. The substrate organ. D6 canary — Phase 4a applies to WELL first."
+    },
+    {
+      "organ": "HERMES",
+      "role": "multi_modal_bridge",
+      "domain": "arif-fazil.com/earth/hermes",
+      "port": 8644,
+      "github": "ariffazil/HERMES",
+      "mcp_endpoint": "https://hermes.arif-fazil.com/mcp",
+      "kind": "edge-bridge",
+      "posture": "REFLECT_ONLY",
+      "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+    }
+  ],
+
+  "trinity_visual_bridge": {
+    "node": "AAA",
+    "rationale": "AAA cockpit sits at the geometric center of the trinity tile row. Three arcs (Trinity Ring toroidal anchor) converge on the AAA bridge. This is the visual contract: human + agent meet at the cockpit."
+  },
+
+  "floors_alignment": {
+    "F1_AMANAH": "Reversibility. Every canon change has a git revert path.",
+    "F2_TRUTH": "P(truth)≥0.99. Every claim has evidence. Verified via WCAG math, contrast_pairs.",
+    "F3_TRI_WITNESS": "Human × AI × Earth × Verifier ≥ 0.75",
+    "F4_CLARITY": "ΔS ≤ 0. Every canon file reduces entropy (not adds).",
+    "F5_PEACE_SQUARED": "Non-destructive power. Citizen (yours truly) is the verifier.",
+    "F6_EMPATHY_MARUAH": "MARUAH on agent side, EMPATHY on human side. Dual register.",
+    "F7_HUMILITY": "Ω₀ ≈ 0.04 (in band). No fake certainty. Canon admits its own gaps.",
+    "F8_GENIUS": "Elegant correctness. G = (A·P·E·X)^(1/4) ≥ 0.80.",
+    "F9_ANTIHANTU": "No deception. Red is rationed. Scarcity enforces meaning.",
+    "F10_ONTOLOGY": "AI-only ontology. No soul, no feelings. The agent is a tool.",
+    "F11_AUDITABILITY": "Every change is in git. Sentinel monitors. web-canon is the SOT.",
+    "F12_RESILIENCE": "Injection defense. Sentinel nightly audit. One-hop redirects only.",
+    "F13_SOVEREIGN": "Human veto final. 999_SEAL ratified D1-D9 on 2026-08-01."
+  }
 }

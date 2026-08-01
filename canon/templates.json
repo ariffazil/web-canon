@@ -1,0 +1,118 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13) — PRIMER-1 ratified 2026-08-01",
+  "doctrine": "Three templates + one AGENT override. Same IA renders twice — human eye + agent parser.",
+
+  "templates": {
+    "trinity_tile_page": {
+      "name": "trinity-tile-page",
+      "use": "Homepage (/), scope pages (/human, /institution, /earth)",
+      "frame": "universal_frame",
+      "anatomy": [
+        "sovereign_strip (32px, sticky top)",
+        "breadcrumb (mono, 12px, 40% opacity separator)",
+        "h1 title (one per page, serif, --type-h1)",
+        "lede (1-2 sentences, --type-body)",
+        "trinity_tile_row (3 cards: HUMAN · INSTITUTION · EARTH, AAA bridge centered)",
+        "toroidal_anchor: trinity_ring (around AAA bridge on home and scope pages)",
+        "prev_next_nav (trinity navigation: previous/next scope)",
+        "mission_footer (VAULT999, last sealed, doctrine version)"
+      ],
+      "toroidal_use": "trinity_ring (1 per page, no exceptions)"
+    },
+
+    "organ_page": {
+      "name": "organ-page",
+      "use": "Organ detail pages (/human/well, /institution/aaa, /earth/geox)",
+      "frame": "universal_frame",
+      "anatomy": [
+        "sovereign_strip",
+        "breadcrumb (deeper: arif › scope › organ)",
+        "h1 title (organ name)",
+        "lede",
+        "organ_card grid (1+ cards, each with port + status dot)",
+        "MCP affordance (button-ghost: 'MCP for this surface' → calls forge_* tools on agent side)",
+        "epistemic_label strip (OBS · DER · INT · SPEC — visible on hover for human, always visible for agent)",
+        "prev_next_nav (organ list)",
+        "mission_footer"
+      ],
+      "toroidal_use": "trinity_ring (sits at top of organ card grid) OR none (if a flat-surface mission-driven layout is chosen)"
+    },
+
+    "surface_page": {
+      "name": "surface-page",
+      "use": "Full content surfaces (/arif, /laws, /institution/petronas, /institution/makcikgpt)",
+      "frame": "universal_frame",
+      "anatomy": [
+        "sovereign_strip",
+        "breadcrumb (full chain)",
+        "h1 title (surface name)",
+        "lede",
+        "body (long-form content; serif for doctrine, sans for human, mono for machine)",
+        "epistemic_labels (visible per voice rule)",
+        "prev_next_nav (within the surface or to the next surface)",
+        "mission_footer"
+      ],
+      "toroidal_use": "mission_wheel (on /missions only) OR none (for doctrinal or article pages)"
+    }
+  },
+
+  "agent_overrides": {
+    "name": "agent-surface.html",
+    "use": "Same IA, AGENT render mode. Server-side via User-Agent detection OR explicit /mcp/ JSON path.",
+    "canvas": "carbon #101216, not warm paper",
+    "type": "Plex Mono only, no sans/serif (unless explicitly in body content)",
+    "chrome": "hairline rules, no shadows, no transforms (tactile removed)",
+    "feedback": "status badges (SEAL/HOLD/VOID) — no tactile lift, color shift only on hover",
+    "density": "tight (16-24px between blocks); tables preferred over cards; JSON blocks preferred over prose",
+    "epistemic_labels": "always visible as prefix tags (kernel: OBS/DER/INT/SPEC; wealth: CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN)",
+    "header": "scope name + version + last-updated ISO timestamp, monospace",
+    "footer": "monospace: vault:999  sealed:3847  last:2026-08-01T06:51Z  kernel:kanon-kanon-2026.07.31+0b03b5b  doctrine:v2.2",
+    "f6_register": "MARUAH (audit-grade) — not EMPATHY (narrative)",
+    "mcp_affordance": "every organ card has 'MCP for this surface' button-ghost that calls forge_* tools",
+    "search": "'>' prompt + monospace field, slash-prefixed filters (>scope:earth)",
+    "json_ld": "prominent in <head> AND inline at top of body for parseability",
+    "page_width": "max-width 1280px (vs human 960px)",
+    "whitespace": "tight — 16-24px between blocks"
+  },
+
+  "frame_components": {
+    "sovereign_strip": "32px sticky, --blue-900, F13 status + actor + version + shortcut hint",
+    "trinity_tile_row": "1fr 1fr 1fr grid, 16px gap, max-width 960px, AAA bridge centered between tiles",
+    "breadcrumb": "mono 12px, › separator at 40% opacity, generated from URL path",
+    "prev_next_nav": "two-column footer block, mono 12px, translateX(2px) on hover",
+    "mission_footer": "VAULT999 + last-sealed + doctrine version + kernel build hash"
+  },
+
+  "build_pipeline": {
+    "source": "canon/*.json (single source of truth)",
+    "generated": "src/styles/tokens.css · src/styles/geometry.css · src/styles/components.css · src/styles/tactile.css · src/styles/agent.css",
+    "rendered": "dist/index.html (human) · dist/agent/index.html (agent)",
+    "orchestrator": "scripts/build-pages.mjs",
+    "schema_validation": "JSON Schema via canon/public-state.schema.json (block build on violation)"
+  },
+
+  "ci_lints": [
+    { "name": "contrast_minimum",       "applies_to": "design-tokens.json",  "fail_action": "block build" },
+    { "name": "red_ration",              "applies_to": "design-tokens.json",  "fail_action": "block build" },
+    { "name": "one_torus_per_page",       "applies_to": "geometry.json",        "fail_action": "block build" },
+    { "name": "torus_present",           "applies_to": "geometry.json",        "fail_action": "warn only" },
+    { "name": "single_skeleton",          "applies_to": "typography.json",      "fail_action": "block build" },
+    { "name": "hold_to_confirm_void",     "applies_to": "components.json",      "fail_action": "block build" },
+    { "name": "one_hop_redirects",        "applies_to": "redirects.yaml",       "fail_action": "block build" },
+    { "name": "sovereign_bare",           "applies_to": "geometry.json",        "fail_action": "block build" }
+  ],
+
+  "completeness_checklist": [
+    "✓ sites.yaml — trinity paths + agentic organs + protocol_endpoints + tombstones + canary",
+    "✓ federation.json — organ metadata + hermes posture + trinity_visual_bridge + floors_alignment",
+    "✓ redirects.yaml — 301 redirects + aliases + protocol_exempt + tombstones + canary",
+    "✓ navigation.json — frame + sovereign_strip + trinity_nav + breadcrumb + prev_next + mission_footer + keyboard_shortcuts + epistemic_registers",
+    "✓ design-tokens.json — PRIMER-1 (yellow/blue/teal/red-rationed + IBM Plex + contrast_pairs with 3 matrices verified)",
+    "✓ typography.json — IBM Plex superfamily + √2 scale + 6 levels + 3 voices",
+    "✓ geometry.json — 16x16 unit cell + 3 chordial patterns + torus rationed + scope patterns + grid + border + radius",
+    "✓ components.json — BOP physics + SEAL/HOLD/VOID grades + 3 card types + input + badges + tooltip + lint rules",
+    "✓ templates.json — 3 templates (trinity-tile, organ, surface) + agent override + frame components + build pipeline + ci_lints"
+  ]
+}
