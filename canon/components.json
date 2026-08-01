@@ -1,0 +1,156 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13) — PRIMER-1 ratified 2026-08-01",
+  "doctrine": "BOP panel physics. Three button grades: SEAL (solid), HOLD (dashed border), VOID (only red, hold-to-confirm). 2px travel, 90ms mechanical, no bounce.",
+
+  "tactile_physics": {
+    "name": "BOP_panel",
+    "rationale": "Machined key feel — every button is a physical switch",
+    "travel": "2px",
+    "transitions": "background-color 150ms cubic-bezier(0.2, 0, 0, 1), box-shadow 150ms cubic-bezier(0.2, 0, 0, 1), transform 150ms cubic-bezier(0.2, 0, 0, 1)",
+    "easing": "cubic-bezier(0.2, 0, 0, 1) — snappy-out, decelerating to rest. Avoid ease-in-out (too soft).",
+    "duration_ms": 150,
+    "states": {
+      "rest": {
+        "lift": "0",
+        "shadow": "0 1px 0 {scope-dark}, inset 0 1px 0 rgba(255,255,255,0.20)",
+        "cursor": "pointer"
+      },
+      "hover": {
+        "lift": "translateY(-1px)",
+        "shadow": "0 2px 0 {scope-dark}",
+        "cursor": "pointer"
+      },
+      "active": {
+        "lift": "translateY(1px)",
+        "shadow": "inset 0 2px 4px rgba(0,0,0,0.25)",
+        "cursor": "pointer"
+      },
+      "focus": {
+        "outline": "3px solid currentColor (alpha 30%)",
+        "outline_offset": "2px",
+        "cursor": "pointer"
+      },
+      "disabled": {
+        "opacity": "0.4",
+        "cursor": "not-allowed",
+        "shadow": "none",
+        "lift": "0",
+        "pointer_events": "none (except for aria-announce)"
+      },
+      "loading": {
+        "shadow": "pulse — 0 1px 0 dark → 0 3px 0 dark → 0 1px 0 dark (1.2s infinite ease-in-out)",
+        "inner_span": "shimmer via linear-gradient masked to text"
+      }
+    }
+  },
+
+  "button_grades": {
+    "seal": {
+      "name": "SEAL — solid",
+      "border_style": "solid",
+      "color_source": "domain accent (--accent-{scope}) OR semantic-seal (--teal-500)",
+      "use": "ratified actions, confirmed verdicts, primary CTAs",
+      "examples": ["Enter scope", "Read doctrine", "Apply", "Sign seal"],
+      "rationale": "Solid border = ratified. The action has passed F8 + F11."
+    },
+    "hold": {
+      "name": "HOLD — dashed border",
+      "border_style": "dashed",
+      "border_width": "2px",
+      "color_source": "semantic-hold (--yellow-500)",
+      "use": "not yet ratified, awaiting sovereign, draft state",
+      "examples": ["Draft", "Pending", "Under review", "Provisional"],
+      "rationale": "Dashed = the seal is pending. The action has not yet passed F13."
+    },
+    "void": {
+      "name": "VOID — the only red button",
+      "border_style": "solid",
+      "color_source": "var(--red-500) #E63946 — RATIONED",
+      "use": "irreversible actions only",
+      "hold_to_confirm_ms": 800,
+      "examples": ["Delete seal", "Remove organ", "Burn contract"],
+      "rationale": "800ms = real preventer feel, like a circuit breaker. Prevents accidental destruction. Only red surface on the page."
+    }
+  },
+
+  "cards": {
+    "trinity_tile": {
+      "use": "Primary navigation primitive (3 tiles in a row on home, 1 tile per scope page)",
+      "internal_anatomy": [
+        "scope label (mono, uppercase, tracking +0.12em, --accent-{scope}-dark)",
+        "h2 title (28px, 600 weight)",
+        "lede (14px, --accent-{scope}-dark)",
+        "organ list (mono, 12px, prefix ◇)",
+        "CTA button (Button — primary, child)"
+      ],
+      "states": "standard tactile (rest/hover/active/focus)"
+    },
+    "organ_card": {
+      "use": "Inside scope pages for child organs",
+      "internal_anatomy": [
+        "organ name (mono, 12px, scope accent)",
+        "h3 title (20px, 600)",
+        "port + status dot (mono, 12px; green/red dot = port health)",
+        "role description (body, 14px, --surface-muted)",
+        "'MCP for this surface' link (Button — ghost, agent-side bonus)"
+      ]
+    },
+    "surface_card": {
+      "use": "Content surfaces (not navigation). Flatter, no domain tint.",
+      "no_press_state": "surfaces are not buttons"
+    }
+  },
+
+  "input": {
+    "text": {
+      "rest": "bg=--surface-bg, border=2px --surface-border-strong, shadow=inset 0 1px 2px rgba(0,0,0,0.05)",
+      "hover": "border=2px --accent-{scope}-dark",
+      "focus": "border=2px --accent-{scope}, shadow=0 0 0 3px currentColor (30%), outline=none",
+      "error": "border=2px --danger, helper text below in --danger",
+      "disabled": "opacity=0.5, cursor=not-allowed"
+    },
+    "search": {
+      "layout": "full-width, padding=12px 16px 12px 40px (icon space)",
+      "focus": "border=2px --accent-{scope}, ring=0 0 0 3px currentColor (30%)",
+      "submit": "40px square, ghost style, scope accent"
+    }
+  },
+
+  "badges": {
+    "variants": {
+      "neutral": { "bg": "--surface-bg", "fg": "--surface-fg", "border": "--surface-border-strong" },
+      "success": { "bg": "--surface-bg", "fg": "--success",  "border": "--success" },
+      "warning": { "bg": "--surface-bg", "fg": "--warning",  "border": "--warning" },
+      "danger":  { "bg": "--surface-bg", "fg": "--danger",   "border": "--danger" },
+      "info":    { "bg": "--surface-bg", "fg": "--info",     "border": "--info" },
+      "scope":   { "bg": "--accent-{scope}-tint", "fg": "--accent-{scope}-dark", "border": "--accent-{scope}-dark" }
+    },
+    "layout": "height=24px, padding=0 8px, font=--type-mono 12px 600 weight, corner=--corner-pill 9999px"
+  },
+
+  "tooltip": {
+    "rest": "position=absolute, padding=6px 10px, bg=--surface-fg, fg=white, font=--type-mono 12px, corner=--corner-subtle 4px, shadow=0 2px 8px rgba(0,0,0,0.15), opacity=0, pointer-events=none",
+    "hover_on_trigger": "opacity=1, pointer-events=auto",
+    "transition": "opacity 150ms ease-out"
+  },
+
+  "lint_rules": [
+    {
+      "name": "red_ration_buttons",
+      "rule": "only VOID buttons use --red-500. No SEAL or HOLD button uses red.",
+      "fail_action": "block build"
+    },
+    {
+      "name": "hold_to_confirm_required_for_void",
+      "rule": "VOID buttons must have hold_to_confirm_ms >= 600",
+      "fail_action": "block build"
+    },
+    {
+      "name": "bop_travel_required",
+      "rule": "all interactive elements must have rest + hover + active states with translateY transitions",
+      "fail_action": "block build"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13) — PRIMER-1 ratified 2026-08-01",
+  "doctrine": "Orthogonal fractals × chordials. The grid is 4px-based, doubling. Every decorative element is derived from the unit cell. One toroidal anchor per page — no more.",
+
+  "unit_cell": {
+    "name": "orthogonal_fractal_unit_cell",
+    "size": "16x16",
+    "lattice": "4x4 quadrants of 4x4 each",
+    "marks": {
+      "Q1_top_left":     "└-bracket (L 0°)",
+      "Q2_top_right":    "┼-cross (+)",
+      "Q3_bottom_left":  "•-dot (1x1 px)",
+      "Q4_bottom_right": "┘-bracket (L 180°)"
+    },
+    "ascii": "┌──┬──┐\n│└─┼┼ │\n├──┼──┤\n│•─┼┘ │\n└──┴──┘",
+    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path d='M0 0 H4 V4 M12 0 V4 H16 M8 8 V16 M0 12 H4 V8' stroke='currentColor' stroke-width='1' fill='none'/><circle cx='4' cy='12' r='1' fill='currentColor'/></svg>",
+    "scales": {
+      "half":  { "cell_size": "8x8",  "use": "hairlines, dividers" },
+      "base":  { "cell_size": "16x16","use": "card backgrounds, section backgrounds" },
+      "double":{ "cell_size": "32x32","use": "hero patterns, full-page chordial overlays" }
+    },
+    "tiling": "seamless — all marks share the grid"
+  },
+
+  "chordials": {
+    "name": "chordial_lines",
+    "rationale": "lines through shared points, orthogonal or stellated",
+    "patterns": {
+      "light":  { "lines": "2 chords (1H + 1V through center)", "symbol": "+",     "use": "sparse backgrounds" },
+      "medium": { "lines": "4 chords (2H + 2V offset, X-shape)", "symbol": "✕",   "use": "medium density" },
+      "dense":  { "lines": "8 chords (4D + 2H + 2V stellated)", "symbol": "✳",   "use": "root-like, deep surfaces (earth/void)" }
+    }
+  },
+
+  "torus_rationale": {
+    "permitted_per_page": 1,
+    "rule": "Exactly ONE toroidal anchor per page. Two or more = design VOID.",
+    "types": {
+      "trinity_ring": {
+        "description": "Three arcs around the AAA bridge center. Used on trinity-tile pages and constellation views.",
+        "use": "/institution (cockpit-centric pages), homepage, /earth/geox"
+      },
+      "mission_wheel": {
+        "description": "Concentric arcs representing the six missions (Investigate, Interpret, Decide, Build, Monitor, Remember).",
+        "use": "/missions, mission-driven pages"
+      }
+    },
+    "violation": "design VOID — the lint block will catch it at build",
+    "lint_rule": "page renders at most one toroidal anchor"
+  },
+
+  "background_patterns_per_scope": {
+    "/human":     { "pattern": "chordial-light",     "density": "half",  "alpha": "4%",  "use": "sparse, warm" },
+    "/institution":{ "pattern": "orthogonal-fractal", "density": "base",  "alpha": "3%",  "use": "full unit-cell lattice, structural" },
+    "/earth":     { "pattern": "chordial-dense",     "density": "double","alpha": "6%",  "use": "stellated, root-like, deep" },
+    "/earth/void":{ "pattern": "chordial-dense",     "density": "double","alpha": "8%",  "use": "void-tinted variant" },
+    "/arif":      { "pattern": "none",               "alpha": "0%",       "use": "bare white — absence of pattern is the marker" },
+    "/laws":      { "pattern": "orthogonal-fractal", "density": "base",  "alpha": "2%",  "use": "faintest — laws are quiet" }
+  },
+
+  "grid": {
+    "unit": "4px",
+    "scale": [4, 8, 16, 32, 64, 128],
+    "rationale": "Doubling — same fractal pattern as the unit cell, expressed as spacing"
+  },
+
+  "border_vocabulary": {
+    "hairline":  { "value": "1px", "use": "row separators, table dividers, agent-mode edges" },
+    "default":   { "value": "2px", "use": "cards, buttons, inputs (rest state)" },
+    "emphasis":  { "value": "4px", "use": "zone markers, scope labels, callout boundaries" },
+    "zone":      { "value": "8px", "use": "section breaks (sovereign strip / body)" }
+  },
+
+  "radius_vocabulary": {
+    "sharp":      { "value": "0",     "use": "domain labels, code chips, ident tags" },
+    "subtle":     { "value": "4px",   "use": "table cells, small chips, breadcrumb separators" },
+    "default":    { "value": "8px",   "use": "cards, inputs, standard surfaces" },
+    "toroidal":   { "value": "12px",  "use": "human-side primary surfaces (PRIMER)" },
+    "organic":    { "value": "16px",  "use": "hero surfaces, modals, large panels" },
+    "pill":       { "value": "9999px","use": "status badges, pills, tags" }
+  },
+
+  "signature": "Fractal corner-notch on every card. The unit cell is the brand.",
+
+  "lint_rules": [
+    {
+      "name": "one_torus_per_page",
+      "rule": "page renders at most one toroidal anchor (trinity_ring OR mission_wheel, never both)",
+      "fail_action": "block build, log violation"
+    },
+    {
+      "name": "torus_present_on_trinity_pages",
+      "rule": "/human, /institution, /earth, /arif — all must include one toroidal anchor or be explicitly marked flat-surface",
+      "fail_action": "warn only"
+    },
+    {
+      "name": "sovereign_bare",
+      "rule": "/arif background-image must be 'none'. No fractal on sovereign.",
+      "fail_action": "block build"
+    }
+  ]
+}

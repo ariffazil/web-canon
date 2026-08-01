@@ -1,78 +1,174 @@
-# Canonical redirect map. Generated from web-canon sites.yaml — never hand-edit.
-# Updated: 2026-07-26 — WEB UNIFICATION: all subdomains → paths under arif-fazil.com
-# DITEMPA BUKAN DIBERI.
+# arifOS Federation — Canonical Redirect Map
+# Generated from canon/sites.yaml (unified_paths + agentic_organ_paths +
+# earth_organ_paths + human_organ_paths + aliases + protocol_endpoints + tombstones).
+# D3 (one-hop only) + D1 (MCP exempt) + D7 (tombstones) all enforced here.
+# DITEMPA BUKAN DIBERI
+
+# ─── 301 PERMANENT REDIRECTS (subdomain → path) ───────────────────────
+# Rule D3: ONE-HOP ONLY. Each redirect lands directly on the canonical
+# path. No chains (subdomain-301 → path-301 → another-path-301).
 
 redirects:
+  # Root + www
   - from: www.arif-fazil.com
     to: https://arif-fazil.com
     code: 301
     permanent: true
 
+  # Agentic organs (subdomain → /institution/<organ>)
   - from: arifos.arif-fazil.com
-    to: https://arif-fazil.com/arifos/
+    to: https://arif-fazil.com/institution/arifos/
     code: 301
     permanent: true
-
   - from: aaa.arif-fazil.com
-    to: https://arif-fazil.com/aaa/
+    to: https://arif-fazil.com/institution/aaa/
     code: 301
     permanent: true
-
-  - from: geox.arif-fazil.com
-    to: https://arif-fazil.com/geox/
-    code: 301
-    permanent: true
-
-  - from: wealth.arif-fazil.com
-    to: https://arif-fazil.com/wealth/
-    code: 301
-    permanent: true
-
-  - from: well.arif-fazil.com
-    to: https://arif-fazil.com/well/
-    code: 301
-    permanent: true
-
   - from: forge.arif-fazil.com
-    to: https://arif-fazil.com/forge/
+    to: https://arif-fazil.com/institution/aforge/
+    code: 301
+    permanent: true
+  - from: wealth.arif-fazil.com
+    to: https://arif-fazil.com/institution/wealth/
     code: 301
     permanent: true
 
+  # Earth organ
+  - from: geox.arif-fazil.com
+    to: https://arif-fazil.com/earth/geox/
+    code: 301
+    permanent: true
+
+  # Human organ
+  - from: well.arif-fazil.com
+    to: https://arif-fazil.com/human/well/
+    code: 301
+    permanent: true
+
+  # Earth + membrane (one-hop)
   - from: mcp.arif-fazil.com
-    to: https://arif-fazil.com/mcp/
+    to: https://arif-fazil.com/earth/mcp/
+    code: 301
+    permanent: true
+  - from: hermes.arif-fazil.com
+    to: https://arif-fazil.com/earth/hermes/
     code: 301
     permanent: true
 
-  - from: wiki.arif-fazil.com
-    to: https://arif-fazil.com/wiki/
-    code: 301
-    permanent: true
-
+  # Legacy / retired (was /wealth/makcikgpt)
   - from: makcikgpt.arif-fazil.com
-    to: https://arif-fazil.com/wealth/makcikgpt/
+    to: https://arif-fazil.com/institution/makcikgpt/
     code: 301
     permanent: true
-
   - from: arifosmcp.arif-fazil.com
-    to: https://arif-fazil.com/mcp/
+    to: https://arif-fazil.com/earth/mcp/
     code: 301
     permanent: true
-
   - from: apex.arif-fazil.com
     to: https://arif-fazil.com
     code: 301
     permanent: true
-    note: "Runtime decommissioned; Caddy route pending cleanup"
 
-  - from: ai.arif-fazil.com
-    to: https://arif-fazil.com/mcp/
-    code: 301
-    permanent: true
+# ─── ALIASES (short memorable URLs → canonical paths) ──────────────────
+# 8 short slugs, no chains. Each lands directly on the canonical path.
 
-retired:
-  - host: arifosmcp.arif-fazil.com
-    reason: "Redirected to /mcp/"
-  - host: makcikgpt.arif-fazil.com
-    reason: "Redirected to /wealth/makcikgpt/"
-  - host: apex.arif-fazil.com
-    reason: "APEX runtime decommissioned; redirect to root"
+aliases:
+  - from: /makcikgpt
+    to: /institution/makcikgpt
+  - from: /writings
+    to: /arif/writings
+  - from: /vitals
+    to: /arif/vitals
+  - from: /petronas
+    to: /institution/petronas
+  - from: /malaysia
+    to: /institution/malaysia
+  - from: /pmshadows
+    to: /institution/pmshadows
+  - from: /aaa
+    to: /institution/aaa
+  - from: /f13
+    to: /arif/f13
+
+# ─── PROTOCOL ENDPOINTS (D1 — exempt from 301) ────────────────────────
+# These DO NOT redirect. They dual-serve on both subdomain AND canonical
+# path. Sunset header on subdomain variant. ≥2 release cycle retirement.
+# Sentinel (D7) monitors 5xx rate on these paths.
+
+protocol_exempt:
+  - host: forge.arif-fazil.com
+    path: /mcp
+    role: MCP_GATEWAY
+    note: "dual-served; sunset telemetry-gated"
+  - host: mcp.arif-fazil.com
+    path: /
+    role: MCP_GATEWAY
+    note: "dual-served; never retires (canonical membrane)"
+  - host: arifos.arif-fazil.com
+    path: /mcp
+    role: MCP_KERNEL
+    note: "dual-served; sunset telemetry-gated"
+  - host: aaa.arif-fazil.com
+    path: /mcp
+    role: MCP_COCKPIT
+    note: "dual-served"
+  - host: geox.arif-fazil.com
+    path: /mcp
+    role: MCP_EARTH
+    note: "dual-served; sunset telemetry-gated"
+  - host: wealth.arif-fazil.com
+    path: /mcp
+    role: MCP_CAPITAL
+    note: "dual-served"
+  - host: well.arif-fazil.com
+    path: /mcp
+    role: MCP_VITALITY
+    note: "dual-served"
+
+# ─── TOMBSTONES (D7 — 410 Gone) ────────────────────────────────────────
+# Internal-only services. Public access returns 410 Gone with documented
+# Tailscale mesh access message. Audit H-2 fix added Tailscale matchers
+# to claw + openclaw so internal nodes still proxy.
+
+tombstones:
+  - host: openclaw.arif-fazil.com
+    status: 410
+    message: "openclaw gateway is internal-only. Access via Tailscale mesh (100.64.0.0/10) or contact ops@arif-fazil.com for a node grant."
+    since: "2026-08-01"
+    source_of_truth: "/etc/caddy/Caddyfile"
+  - host: claw.arif-fazil.com
+    status: 410
+    message: "claw gateway is internal-only. Access via Tailscale mesh (100.64.0.0/10) or contact ops@arif-fazil.com for a node grant."
+    since: "2026-08-01"
+    source_of_truth: "/etc/caddy/Caddyfile"
+  - host: headscale.arif-fazil.com
+    status: 410
+    message: "headscale control plane is internal-only. Access via Tailscale mesh (100.64.0.0/10). New nodes: tailscale up --login-server https://headscale.arif-fazil.com"
+    since: "2026-08-01"
+    source_of_truth: "/etc/caddy/Caddyfile"
+  - host: arifflow.arif-fazil.com
+    status: 410
+    message: "arifflow metabolism is internal-only. Access via Tailscale mesh (100.64.0.0/10)."
+    since: "2026-08-01"
+  - host: atlas.arif-fazil.com
+    status: 410
+    message: "Atlas333 cognitive geometry is internal-only. Access via Tailscale mesh (100.64.0.0/10)."
+    since: "2026-08-01"
+
+# ─── CANARY (D6, D8) ──────────────────────────────────────────────────
+# Phase 4a applies redirects to WELL ONLY first. 15-min cadence × 72h
+# sentinel sweep. If 0 unexpected 5xx → green → Phase 4b opens remaining
+# organs. This is the canary gate in writing.
+
+canary:
+  scope: well
+  redirect_targets:
+    - from: well.arif-fazil.com
+      to: https://arif-fazil.com/human/well/
+  sentinel:
+    cadence_minutes: 15
+    window_hours: 72
+    success: "0 unexpected-5xx over 72h"
+  on_green: "Phase 4b opens remaining organs (human/institution/earth)"
+  on_red: "888_HOLD — investigate before proceeding"
+  one_hop_assertion: "well./X → canonical, never chained"
