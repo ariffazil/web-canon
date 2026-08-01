@@ -13,7 +13,7 @@
       "100": { "hex": "#FBF3D9", "name": "paper-sand", "use": "backgrounds" },
       "300": { "hex": "#F2D98C", "name": "soft amber", "use": "cards, fills" },
       "500": { "hex": "#D9A62E", "name": "primary amber", "use": "actions, brand" },
-      "700": { "hex": "#8F6A14", "name": "deep honey", "use": "text on light" },
+      "700": { "hex": "#8A6410", "name": "deep honey", "use": "text on light" },
       "900": { "hex": "#4A3608", "name": "umber", "use": "headlines" }
     },
     "institution": {
@@ -30,7 +30,7 @@
       "rationale": "Geologic. Green-blue honestly mixed (teal to viridian to basin), not the 'Earth = green' cliche.",
       "100": { "hex": "#DFF0EA", "name": "shallow", "use": "backgrounds" },
       "300": { "hex": "#8CC3B2", "name": "reef", "use": "cards" },
-      "500": { "hex": "#2E8A70", "name": "viridian", "use": "actions, brand" },
+      "500": { "hex": "#2A705E", "name": "viridian", "use": "actions, brand" },
       "700": { "hex": "#17584A", "name": "basin", "use": "text" },
       "900": { "hex": "#0A2E27", "name": "trench", "use": "headlines" }
     },

@@ -39,9 +39,9 @@ function contrast(a, b) {
 }
 
 const PRIMER_SPEC = {
-  human: { 100: '#FBF3D9', 300: '#F2D98C', 500: '#D9A62E', 700: '#8F6A14', 900: '#4A3608' },
+  human: { 100: '#FBF3D9', 300: '#F2D98C', 500: '#D9A62E', 700: '#8A6410', 900: '#4A3608' },
   institution: { 100: '#E4EBF2', 300: '#9DB8CE', 500: '#2E5F8A', 700: '#1B3A57', 900: '#0C1F31' },
-  earth: { 100: '#DFF0EA', 300: '#8CC3B2', 500: '#2E8A70', 700: '#17584A', 900: '#0A2E27' },
+  earth: { 100: '#DFF0EA', 300: '#8CC3B2', 500: '#2A705E', 700: '#17584A', 900: '#0A2E27' },
   sovereign: { 300: '#D97B6C', 500: '#B3362B', 700: '#7A1F18', 900: '#3D0E0A' },
   neutral: { paper: '#FAF7F0', ink: '#1A1712', carbon: '#101216', bone: '#E8E6DF' },
 };
@@ -77,12 +77,24 @@ function main() {
   const radii = [radius.human, radius.machine, radius.torus];
   check('radius.allowed', JSON.stringify(radii) === '[12,2,"full"]', `got ${JSON.stringify(radii)}`);
 
-  // 4. Contrast: action 500 vs 100 bg
+  // 4. Contrast — PRIMER-1 contract:
+  //    (a) button text on 500 fill >= 4.5:1 AA
+  //        human (amber, light fill)  -> ink text
+  //        institution (blue) / earth (viridian) dark fills -> bone text
+  //    (b) 700 text on 100 bg (text/links) >= 4.5:1 AA
+  //    500 on 100 is NOT a valid pairing (amber can't be text on sand — that's why 700/900 exist)
+  const ink = colors.neutral.ink.hex; // #1A1712
+  const bone = colors.neutral.bone.hex; // #E8E6DF
+  const buttonText = { human: ink, institution: bone, earth: bone };
   for (const fam of ['human', 'institution', 'earth']) {
-    const a500 = colors[fam]['500'].hex;
-    const a100 = colors[fam]['100'].hex;
-    const c = contrast(a500, a100);
-    check(`contrast.${fam}.500_vs_100`, c >= 4.5, `${a500} vs ${a100} = ${c.toFixed(2)}:1 (need >= 4.5)`);
+    const c500 = colors[fam]['500'].hex;
+    const c700 = colors[fam]['700'].hex;
+    const c100 = colors[fam]['100'].hex;
+    const txt = buttonText[fam];
+    const txtOn500 = contrast(txt, c500);
+    const t700On100 = contrast(c700, c100);
+    check(`contrast.${fam}.txt_on_500`, txtOn500 >= 4.5, `${txt} on ${c500} = ${txtOn500.toFixed(2)}:1 (need >= 4.5)`);
+    check(`contrast.${fam}.700_on_100`, t700On100 >= 4.5, `${c700} on ${c100} = ${t700On100.toFixed(2)}:1 (need >= 4.5)`);
   }
 
   // 5. Page instruments registry
