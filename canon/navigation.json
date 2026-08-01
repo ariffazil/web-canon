@@ -264,8 +264,8 @@
   "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
  },
  "primary_links": {
-  "description": "Operational primary navigation rendered by ConstellationNav on arif-fazil.com (synced 2026-08-01 from src/data/siteContent.ts — F2: canon matches reality)",
-  "rule": "No page-owned navigation. Edit here, never in siteContent.ts.",
+  "description": "One-line primary navigation rendered by ConstellationNav (6 durable destinations; 2026-08-01 trim per sovereign)",
+  "rule": "One line. No redundancy. Gold ⊆ World, Doctrine ⊆ footer. Edit here, never in siteContent.ts.",
   "items": [
    {
     "label": "Start",
@@ -273,17 +273,17 @@
     "role": "primary"
    },
    {
-    "label": "Explore",
+    "label": "Earth",
     "href": "/earth",
     "role": "primary"
    },
    {
-    "label": "Analyze",
+    "label": "Economics",
     "href": "/economics",
     "role": "primary"
    },
    {
-    "label": "Track",
+    "label": "World",
     "href": "/world",
     "role": "primary"
    },
@@ -293,18 +293,8 @@
     "role": "primary"
    },
    {
-    "label": "Gold",
-    "href": "/gold/",
-    "role": "primary"
-   },
-   {
     "label": "Read",
     "href": "/writing",
-    "role": "primary"
-   },
-   {
-    "label": "Challenge",
-    "href": "/doctrine",
     "role": "primary"
    }
   ]
