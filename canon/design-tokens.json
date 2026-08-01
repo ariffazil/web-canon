@@ -369,12 +369,38 @@
     "/laws":         "no domain accent + void-blue border — F1-F13 are world-edge"
   },
 
+  "palette_zoning": {
+    "ratified_at": "2026-08-01 (PRIMER-GROUND · S5)",
+    "ratified_by": "sovereign (F13) — 999_SEAL on audit",
+    "doctrine": "Two palettes, one canon, clearly zoned. GROUND is the wellhead; the scopes are the platforms. Without this line, the sentinel will eventually flag every organ page as a color violation, or worse, someone 'harmonizes' GROUND into trinity colors and kills it.",
+    "geology_voice": {
+      "applies_to": ["ROOT (/)", "/arif", "/000 agent"],
+      "palette": ["#0B0E12 (carbon)", "#E8E6DF (bone)", "#D4A853 (amber)", "#E63946 (red — rationed)"],
+      "rationale": "The sovereign voice. The earth first. The trinity becomes typographic (Sans/Serif/Mono), not chromatic. Red is rationed to the F13 pulse indicator alone. 4 colors total.",
+      "verdict": "GEOLOGY — the wellhead. Sovereign authority. F13 signature."
+    },
+    "territory_voice": {
+      "applies_to": ["/human", "/institution", "/earth", "/world/*", "/institution/makcikgpt", "/institution/petronas", "/institution/pmshadows", "/institution/malaysia"],
+      "palette": "scope-family colors (yellow/blue/teal) + amber + bone + carbon + red-rationed",
+      "rationale": "Wayfinding. Each scope speaks its own territory. HUMAN = yellow (warmth). INSTITUTION = blue (law). EARTH = teal (ground). Scopes are platforms off the wellhead.",
+      "verdict": "TERRITORY — the platforms. Each scope carries its own voice via the 3 territory families."
+    },
+    "shared_constants": {
+      "carbon": "#0B0E12",
+      "bone":   "#E8E6DF",
+      "amber":  "#D4A853 (sovereign/AAA only — bridge accent)",
+      "red":    "#E63946 (rationed to sovereign-strip F13 indicator + verdict chips + seals ONLY; never text <12px; never on carbon-500 fill)"
+    },
+    "lint_enforcement": "scripts/canon-lint.js — asserts 4-color discipline, red ≥12px text, F13 pulse once-per-page, prefers-reduced-motion present. Run in CI on every PR touching canon/*"
+  },
+
   "immutable": [
     "Primer colors only — no exceptions beyond the documented amber for AAA",
     "Red ration — three surfaces only, enforced by CI",
     "One torus per page — enforced by CI",
     "IBM Plex only — no other fonts in compiled CSS",
     "BOP tactile — 2px travel, 90ms, no bounce",
-    "One canon, two render modes — same IA renders twice"
+    "One canon, two render modes — same IA renders twice",
+    "PALETTE ZONING — root+/arif=geology, scope pages=territory. Two palettes, one canon. Enforced by canon-lint."
   ]
 }
