@@ -34,6 +34,7 @@ REQUIRED_FILES=(
   "releases.json"
   "sites.yaml"
   "atlas.yaml"
+  "file-authority.yaml"
   "templates.json"
   "tool-surfaces.json"
   "typography.json"
