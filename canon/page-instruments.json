@@ -1,0 +1,182 @@
+{
+  "$schema": "./public-state.schema.json",
+  "schema": "canon/page-instruments/v2026.08",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13)",
+  "ratified_at": "2026-08-01",
+  "doctrine": "Every page is an instrument, not a poster. The hero is the organ doing its job, live. A page cannot choose its own hero - the route registry chooses the hero.",
+  "hard_invariant": "A page cannot choose its own hero. The route registry chooses the hero. If agents choose heroes, they will make posters. You want instruments.",
+  "instruments": {
+    "/": {
+      "territory": "arif",
+      "palette": "sovereign",
+      "instrument": "seismic-descent",
+      "description": "The Ground - seismic descent 0m->2000m. Strata IS the nav. The sovereign's autobiography is geology.",
+      "motion": "scroll-parallax",
+      "data": "static-canon",
+      "torus_count": 1,
+      "status": "sealed"
+    },
+    "/earth": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "basin-cross-section",
+      "description": "The Earth - full-bleed Malay Basin cross-section: layered stratigraphy SVG with slow parallax, live seismic wiggle, depth ruler. Basins map as clickable provinces.",
+      "motion": "scroll-parallax",
+      "data": "geox-snapshot",
+      "torus_count": 1,
+      "status": "proposed",
+      "reference_page": true
+    },
+    "/institution": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "proof-engine",
+      "description": "The Proof Engine - live observatory panel: 13 floor-lamps (F1-F13 lit indicators), verdict ticker, Omega-zero gauge at 0.04.",
+      "motion": "floor-lamps-pulse",
+      "data": "arifos-live",
+      "torus_count": 1,
+      "status": "proposed"
+    },
+    "/human": {
+      "territory": "human",
+      "palette": "human",
+      "instrument": "the-pulse",
+      "description": "The Pulse - one slow breathing line (12 breaths/min), warm amber, MakcikGPT's latest BM headline embedded. WELL vitals as soft numbers, never alarms.",
+      "motion": "breathing-line",
+      "data": "well-vitals",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/arif": {
+      "territory": "sovereign",
+      "palette": "sovereign",
+      "instrument": "the-stillness",
+      "description": "The Stillness - bare. Name, one red F13 pulse, world clock, nothing else moves. The absence of motion IS the hero.",
+      "motion": "f13-pulse",
+      "data": "world-clock",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/laws": {
+      "territory": "doctrine",
+      "palette": "neutral",
+      "instrument": "the-tablet",
+      "description": "The Tablet - 13 floors as engraved column, quiet serif. Zero color except F13's amber row.",
+      "motion": "hover-only",
+      "data": "static-canon",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/world/oil": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "commodity-chart",
+      "description": "The chart IS the hero - full-bleed live Brent chart, ticker tape, verdict line overlaid (RINGGIT WEAK - below 4.50 stress band).",
+      "motion": "chart-tick",
+      "data": "wealth-daily-snapshot",
+      "torus_count": 0,
+      "status": "held",
+      "hold_reason": "awaiting canon ratification + live data source (wealth organ), not static mock"
+    },
+    "/world/gas": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "commodity-chart",
+      "description": "Full-bleed live gas chart, ticker tape, verdict overlay.",
+      "motion": "chart-tick",
+      "data": "wealth-daily-snapshot",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/world/gold": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "commodity-chart",
+      "description": "Full-bleed live gold spot chart, ticker tape, verdict overlay.",
+      "motion": "chart-tick",
+      "data": "wealth-daily-snapshot",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/wealth": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "capital-judge",
+      "description": "The Capital Judge - one large verdict card: today's NPV/EMV with evidence chain, KLCI + USD/MYR + Brent vitals strip beneath.",
+      "motion": "static-verdict",
+      "data": "wealth-computation",
+      "torus_count": 1,
+      "status": "proposed"
+    },
+    "/missions": {
+      "territory": "human",
+      "palette": "human",
+      "instrument": "the-wheel",
+      "description": "The Wheel - torus mission selector with live routing: selecting a mission shows which organ answers.",
+      "motion": "wheel-rotate",
+      "data": "missions.json",
+      "torus_count": 1,
+      "status": "built"
+    },
+    "/mcp": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "the-membrane",
+      "description": "The Membrane - live endpoint health: organ endpoints as mono grid with real latency ticking, request log streaming.",
+      "motion": "latency-tick",
+      "data": "mcp-live",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/999": {
+      "territory": "sovereign",
+      "palette": "sovereign",
+      "instrument": "vault-chain",
+      "description": "The Chain - VAULT999 Merkle DAG visualized: recent seals as linked hash blocks, each clickable to its receipt.",
+      "motion": "hash-chain",
+      "data": "vault999-receipts",
+      "torus_count": 1,
+      "status": "proposed"
+    },
+    "/000": {
+      "territory": "sovereign",
+      "palette": "sovereign",
+      "instrument": "the-terminal",
+      "description": "The Terminal - typewriter genesis (already built). Machine voice, unchanged.",
+      "motion": "typewriter",
+      "data": "static-canon",
+      "torus_count": 0,
+      "status": "built"
+    },
+    "/makcikgpt": {
+      "territory": "human",
+      "palette": "human",
+      "instrument": "makciks-table",
+      "description": "The Makcik's Table - warm, big BM headline, kopitiam warmth: amber paper texture, latest article as served plate.",
+      "motion": "none",
+      "data": "makcikgpt-articles",
+      "torus_count": 0,
+      "status": "proposed"
+    },
+    "/politics": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "shadow-board",
+      "description": "The Shadow Board - dark institutional blue, shadow cabinet as org-chart instrument, each seat a dossier link.",
+      "motion": "hover-only",
+      "data": "dossiers",
+      "torus_count": 0,
+      "status": "proposed"
+    }
+  },
+  "build_order": [
+    "/ (sealed)",
+    "/earth (reference - next)",
+    "/world/oil (held until data source)",
+    "/institution",
+    "/human",
+    "/arif",
+    "the rest"
+  ]
+}

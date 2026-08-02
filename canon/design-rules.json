@@ -1,0 +1,75 @@
+{
+  "$schema": "./public-state.schema.json",
+  "schema": "canon/design-rules/v2026.08",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13)",
+  "ratified_at": "2026-08-01",
+  "doctrine": "Machine-enforceable design law. This is what stops 'cantik but drift'.",
+  "rules": {
+    "red_usage": {
+      "allowed_scopes": ["sovereign", "verdict", "seal", "void"],
+      "forbidden": "red outside /arif strip, verdict chips, seal marks, VOID states",
+      "enforce": "scan rendered CSS for red hex outside allowed scopes"
+    },
+    "allowed_radii": {
+      "values": [2, 12, "full"],
+      "forbidden": "any border-radius not in {2px, 12px, full}",
+      "enforce": "token lint on CSS variables"
+    },
+    "max_torus_per_view": {
+      "value": 1,
+      "note": "two toruses per page is a design VOID",
+      "enforce": "DOM scan for torus markers per route"
+    },
+    "allowed_color_families": {
+      "values": ["human", "institution", "earth", "sovereign", "neutral"],
+      "forbidden": "purple, neon, unregistered hues",
+      "enforce": "contrast + palette lint"
+    },
+    "forbid_local_palette": {
+      "value": true,
+      "note": "no page-local color tokens; all from canon/design-tokens.json",
+      "enforce": "scan for hardcoded hex in page CSS"
+    },
+    "forbid_unregistered_hero": {
+      "value": true,
+      "note": "every route hero must be in canon/page-instruments.json",
+      "enforce": "route → page-instruments registry check"
+    },
+    "require_channel_field": {
+      "value": true,
+      "note": "every JSON surface must declare channel (human/institution/earth/sovereign)",
+      "enforce": "schema lint on page.json / status.json"
+    },
+    "require_state_enum": {
+      "value": ["rest", "hold", "sealed", "void"],
+      "note": "tactile state must be explicit, never implicit",
+      "enforce": "component prop validation"
+    },
+    "contrast_floor": {
+      "value": "AA >= 4.5:1 for actions, AAA >= 7:1 for text",
+      "enforce": "CI color contrast check",
+      "note": "a color that fails contrast is a constitutional violation, not a style bug"
+    },
+    "one_family_per_territory": {
+      "value": true,
+      "note": "a stray card from another family inside a territory is a border incident",
+      "enforce": "territory palette scan"
+    },
+    "motion_rationing": {
+      "value": "clock + pulse are the only things that move on mains",
+      "forbidden": "autoplay carousels, fake live animation",
+      "note": "a fake 'live' animation is hantu - F9 violation",
+      "enforce": "animation audit"
+    },
+    "live_must_be_real": {
+      "value": true,
+      "note": "every dynamic element backed by real data (clock, snapshot, sentinel). Stale must say 'stale - sealed <ts>'",
+      "enforce": "data-source declaration per hero"
+    },
+    "prefers_reduced_motion": {
+      "value": "every hero degrades to silence: static sealed frame with timestamp",
+      "enforce": "CSS media query audit"
+    }
+  }
+}

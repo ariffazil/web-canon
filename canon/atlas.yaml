@@ -1,0 +1,316 @@
+# ⧉ WEB_ATLAS — Route + Design Authority (arifOS Web Federation)
+# SEALED 2026-08-01 · ARIF F13 · v1.0.0
+# Law: ATLAS decides. SHELL renders. TOKENS style. DATA updates. AGENT obeys. SENSE verifies. ARIF seals.
+# No page may define its own identity, navigation, route, color, or proof status.
+
+$schema: ./public-state.schema.json
+version: "1.0.0"
+ratified_by: sovereign (F13)
+ratified_at: "2026-08-01"
+
+rings:
+  SOUL:  { tokens: "red",  plane: "narrative", feel: "calm, sovereign, readable" }
+  MIND:  { tokens: "cyan", plane: "proof",     feel: "precise, machine-readable" }
+  BODY:  { tokens: "gold", plane: "organ",     feel: "operational, dashboard-like" }
+  ORGAN: { tokens: "violet", plane: "domain",  feel: "functional, status-driven" }
+
+planes:
+  narrative: "human reading surface - calm, sovereign"
+  proof:     "verification surface - precise, machine-readable"
+  organ:     "operational surface - dashboard-like"
+
+shells:
+  RootShell:      { provides: [HeadCanon, TrinityNav, PageHero, MainContent, ProofBlock, RelatedRoutes, CanonFooter] }
+  ArchiveShell:   { provides: [HeadCanon, TrinityNav, ArchiveHero, ArticleList, CanonFooter] }
+  ProofShell:     { provides: [HeadCanon, TrinityNav, ProofHero, HashChainBlock, VerifyBlock, CanonFooter] }
+  CompareShell:   { provides: [HeadCanon, TrinityNav, ResultHeadline, DataTable, MethodNote, SourceNote, CanonFooter] }
+  OrganShell:     { provides: [HeadCanon, TrinityNav, StatusDashboard, ProofBlock, CanonFooter] }
+  ArticleShell:   { provides: [HeadCanon, TrinityNav, ArticleBody, CitationBlock, PrevNextNav, CanonFooter] }
+  ToolShell:      { provides: [HeadCanon, TrinityNav, ToolPanel, StatusBadge, CanonFooter] }
+
+page_types:
+  root-home:       { layout: RootShell }
+  wisdom-archive:  { layout: ArchiveShell }
+  verification:    { layout: ProofShell }
+  compare-result:  { layout: CompareShell }
+  organ-landing:   { layout: OrganShell }
+  article:         { layout: ArticleShell }
+  tool-page:       { layout: ToolShell }
+  redirect-retired: { layout: none, note: "301 only, no render" }
+  error-page:      { layout: none, note: "404 only" }
+
+routes:
+  /:
+    ring: SOUL
+    plane: narrative
+    page_type: root-home
+    audience: human
+    layout: RootShell
+    nav_group: trinity
+    primary_action: "Read /000"
+    proof_surface: /999
+    data_source: none
+
+  /000:
+    ring: SOUL
+    plane: narrative
+    page_type: wisdom-archive
+    audience: agents-and-humans
+    layout: ArchiveShell
+    nav_group: trinity
+    primary_action: "Read genesis"
+    proof_surface: /999
+    data_source: canon/genesis.md
+
+  /999:
+    ring: MIND
+    plane: proof
+    page_type: verification
+    audience: auditors
+    layout: ProofShell
+    nav_group: trinity
+    primary_action: "Verify hash chain"
+    proof_surface: self
+    data_source: live probe
+
+  /doctrine:
+    ring: SOUL
+    plane: narrative
+    page_type: article
+    audience: human
+    layout: ArticleShell
+    nav_group: trinity
+    canonical_for: [/canon, /constellation, /federation]
+    data_source: canon/doctrine.md
+
+  /writing:
+    ring: SOUL
+    plane: narrative
+    page_type: article
+    audience: human
+    layout: ArticleShell
+    nav_group: trinity
+    data_source: essays/*.md
+
+  /essays:
+    ring: SOUL
+    plane: narrative
+    page_type: article
+    audience: human
+    layout: ArticleShell
+    nav_group: trinity
+    data_source: essays/*.md
+    redirect: /writing
+
+  /earth:
+    ring: ORGAN
+    plane: domain
+    page_type: organ-landing
+    audience: analysts
+    layout: OrganShell
+    nav_group: trinity
+    data_source: canon/federation.json
+
+  /geox:
+    ring: ORGAN
+    plane: domain
+    page_type: organ-landing
+    audience: analysts
+    layout: OrganShell
+    nav_group: infra
+    data_source: geox
+
+  /wealth:
+    ring: BODY
+    plane: organ
+    page_type: organ-landing
+    audience: analysts
+    layout: OrganShell
+    nav_group: infra
+    canonical_for: [/economics]
+    data_source: wealth
+
+  /economics:
+    ring: BODY
+    plane: organ
+    page_type: organ-landing
+    audience: analysts
+    layout: OrganShell
+    nav_group: infra
+    canonical: true
+    data_source: wealth + ns_live_telemetry.json
+
+  /well:
+    ring: BODY
+    plane: organ
+    page_type: organ-landing
+    audience: self
+    layout: OrganShell
+    nav_group: infra
+    data_source: well
+
+  /vitals:
+    ring: BODY
+    plane: organ
+    page_type: status-dashboard
+    audience: operators
+    layout: OrganShell
+    nav_group: infra
+    data_source: live probe
+
+  /mcp:
+    ring: MIND
+    plane: proof
+    page_type: tool-page
+    audience: developers
+    layout: ToolShell
+    nav_group: infra
+    data_source: mcp registry
+
+  /forge:
+    ring: BODY
+    plane: organ
+    page_type: tool-page
+    audience: agents
+    layout: ToolShell
+    nav_group: infra
+    data_source: A-FORGE
+
+  /missions:
+    ring: MIND
+    plane: proof
+    page_type: tool-page
+    audience: agents
+    layout: ToolShell
+    nav_group: infra
+    data_source: missions.json
+
+  /verify:
+    ring: MIND
+    plane: proof
+    page_type: verification
+    audience: auditors
+    layout: ProofShell
+    nav_group: trinity
+    data_source: live probe
+
+  /politics/ns-election:
+    ring: BODY
+    plane: organ
+    page_type: organ-landing
+    audience: decision
+    layout: OrganShell
+    nav_group: organ
+    data_source: ns_live_telemetry.json
+
+  /politics/ns-election/compare:
+    ring: BODY
+    plane: organ
+    page_type: compare-result
+    audience: decision
+    layout: CompareShell
+    nav_group: organ
+    data_source: ns_results.json
+
+  /politics/ns-election/playbook:
+    ring: BODY
+    plane: organ
+    page_type: article
+    audience: decision
+    layout: ArticleShell
+    nav_group: organ
+    data_source: playbook.md
+
+  /politics/shadow:
+    ring: SOUL
+    plane: narrative
+    page_type: article
+    audience: human
+    layout: ArticleShell
+    nav_group: none
+    note: "sovereign door - no nav link"
+
+  /world:
+    ring: BODY
+    plane: organ
+    page_type: organ-landing
+    audience: analysts
+    layout: OrganShell
+    nav_group: organ
+    canonical_for: [/world/oil, /world/gas, /world/gold, /world/makcikgpt]
+    data_source: commodities
+
+  /world/makcikgpt:
+    ring: BODY
+    plane: organ
+    page_type: article
+    audience: human
+    layout: ArticleShell
+    nav_group: organ
+    data_source: makcikgpt-md/*.html
+
+  /malaysia:
+    ring: BODY
+    plane: organ
+    page_type: status-dashboard
+    audience: decision
+    layout: OrganShell
+    nav_group: organ
+    data_source: budget-2026
+
+  /oil:
+    ring: BODY
+    plane: organ
+    page_type: status-dashboard
+    audience: analysts
+    layout: OrganShell
+    nav_group: organ
+    data_source: commodity ticker
+
+  /gas:
+    ring: BODY
+    plane: organ
+    page_type: status-dashboard
+    audience: analysts
+    layout: OrganShell
+    nav_group: organ
+    data_source: commodity ticker
+
+  /gold:
+    ring: BODY
+    plane: organ
+    page_type: status-dashboard
+    audience: analysts
+    layout: OrganShell
+    nav_group: organ
+    data_source: commodity ticker
+
+  /canon:
+    ring: MIND
+    plane: proof
+    page_type: verification
+    audience: agents
+    layout: ProofShell
+    nav_group: infra
+    note: "canon files served machine-readable at /canon/*.json|yaml|md"
+    data_source: web-canon repo
+
+verification:
+  minimum_checks:
+    - route_200: "all canonical routes return 200"
+    - nav_present: "every page has TrinityNav"
+    - tokens_loaded: "every page loads /_shared/design-system/tokens.css"
+    - ring_declared: "every page has data-ring"
+    - plane_declared: "every page has data-plane"
+    - shell_used: "every page uses approved shell from page_types"
+    - footer_canon: "every page has CanonFooter"
+    - no_local_style: "no banned local CSS tokens (color/nav/max-width/body background/button/badge)"
+    - visual_diff: "screenshot diff within tolerance"
+  tool: "verify-design-alignment.cjs"
+  cadence: "every build + Verify cron (6h)"
+
+# The one law
+law: >
+  Subpages may provide content. Subpages may not define shell, nav, global
+  spacing, typography, or brand colors. ATLAS decides. SHELL renders.
+  TOKENS style. DATA updates. AGENT obeys. SENSE verifies. ARIF seals.

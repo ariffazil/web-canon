@@ -1,380 +1,129 @@
 {
   "$schema": "./public-state.schema.json",
+  "schema": "canon/design-tokens/v2026.08",
   "version": "PRIMER-1.0",
   "primer": "PRIMER-1",
   "ratified_by": "sovereign (F13)",
   "ratified_at": "2026-08-01",
-  "doctrine": "Color = cognition, not taste. Red is rationed — maruah is scarce by definition. One canon, two sensory modalities (human eye + agent parser).",
-
-  "colors": {
-    "yellow": {
-      "family": "human",
-      "rationale": "Warmth. Yellow is the human-body color: sun, fire, light, life. Universal human warmth signal.",
-      "scale": {
-        "50":  { "hex": "#FFFAEB", "rgb": "255, 250, 235", "use": "page tint, hero surface" },
-        "100": { "hex": "#FFF0C2", "rgb": "255, 240, 194", "use": "hover surface" },
-        "300": { "hex": "#FFD54F", "rgb": "255, 213, 79",  "use": "mid accent" },
-        "500": { "hex": "#FFCC00", "rgb": "255, 204, 0",   "use": "PRIMARY HUMAN — buttons, accents" },
-        "700": { "hex": "#B8860B", "rgb": "184, 134, 11", "use": "borders, dark shadows" },
-        "900": { "hex": "#5C4500", "rgb": "92, 69, 0",    "use": "deepest ink" }
-      }
-    },
-    "blue": {
-      "family": "institution",
-      "rationale": "Law. Blue is the institution color: banks, courts, constitutions, corporate trust.",
-      "scale": {
-        "50":  { "hex": "#EBF2FF", "rgb": "235, 242, 255", "use": "institution tint" },
-        "100": { "hex": "#D6E4FF", "rgb": "214, 228, 255", "use": "hover on institution" },
-        "300": { "hex": "#91B0F2", "rgb": "145, 176, 242", "use": "soft accent" },
-        "500": { "hex": "#1E3A8A", "rgb": "30, 58, 138",   "use": "PRIMARY INSTITUTION — buttons, accents" },
-        "700": { "hex": "#152C6B", "rgb": "21, 44, 107",   "use": "borders, dark shadows" },
-        "900": { "hex": "#0C1A45", "rgb": "12, 26, 69",    "use": "VOID deep, world-edge" }
-      }
-    },
-    "teal": {
-      "family": "earth",
-      "rationale": "Geologic. Green-blue honestly mixed (teal → viridian → basin), not the 'Earth = green' cliché.",
-      "scale": {
-        "50":  { "hex": "#E6FFFA", "rgb": "230, 255, 250", "use": "earth surface tint" },
-        "100": { "hex": "#B2F5EA", "rgb": "178, 245, 234", "use": "hover on earth" },
-        "300": { "hex": "#4FD1C5", "rgb": "79, 209, 197",  "use": "soft accent, chordial lines" },
-        "500": { "hex": "#00D4AA", "rgb": "0, 212, 170",   "use": "PRIMARY EARTH — teal" },
-        "700": { "hex": "#047857", "rgb": "4, 120, 87",    "use": "viridian — borders, dark shadows" },
-        "900": { "hex": "#064E3B", "rgb": "6, 78, 59",     "use": "basin — deepest teal ink" }
-      }
-    },
-    "red": {
-      "family": "rationed",
-      "ration_rule": "ONLY three surfaces: sovereign strip, verdict chips (888/HOLD/VOID), seals. Red elsewhere = design VOID.",
-      "rationale": "Maruah is scarce by definition. If red is everywhere it means nothing.",
-      "scale": {
-        "50":  { "hex": "#FFF1F2", "rgb": "255, 241, 242", "use": "page tint (sparing)" },
-        "300": { "hex": "#F8A5AE", "rgb": "248, 165, 174", "use": "soft accent (sparing)" },
-        "500": { "hex": "#E63946", "rgb": "230, 57, 70",   "use": "VOID verdict only — the only red button" },
-        "700": { "hex": "#A4161A", "rgb": "164, 22, 26",   "use": "border of VOID button" },
-        "900": { "hex": "#590D14", "rgb": "89, 13, 20",    "use": "deepest red ink" }
-      }
-    },
-    "amber": {
-      "500": { "hex": "#D4A853", "rgb": "212, 168, 83", "use": "AAA cockpit only — single non-primer exception" },
-      "rationale": "Reserved for the bridge. The only color that doesn't map to a scope."
-    }
-  },
-
-  "domain_accents": {
+  "doctrine": "One canon, two renderings. Every human token has a machine twin. Design is the F4 Clarity floor made visible. Red is rationed - maruah is scarce by definition.",
+  "color": {
     "human": {
-      "scope": "/human",
-      "primary":  { "token": "var(--yellow-500)", "hex": "#FFCC00", "role": "fill-on-paper only — illegal as text on paper (1.41:1); use yellow-900 #5C4500 for text on paper (8.51:1 AAA)" },
-      "dark":     { "token": "var(--yellow-700)", "hex": "#B8860B" },
-      "text_on_paper": { "token": "var(--yellow-900)", "hex": "#5C4500", "contrast_paper": "8.51:1", "verdict": "AAA" },
-      "tint":     { "token": "var(--yellow-50)",  "hex": "#FFFAEB" }
+      "family": "yellow",
+      "rationale": "Warmth. Yellow is the human-body color: sun, fire, light, life. Universal human warmth signal.",
+      "100": { "hex": "#FBF3D9", "name": "paper-sand", "use": "backgrounds" },
+      "300": { "hex": "#F2D98C", "name": "soft amber", "use": "cards, fills" },
+      "500": { "hex": "#D9A62E", "name": "primary amber", "use": "actions, brand" },
+      "700": { "hex": "#8A6410", "name": "deep honey", "use": "text on light" },
+      "900": { "hex": "#4A3608", "name": "umber", "use": "headlines" }
     },
     "institution": {
-      "scope": "/institution",
-      "primary":  { "token": "var(--blue-500)", "hex": "#1E3A8A", "role": "fill-on-paper OK at AA-large (9.68:1) when paired with ink" },
-      "dark":     { "token": "var(--blue-700)", "hex": "#152C6B", "role": "TEXT on paper — 12.23:1 AAA" },
-      "text_on_paper": { "token": "var(--blue-700)", "hex": "#152C6B", "contrast_paper": "12.23:1", "verdict": "AAA" },
-      "tint":     { "token": "var(--blue-50)",  "hex": "#EBF2FF" }
+      "family": "blue",
+      "rationale": "Law. Blue is the institution color: banks, courts, constitutions, corporate trust.",
+      "100": { "hex": "#E4EBF2", "name": "mist", "use": "backgrounds" },
+      "300": { "hex": "#9DB8CE", "name": "steel", "use": "cards, borders" },
+      "500": { "hex": "#2E5F8A", "name": "marine", "use": "actions, brand" },
+      "700": { "hex": "#1B3A57", "name": "deep marine", "use": "text" },
+      "900": { "hex": "#0C1F31", "name": "abyss", "use": "headlines" }
     },
     "earth": {
-      "scope": "/earth",
-      "primary":  { "token": "var(--teal-500)", "hex": "#00D4AA", "role": "fill-on-paper only — illegal as text on paper (1.78:1); use teal-900 #064E3B for text on paper (9.08:1 AAA)" },
-      "dark":     { "token": "var(--teal-700)", "hex": "#047857" },
-      "text_on_paper": { "token": "var(--teal-900)", "hex": "#064E3B", "contrast_paper": "9.08:1", "verdict": "AAA" },
-      "tint":     { "token": "var(--teal-50)",  "hex": "#E6FFFA" }
+      "family": "green-blue",
+      "rationale": "Geologic. Green-blue honestly mixed (teal to viridian to basin), not the 'Earth = green' cliche.",
+      "100": { "hex": "#DFF0EA", "name": "shallow", "use": "backgrounds" },
+      "300": { "hex": "#8CC3B2", "name": "reef", "use": "cards" },
+      "500": { "hex": "#2A705E", "name": "viridian", "use": "actions, brand" },
+      "700": { "hex": "#17584A", "name": "basin", "use": "text" },
+      "900": { "hex": "#0A2E27", "name": "trench", "use": "headlines" }
     },
-    "void": {
-      "scope": "/earth/void, /arif, deep surfaces",
-      "primary":  { "token": "var(--blue-900)", "hex": "#0C1A45" },
-      "dark":     { "token": "var(--blue-700)", "hex": "#152C6B" },
-      "tint":     { "token": "var(--blue-50)",  "hex": "#EBF2FF" }
+    "sovereign": {
+      "family": "red",
+      "rationale": "Rationed. Red appears only where sovereignty or judgment is present: /arif strip, verdict chips (888_HOLD, VOID), seal marks (999). If red is everywhere, it means nothing.",
+      "300": { "hex": "#D97B6C", "name": "clay", "use": "seal backgrounds only" },
+      "500": { "hex": "#B3362B", "name": "signal", "use": "verdicts, 888, warnings" },
+      "700": { "hex": "#7A1F18", "name": "maroon", "use": "sovereign text/strip" },
+      "900": { "hex": "#3D0E0A", "name": "deep scar", "use": "VOID state" }
     },
-    "agentic": {
-      "scope": "/institution/aaa (cockpit only)",
-      "primary":  { "token": "var(--amber-500)", "hex": "#D4A853" },
-      "exception": "ONLY non-primer accent. Do not introduce additional exceptions."
+    "neutral": {
+      "family": "neutral",
+      "rationale": "Bedrock. Warm paper (human side) and carbon (agent side).",
+      "paper": { "hex": "#FAF7F0", "name": "human-side canvas", "use": "warm, low saturation" },
+      "ink": { "hex": "#1A1712", "name": "human-side body text", "use": "text" },
+      "carbon": { "hex": "#101216", "name": "agent-side canvas", "use": "background" },
+      "bone": { "hex": "#E8E6DF", "name": "agent-side primary text", "use": "text" }
     }
   },
-
-  "semantic": {
-    "seal":    { "value": "var(--teal-500)",  "hex": "#00D4AA", "use": "SEAL verdicts, healthy status, growth" },
-    "hold":    { "value": "var(--yellow-500)", "hex": "#FFCC00", "use": "HOLD, CAUTION, attention needed, not-yet-ratified" },
-    "void":    { "value": "var(--red-500)",    "hex": "#E63946", "use": "VOID verdicts, errors, hard floor breach — rationed" },
-    "info":    { "value": "var(--blue-500)",   "hex": "#1E3A8A", "use": "neutral knowledge, evidence pointer" }
-  },
-
-  "contrast_pairs": {
-    "purpose": "F2 TRUTH (real math) + F4 CLARITY (no architect-pleases-self lies). Lint blocks builds where text/fill combos fail this matrix.",
-    "rule_paper": "On paper #FAF7F0: 500-series = fill/border ONLY. Body text uses ink #1A1A1A (16.27:1 AAA). Domain-tinted text uses 900-series (yellow) or 700-series (blue) or 900-series (teal caption-only).",
-    "rule_carbon": "On carbon #101216: 500-series is legal as text (all pass 9-12:1 AAA). ink-inverse #FAF7F0 for body. muted-inverse #94A3B8 for captions.",
-    "rule_void_chip_on_carbon": "Red-500 fill + paper-ink text. NEVER red text directly on carbon (4.50:1 borderline).",
-    "rule_muted": "muted #5B6472 is CAPTION-ONLY (14px+, AA). Body text uses ink #1A1A1A. muted-inverse #94A3B8 for carbon captions.",
-    "matrix_paper_text": {
-      "ink #1A1A1A":                { "ratio": 16.27, "verdict": "AAA" },
-      "yellow-900 #5C4500 (human)": { "ratio": 8.51,  "verdict": "AAA" },
-      "blue-700 #152C6B (institution)": { "ratio": 12.23, "verdict": "AAA" },
-      "teal-900 #064E3B (earth)":   { "ratio": 9.08,  "verdict": "AAA" },
-      "red-700 #A4161A (rationed)": { "ratio": 7.25,  "verdict": "AAA — HOLD chip text only" },
-      "muted #5B6472":              { "ratio": 5.59,  "verdict": "AA — caption-only, exempt from AAA-body rule" }
-    },
-    "matrix_paper_fill": {
-      "yellow-500 #FFCC00 (light fill, human)":      { "ink_on_fill_ratio": 11.51, "verdict": "AAA — dark ink on light yellow" },
-      "teal-500 #00D4AA (light fill, earth)":        { "ink_on_fill_ratio": 9.11,  "verdict": "AAA — dark ink on light teal" },
-      "blue-500 #1E3A8A (dark fill, institution)":  {
-        "ink_on_fill_ratio": 1.68,
-        "verdict": "FAIL — dark ink on dark blue would be unreadable",
-        "use_paper_ink_instead": 9.68,
-        "alt_verdict": "AAA — paper-ink #FAF7F0 on dark blue (use this design)"
-      }
-    },
-    "matrix_carbon_text": {
-      "ink-inverse #FAF7F0":         { "ratio": 17.52, "verdict": "AAA" },
-      "yellow-500 #FFCC00 (human)":  { "ratio": 12.40, "verdict": "AAA" },
-      "blue-500 #1E3A8A":            { "ratio": 1.81,  "verdict": "FAIL — do not use as text on carbon" },
-      "teal-500 #00D4AA (earth)":    { "ratio": 9.82,  "verdict": "AAA" },
-      "yellow-300 #FFD54F":          { "ratio": 13.29, "verdict": "AAA" },
-      "teal-300 #4FD1C5":            { "ratio": 10.05, "verdict": "AAA" },
-      "blue-300 #91B0F2":            { "ratio": 8.66,  "verdict": "AAA" },
-      "red-500 #E63946 (rationed)":  { "ratio": 4.50,  "verdict": "AA-large — UI badges only, never body text" },
-      "muted-inverse #94A3B8":       { "ratio": 7.31,  "verdict": "AAA" }
-    },
-    "lint_enforcement": "block build if any text/fill combination violates the matrix above; AAA rule applies to body text (16px+); AA rule for caption (14px+); AA-large rule (3:1) for UI badges and chip text"
-  },
-
-  "surface": {
-    "human_canvas":  { "hex": "#FAF7F0", "rgb": "250, 247, 240", "use": "warm paper — human-side page background" },
-    "agent_canvas":  { "hex": "#101216", "rgb": "16, 18, 22",    "use": "carbon — agent-side page background" },
-    "ink":           { "hex": "#1A1A1A", "rgb": "26, 26, 26",    "use": "default body text on light surfaces (16.27:1 AAA)" },
-    "ink_inverse":   { "hex": "#FAF7F0", "rgb": "250, 247, 240", "use": "default body text on dark surfaces (17.52:1 AAA)" },
-    "muted":         { "hex": "#5B6472", "rgb": "91, 100, 114",  "use": "caption text on paper only (5.59:1 AA); caption-only, exempt from AAA-body rule" },
-    "muted_inverse": { "hex": "#94A3B8", "rgb": "148, 163, 184", "use": "caption text on carbon (7.31:1 AAA)" },
-    "border":        { "hex": "#E5E7EB", "rgb": "229, 231, 235", "use": "hairline rules" }
-  },
-
-  "typography": {
-    "family": {
-      "sans":  { "name": "IBM Plex Sans",  "fallback": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
-      "serif": { "name": "IBM Plex Serif", "fallback": "Georgia, 'Times New Roman', serif" },
-      "mono":  { "name": "IBM Plex Mono",  "fallback": "ui-monospace, SFMono-Regular, Menlo, monospace" }
-    },
-    "scale_ratio": "sqrt(2) — the octave of paper sizes (A-series fractal)",
+  "font": {
+    "family": "IBM Plex",
+    "voices": { "human": "Sans", "doctrine": "Serif", "machine": "Mono" },
+    "scale_ratio": 1.414,
+    "base_px": 16.8,
     "scale": {
-      "display": { "size": "3.5rem",  "px": 56, "line_height": 1.05, "weight": 700, "voice": "serif" },
-      "h1":      { "size": "2.5rem",  "px": 40, "line_height": 1.10, "weight": 700, "voice": "serif" },
-      "h2":      { "size": "1.75rem", "px": 28, "line_height": 1.20, "weight": 600, "voice": "sans" },
-      "h3":      { "size": "1.25rem", "px": 20, "line_height": 1.30, "weight": 600, "voice": "sans" },
-      "body":    { "size": "1rem",    "px": 16, "line_height": 1.50, "weight": 400, "voice": "sans" },
-      "caption": { "size": "0.875rem","px": 14, "line_height": 1.50, "weight": 400, "voice": "mono" }
+      "t--1": { "px": 11.9, "use": "captions, vault refs (mono)" },
+      "t-0": { "px": 16.8, "use": "body" },
+      "t+1": { "px": 23.8, "use": "section titles" },
+      "t+2": { "px": 33.6, "use": "page titles" },
+      "t+3": { "px": 47.6, "use": "trinity tile heroes" }
     },
-    "voices": {
-      "human":     "IBM Plex Sans — body, h2, h3",
-      "doctrine":  "IBM Plex Serif — display, h1, /laws, /arif/writings, doctrinal surfaces",
-      "machine":   "IBM Plex Mono — caption, breadcrumbs, code, IDs, epistemic labels, state labels"
-    },
-    "rules": {
-      "display_appears": "once per page (the trinity title)",
-      "h1_appears":      "once per page (the page title)",
-      "line_length_cap": "65ch for body, 80ch for headings",
-      "mono_use":        "structural, not stylistic — IDs, breadcrumbs, state labels, epistemic labels, JSON keys",
-      "weight_discipline": "400 body / 600 h2-h3 / 700 h1-display. No 500. No 300."
-    },
-    "self_host": "IBM Plex superfamily subsetted to Latin — served from web-canon, not Google Fonts"
+    "line_height": { "body": 1.5, "title": 1.15 },
+    "measure_chars": 68,
+    "tnum": "font-feature-settings: tnum"
   },
-
   "geometry": {
-    "grid_unit": "4px",
-    "grid_scale": [4, 8, 16, 32, 64, 128],
-    "rationale": "Doubling — same fractal pattern as the unit cell, expressed as spacing.",
-    "signature": "Fractal corner-notch on every card. The unit cell is the brand.",
-    "torus": {
-      "permitted_per_page": 1,
-      "rule": "Exactly ONE toroidal anchor per page.",
-      "types": {
-        "trinity_ring": "Three arcs around the AAA bridge center. Used on trinity tile rows.",
-        "mission_wheel": "Concentric arcs representing the six missions. Used on /missions and mission-driven pages."
-      },
-      "violation": "Two or more toroidal anchors on a single page = design VOID."
+    "unit_px": 4,
+    "spacing": [1, 2, 4, 8, 16, 32, 64],
+    "grid": { "columns": 12, "breakpoints": [640, 1024, 1440] },
+    "radius": { "human": 12, "machine": 2, "torus": "full" },
+    "motif": {
+      "notch": "fractal-corner-8-4-2",
+      "ring": "trinity-torus",
+      "wheel": "mission-torus"
     },
-    "radius": {
-      "human_toroidal": "12px",
-      "agent_orthogonal": "2px",
-      "rationale": "12 = tactile midpoint (organic but not soft). 2 = orthogonal precision (machine)."
-    },
-    "corner_vocabulary": {
-      "sharp":      { "value": "0",    "use": "domain labels, code chips, ident tags" },
-      "subtle":     { "value": "4px",  "use": "table cells, breadcrumb separators" },
-      "default":    { "value": "8px",  "use": "cards, inputs, standard surfaces" },
-      "toroidal":   { "value": "12px", "use": "human-side primary surfaces (PRIMER)" },
-      "organic":    { "value": "16px", "use": "hero surfaces, modals" },
-      "pill":       { "value": "9999px","use": "status badges, pills, tags" }
-    },
-    "border_vocabulary": {
-      "hairline":  { "value": "1px", "use": "row separators, agent-mode edges" },
-      "default":   { "value": "2px", "use": "cards, buttons, inputs" },
-      "emphasis":  { "value": "4px", "use": "zone markers, scope labels" },
-      "zone":      { "value": "8px", "use": "section breaks (sovereign strip / body)" }
-    }
+    "border": { "width": 1, "token_level": 300, "dashed_only_for": "888_HOLD" }
   },
-
-  "tactile": {
-    "physics": "BOP panel — machined key feel",
-    "travel":  "2px",
-    "transition": "90ms mechanical easing, no bounce",
+  "motion": {
+    "travel_ms": 90,
+    "easing": "cubic-bezier(.2,.9,.3,1)",
+    "press_travel_px": 2,
+    "hold_to_confirm_ms": 800,
+    "reduced_motion": "collapse all travel to opacity-only"
+  },
+  "buttons": {
+    "grades": {
+      "SEAL": { "look": "solid *-500, ink text, 2px travel shadow in *-700", "use": "one per view - committing action" },
+      "HOLD": { "look": "paper fill, 1px *-500 border, dashed on hover", "use": "pending, reversible, draft" },
+      "VOID": { "look": "r-500 fill - the only red button", "use": "irreversible; hold-to-confirm 800ms" }
+    },
     "states": {
-      "rest": {
-        "lift": "0",
-        "shadow": "0 1px 0 {scope-dark}, inset 0 1px 0 rgba(255,255,255,0.20)"
-      },
-      "hover": {
-        "lift": "translateY(-1px)",
-        "shadow": "0 2px 0 {scope-dark}"
-      },
-      "active": {
-        "lift": "translateY(1px)",
-        "shadow": "inset 0 2px 4px rgba(0,0,0,0.25)"
-      },
-      "focus": {
-        "outline": "3px solid currentColor at 30% alpha",
-        "outline_offset": "2px"
-      },
-      "disabled": {
-        "opacity": "0.4",
-        "cursor": "not-allowed",
-        "shadow": "none",
-        "lift": "0"
-      }
-    },
-    "easing": "cubic-bezier(0.4, 0, 0.2, 1) — mechanical, no overshoot"
-  },
-
-  "button_grades": {
-    "seal": {
-      "name": "SEAL — solid",
-      "border_style": "solid",
-      "color_source": "domain accent OR semantic-seal",
-      "use": "ratified actions, confirmed verdicts, primary CTAs",
-      "example": "Enter scope / Read doctrine / Apply"
-    },
-    "hold": {
-      "name": "HOLD — dashed border",
-      "border_style": "dashed",
-      "color_source": "semantic-hold (yellow-500)",
-      "use": "not yet ratified, awaiting sovereign, draft state",
-      "example": "Draft / Pending / Under review"
-    },
-    "void": {
-      "name": "VOID — the only red button",
-      "border_style": "solid",
-      "color_source": "var(--red-500) — rationed",
-      "use": "irreversible actions only",
-      "hold_to_confirm_ms": 800,
-      "rationale": "800ms = real preventer feel, like a circuit breaker. Prevents accidental destruction."
+      "REST": { "transform": "translateY(0)", "shadow": "0 2px 0 family-700" },
+      "HOVER": { "transform": "translateY(-1px)", "shadow": "0 3px 0 family-700" },
+      "ACTIVE": { "transform": "translateY(2px)", "shadow": "0 0 0 + inset 0 2px 4px" },
+      "DISABLED": { "opacity": 0.45, "shadow": "none", "cursor": "not-allowed" }
     }
   },
-
-  "frame": {
-    "name": "universal frame",
-    "applies_to": "every page",
-    "components": {
-      "sovereign_strip": {
-        "height": "32px",
-        "position": "sticky top:0",
-        "content": ["site logo", "release tag (vYYYY.MM.DD)", "page's own verdict chip (SEAL/HOLD/VOID)"],
-        "background": "var(--blue-900) #0C1A45 — rationed dark blue (not red — strip is sovereign-but-lawful, not alarm)"
-      },
-      "trinity_nav": {
-        "position": "below strip",
-        "tiles": ["HUMAN (yellow)", "INSTITUTION (blue)", "EARTH (teal)"],
-        "bridge_center": "AAA (amber)",
-        "torus": "Trinity Ring on trinity-tile pages"
-      },
-      "breadcrumb": {
-        "source": "generated from URL path",
-        "rule": "disagreement between breadcrumb and URL = sentinel-firable",
-        "voice": "mono",
-        "separator": "› (U+2039) at 40% opacity"
-      },
-      "mission_footer": {
-        "content": ["VAULT999 seal count", "last sealed timestamp", "doctrine version", "kernel build hash"]
-      }
-    },
-    "tombstone_render": {
-      "http_code": "410 Gone",
-      "frame": "FULL universal frame with VOID verdict chip",
-      "rationale": "A sealed page, not an apology. The page knows it died and has been witnessed."
-    }
+  "verdict_chips": {
+    "999_SEAL": { "look": "solid family-500", "font": "mono uppercase", "radius": "machine" },
+    "888_HOLD": { "look": "dashed r-500 border", "font": "mono uppercase", "radius": "machine" },
+    "VOID": { "look": "solid r-900", "font": "mono uppercase", "radius": "machine" }
   },
-
-  "ci_lints": {
-    "purpose": "F4 Clarity enforced by pipeline, not by taste.",
-    "rules": [
-      {
-        "name": "contrast_minimum",
-        "rule": "every text/background pair must score >= WCAG AA (>= AAA for body text)",
-        "fail_action": "block build"
-      },
-      {
-        "name": "red_ration",
-        "rule": "red (--red-500/700/900) only appears on: sovereign strip verdict chip, HOLD/VOID verdict chips, VAULT999 sealed chips, /arif sovereign anchor",
-        "fail_action": "block build, log violation"
-      },
-      {
-        "name": "one_torus_per_page",
-        "rule": "no page renders more than one toroidal anchor",
-        "fail_action": "block build, log violation"
-      },
-      {
-        "name": "torus_present",
-        "rule": "every page must include at least one toroidal anchor OR be explicitly marked as flat-surface (mission-driven pages may use Mission Wheel)",
-        "fail_action": "warn only"
-      },
-      {
-        "name": "single_skeleton",
-        "rule": "no font other than IBM Plex superfamily may be referenced in compiled CSS",
-        "fail_action": "block build"
-      }
-    ]
+  "territory_map": {
+    "/human": "human",
+    "/institution": "institution",
+    "/earth": "earth",
+    "/arif": "sovereign",
+    "/laws": "doctrine",
+    "/world/oil": "institution",
+    "/world/gas": "institution",
+    "/world/gold": "institution",
+    "/999": "sovereign",
+    "/000": "sovereign"
   },
-
-  "agent_structural_translation": {
-    "principle": "One canon, two sensory modalities. Agent side is structural contrast, not visual contrast.",
-    "mappings": {
-      "color":   { "human": "warm/cool hex", "agent": "channel field in JSON-LD" },
-      "font":    { "human": "Plex Sans/Serif/Mono", "agent": "schema_version field" },
-      "tactile": { "human": "rest/hover/active states", "agent": "state enum: rest | hold | sealed | void" },
-      "motion":  { "human": "90ms mechanical", "agent": "instant — honors prefers-reduced-motion" },
-      "radius":  { "human": "12px toroidal",  "agent": "2px orthogonal" }
-    },
-    "agent_render_overrides": {
-      "canvas": "carbon #101216, not warm paper",
-      "type": "Plex Mono only, no sans/serif",
-      "chrome": "hairline rules, no shadows, no transforms",
-      "feedback": "status badges (SEAL/HOLD/VOID) — no tactile lift",
-      "density": "tight (16-24px between blocks), tables preferred over cards, JSON blocks preferred over prose",
-      "epistemic_labels": "always visible as prefix tags (OBS/DER/INT/SPEC, CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN)",
-      "header": "just scope name + version + last-updated ISO timestamp",
-      "footer": "monospace: vault:999  sealed:3847  last:2026-08-01T06:51Z  kernel:kanon-...  doctrine:v2.2",
-      "json_ld": "prominent in <head> AND inline at top of body for parseability",
-      "F6_register": "MARUAH (audit-grade) not EMPATHY (narrative)"
-    }
+  "machine_twin": {
+    "channel_field": "channel",
+    "state_enum": ["rest", "hold", "sealed", "void"],
+    "schema_version": "canon/v2026.08"
   },
-
-  "domain_to_token_mapping": {
-    "/human":        "human (yellow)",
-    "/institution":  "institution (blue)",
-    "/earth":        "earth (teal/green-blue)",
-    "/earth/void":   "void (deep blue)",
-    "/institution/aaa": "agentic (amber) — single exception",
-    "/arif":         "void-dark border on bare white — sovereign = absence of pattern",
-    "/laws":         "no domain accent + void-blue border — F1-F13 are world-edge"
-  },
-
-  "immutable": [
-    "Primer colors only — no exceptions beyond the documented amber for AAA",
-    "Red ration — three surfaces only, enforced by CI",
-    "One torus per page — enforced by CI",
-    "IBM Plex only — no other fonts in compiled CSS",
-    "BOP tactile — 2px travel, 90ms, no bounce",
-    "One canon, two render modes — same IA renders twice"
-  ]
+  "contrast_guarantees": {
+    "action_500_vs_100_bg": "WCAG AA >= 4.5:1",
+    "text_700_900_vs_bg": "WCAG AAA >= 7:1",
+    "enforced_by": "CI token lint (F4 at build time)"
+  }
 }

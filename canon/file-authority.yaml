@@ -1,0 +1,176 @@
+# ⧉ FILE-AUTHORITY — Canon Registry (stops forked intention)
+# SEALED 2026-08-01 · ARIF F13 · v1.0.0
+# Law: No shared directive without shared authority map.
+#       No agent write without lease. No new file without registry.
+#       No canon mutation without promotion. No execution without receipt.
+# States: CANON | DERIVED | SCRATCH | PROPOSAL | RECEIPT | RETIRED | UNKNOWN
+
+$schema: ./public-state.schema.json
+version: "1.0.0"
+ratified_by: sovereign (F13)
+ratified_at: "2026-08-01"
+doctrine: >
+  Same directive != same execution. Same mission != same file boundary.
+  Agents do not naturally coordinate. File authority must be explicit,
+  or every agent forges its own pseudo-Atlas.
+
+states:
+  CANON:    { meaning: "Source of truth",            agent: "read; mutate only with lease" }
+  DERIVED:  { meaning: "Generated from canon",       agent: "do not hand-edit" }
+  SCRATCH:  { meaning: "Temporary workspace",        agent: "can create; must clean or promote" }
+  PROPOSAL: { meaning: "Human review artifact",      agent: "safe to create under defined folder" }
+  RECEIPT:  { meaning: "Audit output",               agent: "append-only or timestamped" }
+  RETIRED:  { meaning: "Do not use",                 agent: "redirect/reference only" }
+  UNKNOWN:  { meaning: "No authority declared",      agent: "HOLD" }
+
+# ─── CANON — source of truth (mutate only with lease) ───────────────────────
+canon:
+  "canon/atlas.yaml":
+    state: CANON
+    owner: ARIF
+    allowed_mutators: [A-FORGE, ARIF]
+    derived_outputs:
+      - sites/arif-fazil.com/src/components/AtlasGate.tsx
+      - verify-design-alignment.cjs
+  "canon/navigation.json":
+    state: CANON
+    owner: WEB_ATLAS
+    allowed_mutators: [A-FORGE, ARIF]
+    derived_outputs: [ "nav components (TrinityNav)" ]
+  "canon/design-tokens.json":
+    state: CANON
+    owner: WEB_ATLAS
+    allowed_mutators: [A-FORGE, ARIF]
+    derived_outputs: [ "public/_shared/design-system/tokens.css" ]
+  "canon/typography.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/components.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/templates.json":         { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/routes.yaml":            { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/redirects.yaml":         { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/sites.yaml":             { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/public-state.schema.json": { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/federation.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/geometry.json":          { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/file-authority.yaml":    { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+
+  # Atlas long-form docs
+  "atlas/WEB_ATLAS.md":                   { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+  "atlas/INVARIANTS_OF_AGENTIC_SITES.md": { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+  "atlas/STATIC_VS_DYNAMIC.md":           { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+  "atlas/WEB-FEDERATION-MAP.md":          { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+
+  # Site canon — /root/arif-fazil.com
+  "sites/arif-fazil.com/src/App.tsx":     { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+  "sites/arif-fazil.com/src/components/AtlasGate.tsx": { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+
+  # Data SOT — edit these, never the generated page
+  "sites/arif-fazil.com/public/data/politics/ns_results.json":
+    state: CANON
+    owner: ARIF
+    allowed_mutators: [A-FORGE, ARIF]
+
+# ─── DERIVED — generated from canon, never hand-edited ──────────────────────
+derived:
+  "public/**/*.html":
+    state: DERIVED
+    owner: generator
+    hand_edit: false
+  "sites/arif-fazil.com/dist/**":
+    state: DERIVED
+    owner: build
+    hand_edit: false
+  "/var/www/html/arif/**":
+    state: DERIVED
+    owner: deploy
+    hand_edit: false
+  "politics/ns-election/compare/index.html":
+    state: DERIVED
+    owner: generate-ns-compare.cjs
+    hand_edit: false
+    source: ns_results.json
+  "public/data/politics/ns_live_telemetry.json":
+    state: DERIVED
+    owner: generate-ns-telemetry.cjs
+    hand_edit: false
+
+# ─── PROPOSAL — the ONLY zone agents may write freely ───────────────────────
+proposal_zones:
+  - "forge_work/proposals/<agent-id>/<mission>/**"
+  - "receipts/<agent-id>/**"
+
+# ─── RECEIPT — append-only audit ────────────────────────────────────────────
+receipt_zones:
+  - "receipts/**"
+  - "vault999/**"
+
+# ─── RETIRED — do not use ───────────────────────────────────────────────────
+retired:
+  - "sites/arif-fazil.com/canon/WEB_ATLAS.md"     # duplicate of web-canon/atlas/WEB_ATLAS.md
+  - "scripts/verify-new.cjs"                       # example - registry requirement
+  - "canon-final.yaml"                             # example - duplicate atlas.yaml
+
+# ─── LEASE MODEL ─────────────────────────────────────────────────────────────
+lease:
+  schema: |
+    lease:
+      agent: <agent-id>
+      mission: <mission-name>
+      files: [<canon files>]
+      mode: edit
+      expires: 30m
+      authority: ARIF_SEAL_REQUIRED
+  rules:
+    - No lease, no mutation.
+    - Concurrent lease on same file -> HOLD.
+    - Lease expires -> changes revert unless sealed.
+
+# ─── MUTATION BUDGET ────────────────────────────────────────────────────────
+mutation_budget:
+  max_files_changed: 5
+  max_new_files: 0
+  allowed_new_files:
+    - "forge_work/proposals/**"
+    - "receipts/**"
+  forbidden:
+    - "new canon files"
+    - "duplicate READMEs"
+    - "alternate design docs"
+    - "ad-hoc scripts without registry"
+
+# ─── AGENT ROLES ────────────────────────────────────────────────────────────
+roles:
+  scout:        { role: "detect drift",               can_write: false }
+  architect:    { role: "propose Atlas changes",      can_write: "proposal only" }
+  implementer:  { role: "apply approved patch",       can_write: "leased files only" }
+  auditor:      { role: "verify build/routes/design", can_write: "receipts only" }
+  janitor:      { role: "remove orphan proposals",    can_write: "cleanup only" }
+  judge:        { role: "compare proposals",          can_write: "no direct code mutation" }
+
+# ─── PROMPT HEADER — every agent mission must open with this ────────────────
+agent_prompt_header: |
+  FILE GOVERNANCE MODE: FAIL-CLOSED
+
+  You may not create files outside:
+  - forge_work/proposals/<agent-id>/<mission>/
+  - receipts/<agent-id>/
+
+  You may not modify CANON files unless a lease is explicitly granted.
+
+  Before any write:
+  1. List target files.
+  2. State each file authority: CANON / DERIVED / SCRATCH / PROPOSAL / RECEIPT / RETIRED / UNKNOWN.
+  3. If UNKNOWN, stop.
+  4. If DERIVED, stop and find upstream SOT.
+  5. If CANON, request lease.
+  6. If no lease, produce proposal only.
+
+  Do not create alternate Atlas, design, routing, or README files.
+  Patch existing authority or propose a promotion.
+
+# ─── THE LAW ────────────────────────────────────────────────────────────────
+law: >
+  Agents cannot own files by vibes. One canon, many proposals.
+  No new canonical file without promotion. No write without lease.
+  No hand-edit of DERIVED. No duplicate docs for the same authority.
+  Agents do not decide truth - they propose, apply, or verify.
+  ARIF or Judge promotes proposal into canon. ARIF remains sovereign.
