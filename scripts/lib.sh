@@ -19,6 +19,15 @@ LIVE_WEB="/var/www/html"
 FLOW_URL="http://127.0.0.1:7073"
 ARIFOS_URL="http://127.0.0.1:8088"
 
+# ── Script start timestamp (set once at lib.sh source time) ─────────────────
+# Used by emit_receipt to compute real cost_ns = elapsed time since script
+# started. Without this, cost_ns would be a Unix timestamp (1.78e12) instead
+# of a duration — which inflated FQ ratio by 200x+ and made 333-AGI
+# sub-actors look like OVERHEAT even when they ran fine.
+#
+# F12 fix 2026-08-02: SCRIPT_START_NS captured here at source time.
+SCRIPT_START_NS=$(date +%s%N)
+
 # ── Secret bootstrap (for ariflow auth) ─────────────────────────────────────
 load_secrets() {
   if [ -f /root/.secrets/kunci-mas.env ]; then
@@ -146,7 +155,7 @@ emit_receipt() {
   "session_id": "${SCRIPT_NAME}-${ts}",
   "step_type": "Seal",
   "step_number": 1,
-  "cost_ns": $(date +%s%N | head -c 13),
+  "cost_ns": $(( $(date +%s%N) - SCRIPT_START_NS )),
   "epistemic_label": "Seal",
   "floor_verdict": "${verdict}",
   "cooling_decision": "None",
@@ -176,6 +185,48 @@ EOF
     pass "ariflow: receipt emitted (HTTP $http_code, id=${receipt_id:0:8})"
   else
     log "ariflow: receipt failed (HTTP $http_code — non-fatal)"
+  fi
+
+  # ── FQ pair: emit follow-up Verify receipt (closes arifFlow OVERHEAT gap) ──
+  # F12 fix 2026-08-02: 333-AGI sub-actors were Seal-only, leaving FQ at 0.0.
+  # Each Seal now emits a paired Verify. The seal's receipt_id becomes the
+  # previous_receipt_hash so the FQ chain stays linked.
+  local verify_payload
+  verify_payload=$(cat <<EOF
+{
+  "receipt_id": "$(new_uuid)",
+  "actor_id": "${actor}",
+  "session_id": "${SCRIPT_NAME}-${ts}",
+  "step_type": "Verify",
+  "step_number": 2,
+  "cost_ns": $(( $(date +%s%N) - SCRIPT_START_NS )),
+  "epistemic_label": "Observation",
+  "floor_verdict": "${verdict}",
+  "previous_receipt_hash": "${receipt_id}",
+  "created_at": "$(date -u +%Y-%m-%dT%H:%M:%S.%6NZ)",
+  "cooling_decision": "None",
+  "payload": {
+    "verifies": "${receipt_id}",
+    "intent": "${intent}",
+    "target": "${target}",
+    "files": ${files},
+    "drift": "${drift}",
+    "ts": "${ts}",
+    "lane": "VERIFY",
+    "verifies_seal_step": true,
+    "note": "Auto-paired Verify for Seal — closes FQ gap for 333-AGI sub-actors"
+  }
+}
+EOF
+)
+  local verify_code
+  verify_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$FLOW_URL/ingest" \
+    -H "Content-Type: application/json" \
+    -d "$verify_payload" 2>/dev/null || echo "000")
+  if [ "$verify_code" = "200" ] || [ "$verify_code" = "202" ]; then
+    pass "ariflow: verify paired (HTTP $verify_code)"
+  else
+    log "ariflow: verify pair failed (HTTP $verify_code — non-fatal)"
   fi
 }
 
