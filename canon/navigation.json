@@ -1,302 +1,163 @@
 {
- "$schema": "./public-state.schema.json",
- "version": "3.0.0",
- "description": "Trinity IA global navigation. Sovereign strip + 3 trinity tiles + AAA bridge + breadcrumb.",
- "rule": "Every page must include the universal frame. No site-specific copies of common navigation.",
- "frame": {
-  "name": "universal_frame",
-  "applies_to": "every_page",
-  "order": [
-   "sovereign_strip",
-   "trinity_tile_row",
-   "breadcrumb",
-   "page_content",
-   "prev_next_nav",
-   "mission_footer"
-  ]
- },
- "sovereign_strip": {
-  "height": "32px",
-  "position": "sticky top:0",
-  "background": "var(--r-700, #7A1F18)",
-  "content": [
-   {
-    "label": "Ψ",
-    "href": "https://arif-fazil.com",
-    "role": "logo"
-   },
-   {
-    "label": "arif-fazil.com",
-    "href": "https://arif-fazil.com",
-    "role": "site_name"
-   },
-   {
-    "label": "F13_OK",
-    "value": "F13_OK",
-    "role": "verdict_chip"
-   },
-   {
-    "label": "kimi-code/FI-008",
-    "value": "kimi-code/FI-008",
-    "role": "actor"
-   },
-   {
-    "label": "v2026.08.01",
-    "value": "v2026.08.01",
-    "role": "release_tag"
-   },
-   {
-    "label": "?",
-    "role": "shortcut_hint"
-   }
-  ],
-  "background_rationale": "rationed sovereign maroon; permanent red is allowed only for F13/sovereign strip, verdict, seal, warning, and VOID scopes — the distinction: rationed red, not no red"
- },
- "trinity_nav": {
-  "tiles": [
-   {
-    "label": "HUMAN",
-    "href": "/human",
-    "scope": "HUMAN",
-    "accent": "red",
-    "accent_token": "var(--red-500) #E63946",
-    "lede": "Substrate, dignity, witness — the people-side of the federation.",
-    "organs": [
-     "/human/well"
+  "$schema": "./public-state.schema.json",
+  "version": "4.0.0",
+  "as_of": "2026-08-04",
+  "description": "Hybrid IA — Arrow-of-Time shell + live route graph. One primary strip. Trinity is DRAFT only.",
+  "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
+  "doctrine": {
+    "human_first": true,
+    "agent_doors": "footer machine_links + /.well-known/* + llms.txt + missions.json",
+    "preserve": [
+      "politics/ns-election",
+      "world/makcikgpt",
+      "commodities oil|gas|gold|klci|usdmyr",
+      "vitals PETRONAS singleton",
+      "000 genesis",
+      "999 vault"
+    ]
+  },
+  "frame": {
+    "name": "arrow_hybrid_frame",
+    "applies_to": "every_public_page",
+    "order": [
+      "brand_clock_strip",
+      "primary_nav",
+      "page_content",
+      "secondary_footer",
+      "machine_footer"
     ],
-    "role": "trinity-1"
-   },
-   {
-    "label": "INSTITUTION",
-    "href": "/institution",
-    "scope": "INSTITUTION",
-    "accent": "yellow",
-    "accent_token": "var(--yellow-500) #FFCC00",
-    "lede": "Old beside new. WEALTH (legacy) and arifOS · A-FORGE · AAA (agentic).",
-    "organs": [
-     "/institution/wealth",
-     "/institution/arifos",
-     "/institution/aforge",
-     "/institution/aaa"
-    ],
-    "role": "trinity-2"
-   },
-   {
-    "label": "EARTH",
-    "href": "/earth",
-    "scope": "EARTH",
-    "accent": "teal",
-    "accent_token": "var(--teal-500) #00D4AA",
-    "lede": "Known earth (GEOX) and the void's edge (HERMES, MCP).",
-    "organs": [
-     "/earth/geox",
-     "/earth/hermes",
-     "/earth/mcp"
-    ],
-    "role": "trinity-3"
-   }
-  ],
-  "bridge_center": {
-   "label": "AAA",
-   "href": "/institution/aaa",
-   "role": "cockpit_bridge",
-   "accent": "amber",
-   "accent_token": "var(--amber-500) #D4A853",
-   "accent_rationale": "ONLY non-primer exception",
-   "toroidal_anchor": "trinity-ring",
-   "ring_geometry": "three arcs converging on AAA bridge center, one per trinity scope"
-  }
- },
- "sovereign_anchor": {
-  "label": "/arif",
-  "href": "/arif",
-  "role": "f13_anchor",
-  "display": "sovereign_anchor_atop_trinity_or_in_breadcrumb",
-  "pattern": "bare",
-  "pattern_rationale": "The absence of pattern IS the marker. Sovereign = no decoration."
- },
- "cross_cutting": {
-  "label": "/laws",
-  "href": "/laws",
-  "role": "constitutional_floors",
-  "display": "footer_link_or_breadcrumb_optional",
-  "pattern": "orthogonal-fractal-faintest",
-  "rationale": "F1-F13 laws are quiet — the faintest pattern in the federation"
- },
- "breadcrumb": {
-  "source": "generated_from_url_path",
-  "voice": "mono",
-  "separator": "› (U+2039) at 40% opacity",
-  "current_segment": {
-   "color": "var(--surface-fg)",
-   "weight": 600
+    "status": "LIVE"
   },
-  "links": {
-   "color": "var(--surface-muted)",
-   "hover": "var(--accent-{scope}-dark)"
-  },
-  "rule": "disagreement between breadcrumb and URL = sentinel-firable (drift detection)",
-  "examples": [
-   {
-    "url": "/arif",
-    "breadcrumb": "arif"
-   },
-   {
-    "url": "/human",
-    "breadcrumb": "arif › human"
-   },
-   {
-    "url": "/human/well",
-    "breadcrumb": "arif › human › well"
-   },
-   {
-    "url": "/institution/aaa",
-    "breadcrumb": "arif › institution › aaa"
-   },
-   {
-    "url": "/earth/geox",
-    "breadcrumb": "arif › earth › geox"
-   },
-   {
-    "url": "/laws/f1",
-    "breadcrumb": "arif › laws › f1"
-   }
-  ]
- },
- "prev_next_nav": {
-  "layout": "two-column footer block",
-  "prev": {
-   "align": "left",
-   "arrow": "◀"
-  },
-  "next": {
-   "align": "right",
-   "arrow": "▶"
-  },
-  "hover": {
-   "color": "var(--accent-{scope}-dark)",
-   "transform": "translateX(2px) (next) or translateX(-2px) (prev)"
-  },
-  "press": "transform: translateX(0)"
- },
- "mission_footer": {
-  "background": "var(--surface-bg) (human) / var(--agent_canvas) (agent)",
-  "content": [
-   {
-    "label": "VAULT999",
-    "value": "vault:999"
-   },
-   {
-    "label": "sealed",
-    "value": "3,847"
-   },
-   {
-    "label": "last_sealed",
-    "value": "2026-08-01T06:51Z"
-   },
-   {
-    "label": "kernel",
-    "value": "kanon-2026.07.31+0b03b5b"
-   },
-   {
-    "label": "doctrine",
-    "value": "v2026.08.01"
-   }
-  ],
-  "agent_mode_voice": "monospace: vault:999  sealed:3847  last:2026-08-01T06:51Z  kernel:kanon-...  doctrine:v2.2"
- },
- "tombstone_render": {
-  "http_code": 410,
-  "frame": "FULL universal frame with VOID verdict chip on sovereign strip",
-  "rationale": "A sealed page, not an apology. The page knows it died and has been witnessed.",
-  "verdict_chip": "VOID — rationed red (only 3 surfaces: strip verdict, HOLD/VOID chip, VAULT999 seal)"
- },
- "keyboard_shortcuts": [
-  {
-   "combo": "g h",
-   "action": "navigate to /human",
-   "visible": "on trinity tile hover"
-  },
-  {
-   "combo": "g i",
-   "action": "navigate to /institution",
-   "visible": "on trinity tile hover"
-  },
-  {
-   "combo": "g e",
-   "action": "navigate to /earth",
-   "visible": "on trinity tile hover"
-  },
-  {
-   "combo": "g a",
-   "action": "navigate to /institution/aaa (cockpit bridge)",
-   "visible": "on bridge hover"
-  },
-  {
-   "combo": "g s",
-   "action": "navigate to /arif (sovereign)",
-   "visible": "in sovereign strip"
-  },
-  {
-   "combo": "g l",
-   "action": "navigate to /laws",
-   "visible": "in footer"
-  },
-  {
-   "combo": "g /",
-   "action": "focus global search",
-   "visible": "no"
-  },
-  {
-   "combo": "?",
-   "action": "show shortcut overlay",
-   "visible": "no"
-  },
-  {
-   "combo": "Esc",
-   "action": "close overlays",
-   "visible": "no"
-  }
- ],
- "epistemic_registers": {
-  "human_side_voice": "EMPATHY — narrative, dignity-first phrasing ('human readiness', 'vitality')",
-  "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing ('substrate readiness', 'vitality status')",
-  "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
- },
- "primary_links": {
-  "description": "One-line primary navigation rendered by ConstellationNav (6 durable destinations; 2026-08-01 trim per sovereign)",
-  "rule": "One line. No redundancy. Gold ⊆ World, Doctrine ⊆ footer. Edit here, never in siteContent.ts.",
-  "items": [
-   {
-    "label": "Start",
+  "brand": {
+    "label": "ARIF FAZIL",
     "href": "/",
-    "role": "primary"
-   },
-   {
-    "label": "Earth",
-    "href": "/earth",
-    "role": "primary"
-   },
-   {
-    "label": "Economics",
-    "href": "/economics",
-    "role": "primary"
-   },
-   {
-    "label": "World",
-    "href": "/world",
-    "role": "primary"
-   },
-   {
-    "label": "Politics",
-    "href": "/politics/ns-election/",
-    "role": "primary"
-   },
-   {
-    "label": "Read",
-     "href": "/read",
-     "role": "primary"
-   }
-  ]
- }
+    "clock": "Asia/Kuala_Lumpur",
+    "creed": "Forged, not given."
+  },
+  "primary_links": {
+    "description": "One-line primary navigation rendered by ArrowNavbar (hybrid live 2026-08-04)",
+    "rule": "Max 7. Logo is brand, not a primary item. Politics lives in secondary (World civic depth). Commodities ⊆ World.",
+    "items": [
+      { "label": "Earth", "href": "/earth", "role": "primary", "mode": "spa" },
+      { "label": "Economics", "href": "/economics", "role": "primary", "mode": "spa" },
+      { "label": "World", "href": "/world", "role": "primary", "mode": "spa" },
+      { "label": "Writing", "href": "/writing", "role": "primary", "mode": "spa", "aliases": ["/read", "/essays"] },
+      { "label": "Doctrine", "href": "/doctrine", "role": "primary", "mode": "spa", "aliases": ["/canon", "/federation"] },
+      { "label": "Missions", "href": "/missions", "role": "primary", "mode": "spa" },
+      { "label": "999", "href": "/999/", "role": "primary", "mode": "static" }
+    ]
+  },
+  "secondary_links": {
+    "description": "Footer human secondary — real live surfaces, not aspirational paths",
+    "items": [
+      { "label": "Politics · NS", "href": "/politics/ns-election/", "role": "secondary", "mode": "spa" },
+      { "label": "VITALS · PETRONAS", "href": "/vitals/", "role": "secondary", "mode": "static" },
+      { "label": "Read", "href": "/read", "role": "secondary", "mode": "spa" },
+      { "label": "000 Genesis", "href": "/000/", "role": "secondary", "mode": "static" },
+      { "label": "Map", "href": "/map/", "role": "secondary", "mode": "static" },
+      { "label": "Connect", "href": "https://mcp.arif-fazil.com/", "role": "secondary", "mode": "external" }
+    ]
+  },
+  "machine_links": {
+    "description": "Quiet machine doors — agents and WebMCP",
+    "items": [
+      { "label": "llms.txt", "href": "/llms.txt" },
+      { "label": "missions.json", "href": "/missions.json" },
+      { "label": "surfaces.json", "href": "/surfaces.json" },
+      { "label": "webmcp", "href": "/.well-known/webmcp.json" },
+      { "label": "mcp", "href": "https://mcp.arif-fazil.com/mcp" },
+      { "label": "did", "href": "/.well-known/did.json" },
+      { "label": "PyPI arifos", "href": "https://pypi.org/project/arifos/" }
+    ]
+  },
+  "trinity_nav": {
+    "status": "DRAFT_FUTURE",
+    "rule": "Do not render on public shell until /human /institution paths are live product surfaces.",
+    "tiles": [
+      {
+        "label": "HUMAN",
+        "href": "/human",
+        "scope": "HUMAN",
+        "accent": "red",
+        "lede": "Substrate, dignity, witness — DRAFT",
+        "role": "trinity-1"
+      },
+      {
+        "label": "INSTITUTION",
+        "href": "/institution",
+        "scope": "INSTITUTION",
+        "accent": "yellow",
+        "lede": "WEALTH + arifOS · A-FORGE · AAA — DRAFT",
+        "role": "trinity-2"
+      },
+      {
+        "label": "EARTH",
+        "href": "/earth",
+        "scope": "EARTH",
+        "accent": "teal",
+        "lede": "GEOX + membrane — live path /earth already used in primary",
+        "role": "trinity-3"
+      }
+    ],
+    "bridge_center": {
+      "label": "AAA",
+      "href": "/institution/aaa",
+      "role": "cockpit_bridge",
+      "status": "DRAFT_FUTURE"
+    }
+  },
+  "sovereign_strip": {
+    "status": "OPTIONAL_AUDIT",
+    "height": "32px",
+    "note": "Not required on public Arrow shell; reserved for organ/cockpit surfaces.",
+    "background": "var(--r-700, #7A1F18)",
+    "content": [
+      { "label": "Ψ", "href": "https://arif-fazil.com", "role": "logo" },
+      { "label": "arif-fazil.com", "href": "https://arif-fazil.com", "role": "site_name" },
+      { "label": "F13_OK", "value": "F13_OK", "role": "verdict_chip" },
+      { "label": "v2026.08.04", "value": "v2026.08.04", "role": "release_tag" }
+    ]
+  },
+  "breadcrumb": {
+    "source": "generated_from_url_path",
+    "voice": "mono",
+    "separator": "›",
+    "rule": "disagreement between breadcrumb and URL = drift",
+    "examples": [
+      { "url": "/", "breadcrumb": "home" },
+      { "url": "/earth", "breadcrumb": "home › earth" },
+      { "url": "/economics", "breadcrumb": "home › economics" },
+      { "url": "/world/makcikgpt", "breadcrumb": "home › world › makcikgpt" },
+      { "url": "/politics/ns-election", "breadcrumb": "home › politics › ns-election" },
+      { "url": "/vitals/", "breadcrumb": "home › vitals" },
+      { "url": "/doctrine", "breadcrumb": "home › doctrine" },
+      { "url": "/missions", "breadcrumb": "home › missions" }
+    ]
+  },
+  "keyboard_shortcuts": [
+    { "combo": "g e", "action": "navigate to /earth" },
+    { "combo": "g c", "action": "navigate to /economics" },
+    { "combo": "g w", "action": "navigate to /world" },
+    { "combo": "g r", "action": "navigate to /writing" },
+    { "combo": "g d", "action": "navigate to /doctrine" },
+    { "combo": "g m", "action": "navigate to /missions" },
+    { "combo": "g 9", "action": "navigate to /999/" },
+    { "combo": "g v", "action": "navigate to /vitals/" },
+    { "combo": "g p", "action": "navigate to /politics/ns-election/" },
+    { "combo": "?", "action": "show shortcut overlay" },
+    { "combo": "Esc", "action": "close overlays" }
+  ],
+  "epistemic_registers": {
+    "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
+    "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+    "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
+  },
+  "mission_footer": {
+    "background": "var(--paper)",
+    "content": [
+      { "label": "doctrine", "value": "Ditempa Bukan Diberi" },
+      { "label": "missions", "value": "six verbs" },
+      { "label": "kernel", "value": "arifOS F1–F13" }
+    ]
+  }
 }
