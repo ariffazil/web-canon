@@ -294,8 +294,8 @@
    },
    {
     "label": "Read",
-    "href": "/writing",
-    "role": "primary"
+     "href": "/read",
+     "role": "primary"
    }
   ]
  }
