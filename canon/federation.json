@@ -1,9 +1,9 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "v2026.08.01",
-  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws. AI agents replace institutions, not humans.",
-  "ratified_by": "sovereign (F13) — D1-D9 ratified 2026-08-01",
-  "ratified_at": "2026-08-01T08:00:00Z",
+  "version": "v2026.08.06",
+  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws + L3 asset register. AI agents replace institutions, not humans.",
+  "ratified_by": "sovereign (F13) — D1-D9 ratified 2026-08-01. L3 asset register added 2026-08-06 (canon integrity check).",
+  "ratified_at": "2026-08-06T02:50:00Z",
 
   "trinity_scopes": [
     {
@@ -148,6 +148,99 @@
       "kind": "edge-bridge",
       "posture": "REFLECT_ONLY",
       "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+    }
+  ],
+
+  "assets": [
+    {
+      "asset": "web-canon",
+      "layer": "L3",
+      "role": "canon_registry",
+      "github": "ariffazil/web-canon",
+      "kind": "source-of-truth",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 canonical registry. Federation.json, sites.yaml, geometry, design tokens. Single source of truth for all canon data. Edited via git, synced to /var/www/html/canon/."
+    },
+    {
+      "asset": "arif-fazil.com",
+      "layer": "L3",
+      "role": "unified_web_surface",
+      "github": "ariffazil/arif-fazil.com",
+      "kind": "site-build",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 unified federation web surface. Vite + React build. One domain, many organs. Deployed to /var/www/html/arif/."
+    },
+    {
+      "asset": "ariffazil",
+      "layer": "L3",
+      "role": "sovereign_identity_root",
+      "github": "ariffazil/ariffazil",
+      "kind": "profile",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 F13 SOVEREIGN identity root (profile README). Federation identity surface, not a runtime organ. No runtime authority."
+    },
+    {
+      "asset": "arifOS-model-registry",
+      "layer": "L3",
+      "role": "model_provenance",
+      "github": "ariffazil/arifOS-model-registry",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 governed self-reference frame for AI agents. Model provenance tracking. No runtime authority."
+    },
+    {
+      "asset": "compose",
+      "layer": "L3",
+      "role": "docker_infrastructure",
+      "github": "ariffazil/compose",
+      "kind": "infrastructure",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Docker infrastructure for supporting services. Deployment configuration, not the executor. A-FORGE holds execution authority; compose holds configuration. No runtime authority."
+    },
+    {
+      "asset": "EEE",
+      "layer": "L3",
+      "role": "kernel_spine_recovery",
+      "github": "ariffazil/EEE",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Kernel Spine Recovery reference. L3 asset repository. No runtime authority. Does not hold lease authority — that is arifOS kernel domain."
+    },
+    {
+      "asset": "A2B",
+      "layer": "L3",
+      "role": "benchmark_bridge",
+      "github": "ariffazil/A2B",
+      "kind": "research",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 AssetOpsBench Bridge. IJCAI-25. Constitutional governance benchmarks for industrial AI. Research artifact. No runtime authority."
+    },
+    {
+      "asset": "searxng",
+      "layer": "L3",
+      "role": "sovereign_search",
+      "github": "ariffazil/searxng",
+      "kind": "infrastructure",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Sovereign search for arifOS federation. Self-hosted, zero API keys. No runtime authority beyond search."
+    },
+    {
+      "asset": "awesome-mcp-servers",
+      "layer": "L3",
+      "role": "mcp_reference_collection",
+      "github": "ariffazil/awesome-mcp-servers",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Reference collection of MCP servers. Federation research asset. No runtime authority."
+    },
+    {
+      "asset": "macrostrat",
+      "layer": "L3",
+      "role": "geological_data_platform",
+      "github": "ariffazil/macrostrat",
+      "kind": "forked-dependency",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Geological data platform. Forked dependency for GEOX earth intelligence. No runtime authority."
     }
   ],
 
