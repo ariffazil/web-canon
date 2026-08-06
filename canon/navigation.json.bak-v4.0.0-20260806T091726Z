@@ -1,19 +1,19 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "4.1.0",
-  "as_of": "2026-08-06",
-  "description": "Arrow-of-Time shell with World Model 9-domain vocabulary overlay. Labels = World Model. URLs = Arrow Hybrid (unchanged). Trinity chrome intact. Path A ratified by F13.",
+  "version": "4.0.0",
+  "as_of": "2026-08-04",
+  "description": "Hybrid IA \u2014 Arrow-of-Time shell + live route graph. One primary strip. Trinity is DRAFT only.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
     "agent_doors": "footer machine_links + /.well-known/* + llms.txt + missions.json",
     "preserve": [
       "politics/ns-election",
-      "world/makcikgpt (Voice domain)",
-      "commodities gold|oil|gas|klci|usdmyr (Capital domain)",
-      "propa PETRONAS (Capital domain, canonical)",
-      "000 origin",
-      "999 proof"
+      "world/makcikgpt",
+      "commodities oil|gas|gold|klci|usdmyr",
+      "vitals PETRONAS singleton",
+      "000 genesis",
+      "999 vault"
     ]
   },
   "frame": {
@@ -35,130 +35,110 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "Primary nav — World Model vocabulary overlay on Arrow Hybrid URLs. 7 domains.",
-    "rule": "Max 7. Labels = World Model domains. URLs = Arrow Hybrid (unchanged).",
+    "description": "One-line primary navigation rendered by ArrowNavbar (hybrid live 2026-08-04)",
+    "rule": "Max 7. Logo is brand, not a primary item. Politics lives in secondary (World civic depth). Commodities \u2286 World.",
     "items": [
       {
         "label": "Earth",
         "href": "/earth",
         "role": "primary",
-        "mode": "spa",
-        "domain": "earth",
-        "question": "What's under our feet?"
+        "mode": "spa"
       },
       {
-        "label": "Capital",
+        "label": "Economics",
         "href": "/economics",
         "role": "primary",
-        "mode": "spa",
-        "domain": "capital",
-        "question": "What's it worth?"
+        "mode": "spa"
       },
       {
-        "label": "Voice",
+        "label": "World",
         "href": "/world",
         "role": "primary",
-        "mode": "spa",
-        "domain": "voice",
-        "question": "What do I think?"
+        "mode": "spa"
       },
       {
-        "label": "Essays",
+        "label": "Writing",
         "href": "/writing",
         "role": "primary",
         "mode": "spa",
-        "domain": "voice",
-        "question": "What do I think?",
         "aliases": [
           "/read",
           "/essays"
         ]
       },
       {
-        "label": "Law",
+        "label": "Doctrine",
         "href": "/doctrine",
         "role": "primary",
         "mode": "spa",
-        "domain": "law",
-        "question": "What are the rules?",
         "aliases": [
           "/canon",
           "/federation"
         ]
       },
       {
-        "label": "Work",
+        "label": "Missions",
         "href": "/missions",
         "role": "primary",
-        "mode": "spa",
-        "domain": "work",
-        "question": "What am I building?"
+        "mode": "spa"
       },
       {
-        "label": "Proof",
+        "label": "999",
         "href": "/999/",
         "role": "primary",
-        "mode": "static",
-        "domain": "proof",
-        "question": "Is this true?"
+        "mode": "static"
       }
     ]
   },
   "secondary_links": {
-    "description": "Footer secondary — World Model domains not in primary strip.",
+    "description": "Footer human secondary \u2014 real live surfaces, not aspirational paths",
     "items": [
       {
-        "label": "Origin",
-        "href": "/000/",
+        "label": "Politics \u00b7 NS",
+        "href": "/politics/ns-election/",
         "role": "secondary",
-        "mode": "static",
-        "domain": "origin",
-        "question": "Where did this start?"
+        "mode": "spa"
+      },
+      {
+        "label": "VITALS \u00b7 PETRONAS",
+        "href": "/vitals/",
+        "role": "secondary",
+        "mode": "static"
       },
       {
         "label": "Map",
         "href": "/map/",
         "role": "secondary",
-        "mode": "static",
-        "domain": "earth",
-        "question": "What's under our feet?"
+        "mode": "static"
       },
       {
-        "label": "PETRONAS",
-        "href": "/propa/",
+        "label": "Machine",
+        "href": "/machine/",
         "role": "secondary",
-        "mode": "static",
-        "domain": "capital",
-        "question": "What's it worth?"
+        "mode": "static"
       },
       {
-        "label": "Politics",
-        "href": "/politics/ns-election/",
+        "label": "000 Genesis",
+        "href": "/000/",
         "role": "secondary",
-        "mode": "spa",
-        "domain": "voice",
-        "question": "What do I think?"
+        "mode": "static"
       },
       {
-        "label": "Signal",
-        "href": "/connect/",
+        "label": "For machines",
+        "href": "/machines/",
         "role": "secondary",
-        "mode": "spa",
-        "domain": "signal",
-        "question": "How do I reach out?"
+        "mode": "static"
       },
       {
-        "label": "Human",
-        "href": "/human/map/",
+        "label": "Connect",
+        "href": "https://mcp.arif-fazil.com/",
         "role": "secondary",
-        "mode": "static",
-        "domain": "human",
-        "question": "Am I well?"
+        "mode": "external"
       }
     ]
   },
   "machine_links": {
-    "description": "Quiet machine doors — agents and WebMCP",
+    "description": "Quiet machine doors \u2014 agents and WebMCP",
     "items": [
       {
         "label": "llms.txt",
@@ -199,7 +179,7 @@
         "href": "/human",
         "scope": "HUMAN",
         "accent": "red",
-        "lede": "Substrate, dignity, witness — DRAFT",
+        "lede": "Substrate, dignity, witness \u2014 DRAFT",
         "role": "trinity-1"
       },
       {
@@ -207,7 +187,7 @@
         "href": "/institution",
         "scope": "INSTITUTION",
         "accent": "yellow",
-        "lede": "WEALTH + arifOS · A-FORGE · AAA — DRAFT",
+        "lede": "WEALTH + arifOS \u00b7 A-FORGE \u00b7 AAA \u2014 DRAFT",
         "role": "trinity-2"
       },
       {
@@ -215,7 +195,7 @@
         "href": "/earth",
         "scope": "EARTH",
         "accent": "teal",
-        "lede": "GEOX + membrane — live path /earth already used in primary",
+        "lede": "GEOX + membrane \u2014 live path /earth already used in primary",
         "role": "trinity-3"
       }
     ],
@@ -233,7 +213,7 @@
     "background": "var(--r-700, #7A1F18)",
     "content": [
       {
-        "label": "Ψ",
+        "label": "\u03a8",
         "href": "https://arif-fazil.com",
         "role": "logo"
       },
@@ -257,7 +237,7 @@
   "breadcrumb": {
     "source": "generated_from_url_path",
     "voice": "mono",
-    "separator": "›",
+    "separator": "\u203a",
     "rule": "disagreement between breadcrumb and URL = drift",
     "examples": [
       {
@@ -266,70 +246,70 @@
       },
       {
         "url": "/earth",
-        "breadcrumb": "home › earth"
+        "breadcrumb": "home \u203a earth"
       },
       {
         "url": "/economics",
-        "breadcrumb": "home › capital"
+        "breadcrumb": "home \u203a economics"
       },
       {
         "url": "/world/makcikgpt",
-        "breadcrumb": "home › voice › makcikgpt"
+        "breadcrumb": "home \u203a world \u203a makcikgpt"
       },
       {
         "url": "/politics/ns-election",
-        "breadcrumb": "home › voice › politics › ns-election"
+        "breadcrumb": "home \u203a politics \u203a ns-election"
       },
       {
-        "url": "/propa/",
-        "breadcrumb": "home › capital › petronas"
+        "url": "/vitals/",
+        "breadcrumb": "home \u203a vitals"
       },
       {
         "url": "/doctrine",
-        "breadcrumb": "home › law › doctrine"
+        "breadcrumb": "home \u203a doctrine"
       },
       {
         "url": "/missions",
-        "breadcrumb": "home › work › missions"
+        "breadcrumb": "home \u203a missions"
       }
     ]
   },
   "keyboard_shortcuts": [
     {
       "combo": "g e",
-      "action": "navigate to /earth (Earth)"
+      "action": "navigate to /earth"
     },
     {
       "combo": "g c",
-      "action": "navigate to /economics (Capital)"
-    },
-    {
-      "combo": "g v",
-      "action": "navigate to /world (Voice)"
+      "action": "navigate to /economics"
     },
     {
       "combo": "g w",
-      "action": "navigate to /writing (Essays)"
+      "action": "navigate to /world"
     },
     {
-      "combo": "g l",
-      "action": "navigate to /doctrine (Law)"
+      "combo": "g r",
+      "action": "navigate to /writing"
+    },
+    {
+      "combo": "g d",
+      "action": "navigate to /doctrine"
     },
     {
       "combo": "g m",
-      "action": "navigate to /missions (Work)"
+      "action": "navigate to /missions"
     },
     {
       "combo": "g 9",
-      "action": "navigate to /999/ (Proof)"
+      "action": "navigate to /999/"
+    },
+    {
+      "combo": "g v",
+      "action": "navigate to /vitals/"
     },
     {
       "combo": "g p",
-      "action": "navigate to /propa/ (PETRONAS)"
-    },
-    {
-      "combo": "g o",
-      "action": "navigate to /000/ (Origin)"
+      "action": "navigate to /politics/ns-election/"
     },
     {
       "combo": "?",
@@ -341,8 +321,8 @@
     }
   ],
   "epistemic_registers": {
-    "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
-    "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+    "human_side_voice": "EMPATHY \u2014 narrative, dignity-first phrasing",
+    "agent_side_voice": "MARUAH \u2014 audit-grade, kernel-first phrasing",
     "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
   },
   "mission_footer": {
@@ -358,9 +338,8 @@
       },
       {
         "label": "kernel",
-        "value": "arifOS F1–F13"
+        "value": "arifOS F1\u2013F13"
       }
     ]
-  },
-  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
+  }
 }
