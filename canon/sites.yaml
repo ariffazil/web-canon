@@ -311,3 +311,16 @@ surfaces:
     stack: [React 19, TypeScript, Vite, Tailwind CSS, Framer Motion]
     webroot: /var/www/html/arif
     deployable: true
+  - host: syedos.arif-fazil.com
+    role: SOVEREIGN_DASHBOARD
+    canonical_role: third-party-sovereign-dashboard
+    owner: @rico_ricaldo_33
+    primary_audience: [trader, public]
+    webroot: /var/www/html/syedos
+    deployable: true
+    caddy_handle: root * /var/www/html/syedos
+    services:
+      - gold_api: localhost:3456 (GOLD signal/ticker; APEX name deprecated 2026-08-08)
+      - upload: localhost:18900 (receipt intake)
+    canon_ref: federation.json#syedos (L3 sovereign_dashboard)
+

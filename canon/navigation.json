@@ -1,8 +1,8 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "4.1.0",
+  "version": "7.0.0",
   "as_of": "2026-08-06",
-  "description": "Arrow-of-Time shell with World Model 9-domain vocabulary overlay. Labels = World Model. URLs = Arrow Hybrid (unchanged). Trinity chrome intact. Path A ratified by F13.",
+  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
@@ -35,55 +35,61 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "Primary nav — World Model vocabulary overlay on Arrow Hybrid URLs. 7 domains.",
-    "rule": "Max 7. Labels = World Model domains. URLs = Arrow Hybrid (unchanged).",
+    "description": "5-domain human nav. Each nav item = an organ's output portal: HOME=sovereign, EARTH=GEOX, WORDS=arifOS, WORLD=WEALTH, WORK=WELL. Organs themselves are agent-owned and live in machine_links.",
+    "rule": "Max 5. Labels = organ domains.",
     "items": [
+      {
+        "label": "Home",
+        "href": "/",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "sovereign",
+        "organ": "AAA",
+        "question": "Where do I land? (cockpit \u2014 principal \u2194 agents)"
+      },
       {
         "label": "Earth",
         "href": "/earth",
         "role": "primary",
         "mode": "spa",
         "domain": "earth",
+        "organ": "GEOX",
         "question": "What's under our feet?"
       },
       {
-        "label": "Capital",
-        "href": "/economics",
-        "role": "primary",
-        "mode": "spa",
-        "domain": "capital",
-        "question": "What's it worth?"
-      },
-      {
-        "label": "Voice",
-        "href": "/world",
-        "role": "primary",
-        "mode": "spa",
-        "domain": "voice",
-        "question": "What do I think?"
-      },
-      {
-        "label": "Essays",
+        "label": "Words",
         "href": "/writing",
         "role": "primary",
         "mode": "spa",
         "domain": "voice",
-        "question": "What do I think?",
+        "organ": "arifOS",
+        "question": "What do I think? (constitution, doctrine, law)",
         "aliases": [
           "/read",
-          "/essays"
+          "/essays",
+          "/doctrine",
+          "/law",
+          "/world/makcikgpt"
         ]
       },
       {
-        "label": "Law",
-        "href": "/doctrine",
+        "label": "World",
+        "href": "/world",
         "role": "primary",
-        "mode": "spa",
-        "domain": "law",
-        "question": "What are the rules?",
+        "mode": "static",
+        "domain": "world",
+        "organ": "WEALTH",
+        "question": "What is happening? (commodities, vitals, politics)",
         "aliases": [
-          "/canon",
-          "/federation"
+          "/economics",
+          "/politics",
+          "/propa",
+          "/malaysia",
+          "/oil",
+          "/gas",
+          "/gold",
+          "/klci",
+          "/usdmyr"
         ]
       },
       {
@@ -92,73 +98,56 @@
         "role": "primary",
         "mode": "spa",
         "domain": "work",
-        "question": "What am I building?"
-      },
-      {
-        "label": "Proof",
-        "href": "/999/",
-        "role": "primary",
-        "mode": "static",
-        "domain": "proof",
-        "question": "Is this true?"
+        "organ": "WELL",
+        "question": "What do I build? (wells, missions, resume)",
+        "aliases": [
+          "/resume",
+          "/wells",
+          "/999",
+          "/proof"
+        ]
       }
     ]
   },
   "secondary_links": {
-    "description": "Footer secondary — World Model domains not in primary strip.",
+    "description": "Footer + hidden nav. Organs are agent-owned surfaces \u2014 present, not promoted.",
     "items": [
       {
         "label": "Origin",
         "href": "/000/",
-        "role": "secondary",
-        "mode": "static",
-        "domain": "origin",
-        "question": "Where did this start?"
+        "mode": "static"
       },
       {
         "label": "Map",
         "href": "/map/",
-        "role": "secondary",
-        "mode": "static",
-        "domain": "earth",
-        "question": "What's under our feet?"
+        "mode": "static"
       },
       {
         "label": "PETRONAS",
         "href": "/propa/",
-        "role": "secondary",
         "mode": "static",
-        "domain": "capital",
-        "question": "What's it worth?"
+        "agent_organ": true
+      },
+      {
+        "label": "Malaysia",
+        "href": "/malaysia/",
+        "mode": "static",
+        "agent_organ": true
       },
       {
         "label": "Politics",
-        "href": "/politics/ns-election/",
-        "role": "secondary",
-        "mode": "spa",
-        "domain": "voice",
-        "question": "What do I think?"
+        "href": "/politics/",
+        "mode": "static"
       },
       {
         "label": "Signal",
         "href": "/connect/",
-        "role": "secondary",
-        "mode": "spa",
-        "domain": "signal",
-        "question": "How do I reach out?"
-      },
-      {
-        "label": "Human",
-        "href": "/human/map/",
-        "role": "secondary",
-        "mode": "static",
-        "domain": "human",
-        "question": "Am I well?"
+        "mode": "static"
       }
     ]
   },
   "machine_links": {
-    "description": "Quiet machine doors — agents and WebMCP",
+    "description": "Agent doors \u2014 organs live HERE, not in human nav. Pages are for humans; contexts are for agents.",
     "items": [
       {
         "label": "llms.txt",
@@ -185,8 +174,24 @@
         "href": "/.well-known/did.json"
       },
       {
-        "label": "PyPI arifos",
-        "href": "https://pypi.org/project/arifos/"
+        "label": "arifOS",
+        "href": "/canon/",
+        "agent_organ": true
+      },
+      {
+        "label": "GEOX",
+        "href": "https://geox.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WEALTH",
+        "href": "https://wealth.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WELL",
+        "href": "https://well.arif-fazil.com",
+        "agent_organ": true
       }
     ]
   },
@@ -199,7 +204,7 @@
         "href": "/human",
         "scope": "HUMAN",
         "accent": "red",
-        "lede": "Substrate, dignity, witness — DRAFT",
+        "lede": "Substrate, dignity, witness \u2014 DRAFT",
         "role": "trinity-1"
       },
       {
@@ -207,7 +212,7 @@
         "href": "/institution",
         "scope": "INSTITUTION",
         "accent": "yellow",
-        "lede": "WEALTH + arifOS · A-FORGE · AAA — DRAFT",
+        "lede": "WEALTH + arifOS \u00b7 A-FORGE \u00b7 AAA \u2014 DRAFT",
         "role": "trinity-2"
       },
       {
@@ -215,7 +220,7 @@
         "href": "/earth",
         "scope": "EARTH",
         "accent": "teal",
-        "lede": "GEOX + membrane — live path /earth already used in primary",
+        "lede": "GEOX + membrane \u2014 live path /earth already used in primary",
         "role": "trinity-3"
       }
     ],
@@ -233,7 +238,7 @@
     "background": "var(--r-700, #7A1F18)",
     "content": [
       {
-        "label": "Ψ",
+        "label": "\u03a8",
         "href": "https://arif-fazil.com",
         "role": "logo"
       },
@@ -257,7 +262,7 @@
   "breadcrumb": {
     "source": "generated_from_url_path",
     "voice": "mono",
-    "separator": "›",
+    "separator": "\u203a",
     "rule": "disagreement between breadcrumb and URL = drift",
     "examples": [
       {
@@ -266,70 +271,62 @@
       },
       {
         "url": "/earth",
-        "breadcrumb": "home › earth"
+        "breadcrumb": "home \u203a earth"
       },
       {
         "url": "/economics",
-        "breadcrumb": "home › capital"
+        "breadcrumb": "home \u203a capital"
       },
       {
         "url": "/world/makcikgpt",
-        "breadcrumb": "home › voice › makcikgpt"
+        "breadcrumb": "home \u203a voice \u203a makcikgpt"
       },
       {
         "url": "/politics/ns-election",
-        "breadcrumb": "home › voice › politics › ns-election"
+        "breadcrumb": "home \u203a voice \u203a politics \u203a ns-election"
       },
       {
         "url": "/propa/",
-        "breadcrumb": "home › capital › petronas"
+        "breadcrumb": "home \u203a capital \u203a petronas"
       },
       {
         "url": "/doctrine",
-        "breadcrumb": "home › law › doctrine"
+        "breadcrumb": "home \u203a law \u203a doctrine"
       },
       {
         "url": "/missions",
-        "breadcrumb": "home › work › missions"
+        "breadcrumb": "home \u203a work \u203a missions"
       }
     ]
   },
   "keyboard_shortcuts": [
     {
+      "combo": "g h",
+      "action": "navigate to / (Home)"
+    },
+    {
       "combo": "g e",
-      "action": "navigate to /earth (Earth)"
-    },
-    {
-      "combo": "g c",
-      "action": "navigate to /economics (Capital)"
-    },
-    {
-      "combo": "g v",
-      "action": "navigate to /world (Voice)"
+      "action": "navigate to /earth (Earth \u2014 GEOX)"
     },
     {
       "combo": "g w",
-      "action": "navigate to /writing (Essays)"
-    },
-    {
-      "combo": "g l",
-      "action": "navigate to /doctrine (Law)"
-    },
-    {
-      "combo": "g m",
-      "action": "navigate to /missions (Work)"
-    },
-    {
-      "combo": "g 9",
-      "action": "navigate to /999/ (Proof)"
-    },
-    {
-      "combo": "g p",
-      "action": "navigate to /propa/ (PETRONAS)"
+      "action": "navigate to /writing (Words \u2014 arifOS)"
     },
     {
       "combo": "g o",
-      "action": "navigate to /000/ (Origin)"
+      "action": "navigate to /world (World \u2014 WEALTH)"
+    },
+    {
+      "combo": "g k",
+      "action": "navigate to /missions (Work \u2014 WELL)"
+    },
+    {
+      "combo": "g p",
+      "action": "navigate to /propa/ (PETRONAS organ)"
+    },
+    {
+      "combo": "g m",
+      "action": "navigate to /malaysia/ (Malaysia organ)"
     },
     {
       "combo": "?",
@@ -341,8 +338,8 @@
     }
   ],
   "epistemic_registers": {
-    "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
-    "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+    "human_side_voice": "EMPATHY \u2014 narrative, dignity-first phrasing",
+    "agent_side_voice": "MARUAH \u2014 audit-grade, kernel-first phrasing",
     "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
   },
   "mission_footer": {
@@ -358,9 +355,9 @@
       },
       {
         "label": "kernel",
-        "value": "arifOS F1–F13"
+        "value": "arifOS F1\u2013F13"
       }
     ]
   },
-  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
+  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
 }

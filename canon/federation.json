@@ -1,8 +1,8 @@
 {
   "$schema": "./public-state.schema.json",
   "version": "v2026.08.08",
-  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN \u00b7 INSTITUTION \u00b7 EARTH) + cross-cutting /laws + L3 asset register. AI agents replace institutions, not humans.",
-  "ratified_by": "sovereign (F13) \u2014 FRAME + syedos registered 2026-08-08. syedos APEX name collision resolved.",
+  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws + L3 asset register. AI agents replace institutions, not humans.",
+  "ratified_by": "sovereign (F13) — FRAME + syedos registered 2026-08-08. syedos APEX name collision resolved.",
   "ratified_at": "2026-08-08T10:43:43Z",
   "trinity_scopes": [
     {
@@ -14,7 +14,7 @@
       "github": "ariffazil/WELL",
       "mcp_endpoint": "https://well.arif-fazil.com/mcp",
       "kind": "runtime-owned-organ",
-      "doctrine": "Substrate, dignity, witness. The people-side of the federation. Sovereignty is preserved \u2014 humans are NOT replaced."
+      "doctrine": "Substrate, dignity, witness. The people-side of the federation. Sovereignty is preserved — humans are NOT replaced."
     },
     {
       "scope": "INSTITUTION",
@@ -25,7 +25,7 @@
       "github": "ariffazil/AAA",
       "mcp_endpoint": "https://aaa.arif-fazil.com/mcp",
       "kind": "cockpit",
-      "doctrine": "Old + new institutions live here. WEALTH is the legacy. arifOS \u00b7 A-FORGE \u00b7 AAA are the agentic layer (the new institution). The transformation is visible: old beside new."
+      "doctrine": "Old + new institutions live here. WEALTH is the legacy. arifOS · A-FORGE · AAA are the agentic layer (the new institution). The transformation is visible: old beside new."
     },
     {
       "scope": "EARTH",
@@ -54,7 +54,7 @@
     "scope": "LAWS",
     "canonical_path": "/laws",
     "kind": "constitutional-floors",
-    "doctrine": "F1-F13 floors. Cross-cutting. The laws that govern. Quieter than scopes \u2014 laws are quiet."
+    "doctrine": "F1-F13 floors. Cross-cutting. The laws that govern. Quieter than scopes — laws are quiet."
   },
   "organs": [
     {
@@ -89,7 +89,7 @@
       "mcp_endpoint": "https://aaa.arif-fazil.com/mcp",
       "kind": "cockpit",
       "posture": "DISPLAY_ONLY",
-      "doctrine": "L1 control plane. A2A gateway. Agent identity registry. The bridge \u2014 visually centered between the trinity tiles."
+      "doctrine": "L1 control plane. A2A gateway. Agent identity registry. The bridge — visually centered between the trinity tiles."
     },
     {
       "organ": "arifFLOW",
@@ -132,7 +132,7 @@
       "mcp_endpoint": "https://well.arif-fazil.com/mcp",
       "kind": "reflect-organ",
       "posture": "REFLECT_ONLY",
-      "doctrine": "L2 readiness. Vitality. Observes, never diagnoses, never prescribes. The substrate organ. D6 canary \u2014 Phase 4a applies to WELL first."
+      "doctrine": "L2 readiness. Vitality. Observes, never diagnoses, never prescribes. The substrate organ. D6 canary — Phase 4a applies to WELL first."
     },
     {
       "organ": "HERMES",
@@ -143,7 +143,7 @@
       "mcp_endpoint": "https://hermes.arif-fazil.com/mcp",
       "kind": "edge-bridge",
       "posture": "REFLECT_ONLY",
-      "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY \u2014 the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+      "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
     },
     {
       "organ": "FRAME",
@@ -153,7 +153,7 @@
       "port": 18085,
       "posture": "COMPUTE_ONLY",
       "systemd": "frame-organ.service",
-      "description": "FRAME \u2014 Reference & Assessment Measurement Engine. Systemd organ (port 18085, COMPUTE_ONLY). Measures (baseline, probe, compare, trend, alert, report, rsi_verify), never judges. 7 chambers. Registered 2026-08-08.",
+      "description": "FRAME — Reference & Assessment Measurement Engine. Systemd organ (port 18085, COMPUTE_ONLY). Measures (baseline, probe, compare, trend, alert, report, rsi_verify), never judges. 7 chambers. Registered 2026-08-08.",
       "doctrine": "FRAME measures, never judges (F2). Runs 7 chambers: baseline, probe, compare, trend, alert, report, rsi_verify. Bound to arifos + aforge service graph via Wants=. Compute surface, not a governance or judgement surface.",
       "ratified_by": "sovereign",
       "kind": "measurement_engine"
@@ -212,7 +212,7 @@
       "github": "ariffazil/EEE",
       "kind": "reference",
       "posture": "READ_ONLY",
-      "doctrine": "L3 Kernel Spine Recovery reference. L3 asset repository. No runtime authority. Does not hold lease authority \u2014 that is arifOS kernel domain."
+      "doctrine": "L3 Kernel Spine Recovery reference. L3 asset repository. No runtime authority. Does not hold lease authority — that is arifOS kernel domain."
     },
     {
       "asset": "A2B",
@@ -257,7 +257,18 @@
       "github": "ariffazil/syedos",
       "kind": "site-build",
       "posture": "READ_ONLY",
-      "doctrine": "L3 SyeDOS sovereign dashboard surface. Gold trading, well-being (heal), nasi lemak simulator, rental SWOT. VHost: syedos.arif-fazil.com (Caddy). Static HTML \u2014 no runtime authority. Locked under F1 reversibility 2026-08-07. NOTE 2026-08-08: live gold engine reuses archived APEX name; rename required to clear collision with ariffazil/APEX (L4 archive)."
+      "doctrine": "L3 SyeDOS sovereign dashboard surface. Gold trading, well-being (heal), nasi lemak simulator, rental SWOT. VHost: syedos.arif-fazil.com (Caddy). Static HTML — no runtime authority. Locked under F1 reversibility 2026-08-07. NOTE 2026-08-08: live gold engine reuses archived APEX name; rename required to clear collision with ariffazil/APEX (L4 archive)."
+    },
+    {
+      "asset": "FRAME",
+      "layer": "L3",
+      "role": "assessment_measurement_engine",
+      "path": "/opt/frame/app",
+      "kind": "runtime-service",
+      "posture": "COMPUTE_ONLY",
+      "port": 18085,
+      "systemd_unit": "frame-organ.service",
+      "doctrine": "L3 Federation Reference & Assessment Measurement Engine. Reads kunci-mas.flat.env. Wants arifos+aforge. Running since 2026-08-06. Was unregistered until 2026-08-08. Governance: T2 (service restart needs 888_SEAL). NOT a sovereign organ — no F1–F13 authority. Utility-grade compute node."
     }
   ],
   "trinity_visual_bridge": {
@@ -266,13 +277,13 @@
   },
   "floors_alignment": {
     "F1_AMANAH": "Reversibility. Every canon change has a git revert path.",
-    "F2_TRUTH": "P(truth)\u22650.99. Every claim has evidence. Verified via WCAG math, contrast_pairs.",
-    "F3_TRI_WITNESS": "Human \u00d7 AI \u00d7 Earth \u00d7 Verifier \u2265 0.75",
-    "F4_CLARITY": "\u0394S \u2264 0. Every canon file reduces entropy (not adds).",
+    "F2_TRUTH": "P(truth)≥0.99. Every claim has evidence. Verified via WCAG math, contrast_pairs.",
+    "F3_TRI_WITNESS": "Human × AI × Earth × Verifier ≥ 0.75",
+    "F4_CLARITY": "ΔS ≤ 0. Every canon file reduces entropy (not adds).",
     "F5_PEACE_SQUARED": "Non-destructive power. Citizen (yours truly) is the verifier.",
     "F6_EMPATHY_MARUAH": "MARUAH on agent side, EMPATHY on human side. Dual register.",
-    "F7_HUMILITY": "\u03a9\u2080 \u2248 0.04 (in band). No fake certainty. Canon admits its own gaps.",
-    "F8_GENIUS": "Elegant correctness. G = (A\u00b7P\u00b7E\u00b7X)^(1/4) \u2265 0.80.",
+    "F7_HUMILITY": "Ω₀ ≈ 0.04 (in band). No fake certainty. Canon admits its own gaps.",
+    "F8_GENIUS": "Elegant correctness. G = (A·P·E·X)^(1/4) ≥ 0.80.",
     "F9_ANTIHANTU": "No deception. Red is rationed. Scarcity enforces meaning.",
     "F10_ONTOLOGY": "AI-only ontology. No soul, no feelings. The agent is a tool.",
     "F11_AUDITABILITY": "Every change is in git. Sentinel monitors. web-canon is the SOT.",
