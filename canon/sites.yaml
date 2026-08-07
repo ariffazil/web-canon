@@ -124,11 +124,11 @@ earth_organ_paths:
 
   - path: /earth/hermes
     role: EARTH_EDGE  # meets the void
-    description: "HERMES — multi-modal bridge. Edge of earth, where the known meets unknown."
+    description: "HERMES — multi-modal bridge. Edge of earth, where the known meets unknown. Live Telegram gateway (port 18089) + multimodal relay."
     legacy_path: (TBD)
-    port: 8644
-    posture: REFLECT_ONLY  # D9 hermes declaration
-    deployable: false  # edge organ, internal
+    port: 18089
+    posture: LIVE  # edge gateway, multimodal relay, F13-signed Telegram channel
+    deployable: true  # live since 2026-08; corrected 2026-08-07 from REFLECT_ONLY drift
 
   - path: /earth/mcp
     role: EARTH_MEMBRANE
