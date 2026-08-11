@@ -143,7 +143,7 @@
       "mcp_endpoint": "https://hermes.arif-fazil.com/mcp",
       "kind": "edge-bridge",
       "posture": "REFLECT_ONLY",
-      "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+      "doctrine": "L2 multi-modal edge bridge. D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
     },
     {
       "organ": "FRAME",
