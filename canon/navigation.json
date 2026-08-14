@@ -1,8 +1,8 @@
 {
   "$schema": "./public-state.schema.json",
   "version": "7.0.0",
-  "as_of": "2026-08-06",
-  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents — machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
+  "as_of": "2026-08-14",
+  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
@@ -45,7 +45,7 @@
         "mode": "spa",
         "domain": "sovereign",
         "organ": "AAA",
-        "question": "Where do I land? (cockpit — principal ↔ agents)"
+        "question": "Where do I land? (cockpit \u2014 principal \u2194 agents)"
       },
       {
         "label": "Earth",
@@ -58,7 +58,7 @@
       },
       {
         "label": "Words",
-        "href": "/writing",
+        "href": "/words",
         "role": "primary",
         "mode": "spa",
         "domain": "voice",
@@ -94,7 +94,7 @@
       },
       {
         "label": "Work",
-        "href": "/missions",
+        "href": "/work",
         "role": "primary",
         "mode": "spa",
         "domain": "work",
@@ -110,7 +110,7 @@
     ]
   },
   "secondary_links": {
-    "description": "Footer + hidden nav. Organs are agent-owned surfaces — present, not promoted.",
+    "description": "Footer + hidden nav. Organs are agent-owned surfaces \u2014 present, not promoted.",
     "items": [
       {
         "label": "Origin",
@@ -154,7 +154,7 @@
     ]
   },
   "machine_links": {
-    "description": "Agent doors — organs live HERE, not in human nav. Pages are for humans; contexts are for agents.",
+    "description": "Agent doors \u2014 organs live HERE, not in human nav. Pages are for humans; contexts are for agents.",
     "items": [
       {
         "label": "llms.txt",
@@ -211,7 +211,7 @@
         "href": "/human",
         "scope": "HUMAN",
         "accent": "red",
-        "lede": "Substrate, dignity, witness — DRAFT",
+        "lede": "Substrate, dignity, witness \u2014 DRAFT",
         "role": "trinity-1"
       },
       {
@@ -219,7 +219,7 @@
         "href": "/institution",
         "scope": "INSTITUTION",
         "accent": "yellow",
-        "lede": "WEALTH + arifOS · A-FORGE · AAA — DRAFT",
+        "lede": "WEALTH + arifOS \u00b7 A-FORGE \u00b7 AAA \u2014 DRAFT",
         "role": "trinity-2"
       },
       {
@@ -227,7 +227,7 @@
         "href": "/earth",
         "scope": "EARTH",
         "accent": "teal",
-        "lede": "GEOX + membrane — live path /earth already used in primary",
+        "lede": "GEOX + membrane \u2014 live path /earth already used in primary",
         "role": "trinity-3"
       }
     ],
@@ -245,7 +245,7 @@
     "background": "var(--r-700, #7A1F18)",
     "content": [
       {
-        "label": "Ψ",
+        "label": "\u03a8",
         "href": "https://arif-fazil.com",
         "role": "logo"
       },
@@ -269,7 +269,7 @@
   "breadcrumb": {
     "source": "generated_from_url_path",
     "voice": "mono",
-    "separator": "›",
+    "separator": "\u203a",
     "rule": "disagreement between breadcrumb and URL = drift",
     "examples": [
       {
@@ -278,31 +278,31 @@
       },
       {
         "url": "/earth",
-        "breadcrumb": "home › earth"
+        "breadcrumb": "home \u203a earth"
       },
       {
         "url": "/economics",
-        "breadcrumb": "home › capital"
+        "breadcrumb": "home \u203a capital"
       },
       {
         "url": "/world/makcikgpt",
-        "breadcrumb": "home › voice › makcikgpt"
+        "breadcrumb": "home \u203a voice \u203a makcikgpt"
       },
       {
         "url": "/politics/ns-election",
-        "breadcrumb": "home › voice › politics › ns-election"
+        "breadcrumb": "home \u203a voice \u203a politics \u203a ns-election"
       },
       {
         "url": "/propa/",
-        "breadcrumb": "home › capital › petronas"
+        "breadcrumb": "home \u203a capital \u203a petronas"
       },
       {
         "url": "/doctrine",
-        "breadcrumb": "home › law › doctrine"
+        "breadcrumb": "home \u203a law \u203a doctrine"
       },
       {
         "url": "/missions",
-        "breadcrumb": "home › work › missions"
+        "breadcrumb": "home \u203a work \u203a missions"
       }
     ]
   },
@@ -313,19 +313,19 @@
     },
     {
       "combo": "g e",
-      "action": "navigate to /earth (Earth — GEOX)"
+      "action": "navigate to /earth (Earth \u2014 GEOX)"
     },
     {
       "combo": "g w",
-      "action": "navigate to /writing (Words — arifOS)"
+      "action": "navigate to /writing (Words \u2014 arifOS)"
     },
     {
       "combo": "g o",
-      "action": "navigate to /world (World — WEALTH)"
+      "action": "navigate to /world (World \u2014 WEALTH)"
     },
     {
       "combo": "g k",
-      "action": "navigate to /missions (Work — WELL)"
+      "action": "navigate to /missions (Work \u2014 WELL)"
     },
     {
       "combo": "g p",
@@ -345,8 +345,8 @@
     }
   ],
   "epistemic_registers": {
-    "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
-    "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+    "human_side_voice": "EMPATHY \u2014 narrative, dignity-first phrasing",
+    "agent_side_voice": "MARUAH \u2014 audit-grade, kernel-first phrasing",
     "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
   },
   "mission_footer": {
@@ -362,9 +362,9 @@
       },
       {
         "label": "kernel",
-        "value": "arifOS F1–F13"
+        "value": "arifOS F1\u2013F13"
       }
     ]
   },
-  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
+  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
 }
