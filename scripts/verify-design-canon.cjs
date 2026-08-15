@@ -113,6 +113,45 @@ function main() {
   check('rules.allowed_families', JSON.stringify(rules.rules.allowed_color_families.values) === JSON.stringify(['human', 'institution', 'earth', 'sovereign', 'neutral']), 'family list drift');
   check('rules.state_enum', JSON.stringify(rules.rules.require_state_enum.value) === JSON.stringify(['rest', 'hold', 'sealed', 'void']), 'state enum drift');
 
+  // 7. Sacred-geometry / hexagram ban (SCAR 2026-08-15: 12d1861 shipped a
+  //    Star-of-David SVG into the MakcikGPT BM journalism hero and SEALED it PASS).
+  //    Any page that ships >=2 large interlocking polygons forms a hexagram —
+  //    fail the build. Geometry is not a MakcikGPT voice.
+  {
+    const SITE = '/root/arif-fazil.com/sites/arif-fazil.com';
+    const dirs = ['public', 'dist'];
+    let scanned = 0, banned = 0;
+    for (const d of dirs) {
+      const dir = path.join(SITE, d);
+      if (!fs.existsSync(dir)) continue;
+      const walk = (p) => {
+        for (const e of fs.readdirSync(p, { withFileTypes: true })) {
+          const fp = path.join(p, e.name);
+          if (e.isDirectory()) walk(fp);
+          else if (e.name.endsWith('.html')) {
+            scanned++;
+            const html = fs.readFileSync(fp, 'utf8');
+            const polys = html.match(/<polygon[^>]*points="([^"]*)"/g) || [];
+            let big = 0;
+            for (const pm of polys) {
+              const pts = (pm.match(/points="([^"]*)"/)[1]).split(/\s+/);
+              // large equilateral-ish polygons (span > 200 units) drawn as outlines
+              const xs = pts.map(pt => parseFloat(pt.split(',')[0]));
+              const ys = pts.map(pt => parseFloat(pt.split(',')[1]));
+              if (Math.max(...xs) - Math.min(...xs) > 200 || Math.max(...ys) - Math.min(...ys) > 200) big++;
+            }
+            if (big >= 2) {
+              banned++;
+              console.log(`✗ geometry.hexagram: ${fp} ships ${big} interlocking large polygons (sacred geometry banned)`);
+            }
+          }
+        }
+      };
+      walk(dir);
+    }
+    check('geometry.no_hexagram', banned === 0, banned === 0 ? `${scanned} html files clean` : `${banned} files ship hexagram geometry`);
+  }
+
   const fails = results.filter((r) => !r.ok);
   console.log(`\n═ DESIGN-CANON: ${results.length - fails.length}/${results.length} checks · ${fails.length} violations ${fails.length ? '🔴' : '✅'}`);
   process.exit(fails.length ? 1 : 0);
