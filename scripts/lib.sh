@@ -134,8 +134,11 @@ new_uuid() {
 }
 
 # ── ariflow receipt ─────────────────────────────────────────────────────────
-# Args: actor, intent, target, files, drift, verdict
-# Requires: receipt_id (UUID v4), previous_receipt_hash (optional, ignored here)
+# Args: actor, intent, target, files, drift, verdict [, step_type]
+# step_type defaults to Verify (health / observe). Pass Execute only when
+# this script actually mutated (rsync). Never Seal — Seal counts as Execute
+# in arifFlow FQ. Never set previous_receipt_hash to receipt_id (UUID);
+# the daemon wants a stored receipt hash or no field (new chain).
 emit_receipt() {
   local actor="$1"
   local intent="$2"
@@ -143,20 +146,28 @@ emit_receipt() {
   local files="$4"
   local drift="$5"
   local verdict="$6"
+  local step_type="${7:-Verify}"
   local ts
   ts=$(date -u +%Y%m%dT%H%M%SZ)
   local receipt_id
   receipt_id=$(new_uuid)
+  local epistemic="Observation"
+  local lane="VERIFY"
+  case "${step_type}" in
+    Execute) epistemic="Derivation"; lane="IMPL" ;;
+    Seal)    epistemic="Seal";        lane="IMPL" ;;
+    Verify)  epistemic="Observation"; lane="VERIFY" ;;
+  esac
   local payload
   payload=$(cat <<EOF
 {
   "receipt_id": "${receipt_id}",
   "actor_id": "${actor}",
   "session_id": "${SCRIPT_NAME}-${ts}",
-  "step_type": "Seal",
+  "step_type": "${step_type}",
   "step_number": 1,
   "cost_ns": $(( $(date +%s%N) - SCRIPT_START_NS )),
-  "epistemic_label": "Seal",
+  "epistemic_label": "${epistemic}",
   "floor_verdict": "${verdict}",
   "cooling_decision": "None",
   "created_at": "$(date -u +%Y-%m-%dT%H:%M:%S.%6NZ)",
@@ -166,7 +177,7 @@ emit_receipt() {
     "files": ${files},
     "drift": "${drift}",
     "ts": "${ts}",
-    "lane": "IMPL",
+    "lane": "${lane}",
     "lease": {
       "status": "ABSENT",
       "reason": "forge_lease_not_wired",
@@ -182,51 +193,9 @@ EOF
     -H "Content-Type: application/json" \
     -d "$payload" 2>/dev/null || echo "000")
   if [ "$http_code" = "200" ] || [ "$http_code" = "202" ]; then
-    pass "ariflow: receipt emitted (HTTP $http_code, id=${receipt_id:0:8})"
+    pass "ariflow: ${step_type} ingested (HTTP $http_code, id=${receipt_id:0:8})"
   else
-    log "ariflow: receipt failed (HTTP $http_code — non-fatal)"
-  fi
-
-  # ── FQ pair: emit follow-up Verify receipt (closes arifFlow OVERHEAT gap) ──
-  # F12 fix 2026-08-02: 333-AGI sub-actors were Seal-only, leaving FQ at 0.0.
-  # Each Seal now emits a paired Verify. The seal's receipt_id becomes the
-  # previous_receipt_hash so the FQ chain stays linked.
-  local verify_payload
-  verify_payload=$(cat <<EOF
-{
-  "receipt_id": "$(new_uuid)",
-  "actor_id": "${actor}",
-  "session_id": "${SCRIPT_NAME}-${ts}",
-  "step_type": "Verify",
-  "step_number": 2,
-  "cost_ns": $(( $(date +%s%N) - SCRIPT_START_NS )),
-  "epistemic_label": "Observation",
-  "floor_verdict": "${verdict}",
-  "previous_receipt_hash": "${receipt_id}",
-  "created_at": "$(date -u +%Y-%m-%dT%H:%M:%S.%6NZ)",
-  "cooling_decision": "None",
-  "payload": {
-    "verifies": "${receipt_id}",
-    "intent": "${intent}",
-    "target": "${target}",
-    "files": ${files},
-    "drift": "${drift}",
-    "ts": "${ts}",
-    "lane": "VERIFY",
-    "verifies_seal_step": true,
-    "note": "Auto-paired Verify for Seal — closes FQ gap for 333-AGI sub-actors"
-  }
-}
-EOF
-)
-  local verify_code
-  verify_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$FLOW_URL/ingest" \
-    -H "Content-Type: application/json" \
-    -d "$verify_payload" 2>/dev/null || echo "000")
-  if [ "$verify_code" = "200" ] || [ "$verify_code" = "202" ]; then
-    pass "ariflow: verify paired (HTTP $verify_code)"
-  else
-    log "ariflow: verify pair failed (HTTP $verify_code — non-fatal)"
+    fail "ariflow: ${step_type} ingest failed (HTTP $http_code)"
   fi
 }
 
