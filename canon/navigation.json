@@ -35,77 +35,64 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "5-domain human nav. Each nav item = an organ's output portal: HOME=sovereign, EARTH=GEOX, WORDS=arifOS, WORLD=WEALTH, WORK=WELL. Organs themselves are agent-owned and live in machine_links.",
-    "rule": "Max 5. Labels = organ domains.",
+    "description": "8 canonical human nav items",
+    "rule": "Max 8. Canonical human navigation routes.",
     "items": [
       {
         "label": "Home",
         "href": "/",
         "role": "primary",
         "mode": "spa",
-        "domain": "sovereign",
-        "organ": "AAA",
-        "question": "Where do I land? (cockpit \u2014 principal \u2194 agents)"
+        "domain": "sovereign"
       },
       {
         "label": "Earth",
         "href": "/earth",
         "role": "primary",
         "mode": "spa",
-        "domain": "earth",
-        "organ": "GEOX",
-        "question": "What's under our feet?"
+        "domain": "earth"
+      },
+      {
+        "label": "World",
+        "href": "/world",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "world"
       },
       {
         "label": "Words",
         "href": "/words",
         "role": "primary",
         "mode": "spa",
-        "domain": "voice",
-        "organ": "arifOS",
-        "question": "What do I think? (constitution, doctrine, law)",
-        "aliases": [
-          "/read",
-          "/essays",
-          "/doctrine",
-          "/law",
-          "/world/makcikgpt"
-        ]
-      },
-      {
-        "label": "World",
-        "href": "/world",
-        "role": "primary",
-        "mode": "static",
-        "domain": "world",
-        "organ": "WEALTH",
-        "question": "What is happening? (commodities, vitals, politics)",
-        "aliases": [
-          "/economics",
-          "/politics",
-          "/propa",
-          "/malaysia",
-          "/oil",
-          "/gas",
-          "/gold",
-          "/klci",
-          "/usdmyr"
-        ]
+        "domain": "voice"
       },
       {
         "label": "Work",
         "href": "/work",
         "role": "primary",
         "mode": "spa",
-        "domain": "work",
-        "organ": "WELL",
-        "question": "What do I build? (wells, missions, resume)",
-        "aliases": [
-          "/resume",
-          "/wells",
-          "/999",
-          "/proof"
-        ]
+        "domain": "work"
+      },
+      {
+        "label": "999",
+        "href": "/999/",
+        "role": "primary",
+        "mode": "static",
+        "domain": "truth"
+      },
+      {
+        "label": "000",
+        "href": "/000/",
+        "role": "primary",
+        "mode": "static",
+        "domain": "sovereign"
+      },
+      {
+        "label": "AAA",
+        "href": "/AAA",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "canon"
       }
     ]
   },
@@ -366,5 +353,52 @@
       }
     ]
   },
-  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
+  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)",
+  "agentic_mirrors": {
+    "description": "Portals to agentic machine web organs",
+    "items": [
+      {
+        "label": "mcp",
+        "name": "MCP Gateway",
+        "href": "https://mcp.arif-fazil.com/mcp",
+        "desc": "Tools & Endpoints"
+      },
+      {
+        "label": "geox",
+        "name": "GEOX",
+        "href": "https://geox.arif-fazil.com",
+        "desc": "Subsurface Intelligence"
+      },
+      {
+        "label": "well",
+        "name": "WELL",
+        "href": "https://well.arif-fazil.com",
+        "desc": "Vitality & Substrate"
+      },
+      {
+        "label": "wealth",
+        "name": "WEALTH",
+        "href": "https://wealth.arif-fazil.com",
+        "desc": "Capital Registry"
+      },
+      {
+        "label": "aaa",
+        "name": "AAA",
+        "href": "https://aaa.arif-fazil.com",
+        "desc": "Sovereign Agency"
+      },
+      {
+        "label": "arifos",
+        "name": "arifOS",
+        "href": "https://arifos.arif-fazil.com",
+        "desc": "F1-F13 Kernel"
+      },
+      {
+        "label": "forge",
+        "name": "A-FORGE",
+        "href": "https://forge.arif-fazil.com",
+        "desc": "Execution Shell"
+      }
+    ]
+  }
 }

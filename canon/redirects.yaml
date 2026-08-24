@@ -78,9 +78,9 @@ aliases:
   - from: /writings
     to: /arif/writings
   - from: /vitals
-    to: /arif/vitals
+    to: /vitals/
   - from: /petronas
-    to: /institution/petronas
+    to: /vitals/
   - from: /malaysia
     to: /institution/malaysia
   - from: /pmshadows
