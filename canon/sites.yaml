@@ -314,7 +314,7 @@ surfaces:
   - host: syedos.arif-fazil.com
     role: SOVEREIGN_DASHBOARD
     canonical_role: third-party-sovereign-dashboard
-    owner: @rico_ricaldo_33
+    owner: "rico_ricaldo_33"
     primary_audience: [trader, public]
     webroot: /var/www/html/syedos
     deployable: true
