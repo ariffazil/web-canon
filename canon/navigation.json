@@ -35,12 +35,19 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "8 canonical human nav items",
-    "rule": "Max 8. Canonical human navigation routes.",
+    "description": "9 canonical human nav items",
+    "rule": "Max 9. Canonical human navigation routes.",
     "items": [
       {
         "label": "Home",
         "href": "/",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "sovereign"
+      },
+      {
+        "label": "About",
+        "href": "/about",
         "role": "primary",
         "mode": "spa",
         "domain": "sovereign"
