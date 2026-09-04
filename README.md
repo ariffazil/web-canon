@@ -55,4 +55,4 @@ Default: **`main` only.** Feature branches delete after merge.
 
 ---
 
-*Canon Manifest under arifOS F1–F13. v4.0.0 hybrid nav 2026-08-04.*
+*Canon Manifest under arifOS F1–F13. v2026.08.11 · SOT Verified 2026-08-11.*
