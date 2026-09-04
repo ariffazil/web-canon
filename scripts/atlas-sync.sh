@@ -101,7 +101,7 @@ esac
 
 # ── 8. ariflow receipt ──────────────────────────────────────────────────────
 log "7. Emit ariflow receipt"
-emit_receipt "333-AGI/atlas-sync" "atlas sync" "$LIVE" "$N" "$DRIFT_RESULT" "Pass"
+emit_receipt "333-AGI/atlas-sync" "atlas sync" "$LIVE" "$N" "$DRIFT_RESULT" "Pass" "Execute"
 
 # ── Summary ─────────────────────────────────────────────────────────────────
 log "SEALED — atlas sync clean. backup=${BACKUP}"

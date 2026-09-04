@@ -1,10 +1,9 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "v2026.08.01",
-  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws. AI agents replace institutions, not humans.",
-  "ratified_by": "sovereign (F13) — D1-D9 ratified 2026-08-01",
-  "ratified_at": "2026-08-01T08:00:00Z",
-
+  "version": "v2026.08.08",
+  "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws + L3 asset register. AI agents replace institutions, not humans.",
+  "ratified_by": "sovereign (F13) — FRAME + syedos registered 2026-08-08. syedos APEX name collision resolved.",
+  "ratified_at": "2026-08-08T10:43:43Z",
   "trinity_scopes": [
     {
       "scope": "HUMAN",
@@ -40,7 +39,6 @@
       "doctrine": "Known earth + the void. GEOX computes physical evidence. HERMES sits at the edge where known meets unknown. MCP is the membrane."
     }
   ],
-
   "sovereign_anchor": {
     "scope": "SOVEREIGN",
     "canonical_path": "/arif",
@@ -52,14 +50,12 @@
     "kind": "constitutional-kernel",
     "doctrine": "F13 SOVEREIGN. The human's seat. The bare anchor that holds the federation. Patternless background = the absence of pattern is the marker."
   },
-
   "cross_cutting": {
     "scope": "LAWS",
     "canonical_path": "/laws",
     "kind": "constitutional-floors",
     "doctrine": "F1-F13 floors. Cross-cutting. The laws that govern. Quieter than scopes — laws are quiet."
   },
-
   "organs": [
     {
       "organ": "arifOS",
@@ -147,15 +143,138 @@
       "mcp_endpoint": "https://hermes.arif-fazil.com/mcp",
       "kind": "edge-bridge",
       "posture": "REFLECT_ONLY",
-      "doctrine": "D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+      "doctrine": "L2 multi-modal edge bridge. D9 declaration. /mcp endpoint posture is REFLECT_ONLY — the bridge is documented but not callable. Discovery surfaces expose the contract; agents reading the surface know the bridge exists but cannot invoke it. Silence is the wrong answer; this is the loudest honest answer."
+    },
+    {
+      "organ": "FRAME",
+      "layer": "L1",
+      "github": "ariffazil/FRAME",
+      "role": "assessment_measurement",
+      "port": 18085,
+      "posture": "COMPUTE_ONLY",
+      "systemd": "frame-organ.service",
+      "description": "FRAME — Reference & Assessment Measurement Engine. Systemd organ (port 18085, COMPUTE_ONLY). Measures (baseline, probe, compare, trend, alert, report, rsi_verify), never judges. 7 chambers. Registered 2026-08-08.",
+      "doctrine": "FRAME measures, never judges (F2). Runs 7 chambers: baseline, probe, compare, trend, alert, report, rsi_verify. Bound to arifos + aforge service graph via Wants=. Compute surface, not a governance or judgement surface.",
+      "ratified_by": "sovereign",
+      "kind": "measurement_engine"
     }
   ],
-
+  "assets": [
+    {
+      "asset": "web-canon",
+      "layer": "L3",
+      "role": "canon_registry",
+      "github": "ariffazil/web-canon",
+      "kind": "source-of-truth",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 canonical registry. Federation.json, sites.yaml, geometry, design tokens. Single source of truth for all canon data. Edited via git, synced to /var/www/html/canon/."
+    },
+    {
+      "asset": "arif-fazil.com",
+      "layer": "L3",
+      "role": "unified_web_surface",
+      "github": "ariffazil/arif-fazil.com",
+      "kind": "site-build",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 unified federation web surface. Vite + React build. One domain, many organs. Deployed to /var/www/html/arif/."
+    },
+    {
+      "asset": "ariffazil",
+      "layer": "L3",
+      "role": "sovereign_identity_root",
+      "github": "ariffazil/ariffazil",
+      "kind": "profile",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 F13 SOVEREIGN identity root (profile README). Federation identity surface, not a runtime organ. No runtime authority."
+    },
+    {
+      "asset": "arifOS-model-registry",
+      "layer": "L3",
+      "role": "model_provenance",
+      "github": "ariffazil/arifOS-model-registry",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 governed self-reference frame for AI agents. Model provenance tracking. No runtime authority."
+    },
+    {
+      "asset": "compose",
+      "layer": "L3",
+      "role": "docker_infrastructure",
+      "github": "ariffazil/compose",
+      "kind": "infrastructure",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Docker infrastructure for supporting services. Deployment configuration, not the executor. A-FORGE holds execution authority; compose holds configuration. No runtime authority."
+    },
+    {
+      "asset": "EEE",
+      "layer": "L3",
+      "role": "kernel_spine_recovery",
+      "github": "ariffazil/EEE",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Kernel Spine Recovery reference. L3 asset repository. No runtime authority. Does not hold lease authority — that is arifOS kernel domain."
+    },
+    {
+      "asset": "A2B",
+      "layer": "L3",
+      "role": "benchmark_bridge",
+      "github": "ariffazil/A2B",
+      "kind": "research",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 AssetOpsBench Bridge. IJCAI-25. Constitutional governance benchmarks for industrial AI. Research artifact. No runtime authority."
+    },
+    {
+      "asset": "searxng",
+      "layer": "L3",
+      "role": "sovereign_search",
+      "github": "ariffazil/searxng",
+      "kind": "infrastructure",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Sovereign search for arifOS federation. Self-hosted, zero API keys. No runtime authority beyond search."
+    },
+    {
+      "asset": "awesome-mcp-servers",
+      "layer": "L3",
+      "role": "mcp_reference_collection",
+      "github": "ariffazil/awesome-mcp-servers",
+      "kind": "reference",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Reference collection of MCP servers. Federation research asset. No runtime authority."
+    },
+    {
+      "asset": "macrostrat",
+      "layer": "L3",
+      "role": "geological_data_platform",
+      "github": "ariffazil/macrostrat",
+      "kind": "forked-dependency",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 Geological data platform. Forked dependency for GEOX earth intelligence. No runtime authority."
+    },
+    {
+      "asset": "syedos",
+      "layer": "L3",
+      "role": "sovereign_dashboard",
+      "github": "ariffazil/syedos",
+      "kind": "site-build",
+      "posture": "READ_ONLY",
+      "doctrine": "L3 SyeDOS sovereign dashboard surface. Gold trading, well-being (heal), nasi lemak simulator, rental SWOT. VHost: syedos.arif-fazil.com (Caddy). Static HTML — no runtime authority. Locked under F1 reversibility 2026-08-07. NOTE 2026-08-08: live gold engine reuses archived APEX name; rename required to clear collision with ariffazil/APEX (L4 archive)."
+    },
+    {
+      "asset": "FRAME",
+      "layer": "L3",
+      "role": "assessment_measurement_engine",
+      "path": "/opt/frame/app",
+      "kind": "runtime-service",
+      "posture": "COMPUTE_ONLY",
+      "port": 18085,
+      "systemd_unit": "frame-organ.service",
+      "doctrine": "L3 Federation Reference & Assessment Measurement Engine. Reads kunci-mas.flat.env. Wants arifos+aforge. Running since 2026-08-06. Was unregistered until 2026-08-08. Governance: T2 (service restart needs 888_SEAL). NOT a sovereign organ — no F1–F13 authority. Utility-grade compute node."
+    }
+  ],
   "trinity_visual_bridge": {
     "node": "AAA",
     "rationale": "AAA cockpit sits at the geometric center of the trinity tile row. Three arcs (Trinity Ring toroidal anchor) converge on the AAA bridge. This is the visual contract: human + agent meet at the cockpit."
   },
-
   "floors_alignment": {
     "F1_AMANAH": "Reversibility. Every canon change has a git revert path.",
     "F2_TRUTH": "P(truth)≥0.99. Every claim has evidence. Verified via WCAG math, contrast_pairs.",

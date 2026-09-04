@@ -123,7 +123,7 @@ esac
 
 # ── 8. ariflow receipt ──────────────────────────────────────────────────────
 log "7. Emit ariflow receipt"
-emit_receipt "333-AGI/wiki-sync" "wiki sync" "$LIVE" "$N" "$DRIFT_RESULT" "Pass"
+emit_receipt "333-AGI/wiki-sync" "wiki sync" "$LIVE" "$N" "$DRIFT_RESULT" "Pass" "Execute"
 
 # ── Summary ─────────────────────────────────────────────────────────────────
 log "SEALED — wiki sync clean. backup=${BACKUP}"
