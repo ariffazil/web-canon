@@ -1,8 +1,8 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "7.0.0",
-  "as_of": "2026-08-14",
-  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
+  "version": "7.1.0",
+  "as_of": "2026-09-19",
+  "description": "Organ-mirror nav v7.1: HOME(AAA) EARTH(GEOX) WORDS(arifOS) MAKCIKGPT(HERMES civic voice) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06; v7.1 expands to 6 slots (MakcikGPT promoted) on 2026-09-19.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
@@ -35,8 +35,8 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "5-domain human nav. Each nav item = an organ's output portal: HOME=sovereign, EARTH=GEOX, WORDS=arifOS, WORLD=WEALTH, WORK=WELL. Organs themselves are agent-owned and live in machine_links.",
-    "rule": "Max 5. Labels = organ domains.",
+    "description": "6-slot human nav. Each nav item = an organ's output portal: HOME=sovereign, EARTH=GEOX, WORDS=arifOS, MAKCIKGPT=HERMES civic voice, WORLD=WEALTH, WORK=WELL. Organs themselves are agent-owned and live in machine_links.",
+    "rule": "Max 6. Labels = organ domains. Every page must render the same 6 slots \u2014 no per-page divergence.",
     "items": [
       {
         "label": "Home",
@@ -68,8 +68,21 @@
           "/read",
           "/essays",
           "/doctrine",
-          "/law",
-          "/world/makcikgpt"
+          "/law"
+        ]
+      },
+      {
+        "label": "MakcikGPT",
+        "href": "/makcikgpt",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "voice",
+        "organ": "HERMES",
+        "question": "Apa yang dapur cakap? (civic intelligence, Bahasa Makcik)",
+        "aliases": [
+          "/world/makcikgpt",
+          "/hermes/makcikgpt",
+          "/economics/makcikgpt"
         ]
       },
       {
