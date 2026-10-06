@@ -1,6 +1,6 @@
 {
  "$schema": "./public-state.schema.json",
- "version": "7.3.0",
+ "version": "7.4.0",
  "as_of": "2026-10-03",
  "description": "Organ-mirror nav v7.1: HOME(AAA) EARTH(GEOX) WORDS(arifOS) MAKCIKGPT(HERMES civic voice) WORLD(WEALTH) WORK(WELL). Organs belong to agents — machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06; v7.1 expands to 6 slots (MakcikGPT promoted) on 2026-09-19. v7.3: Institution/Vitals/Proof added to secondary, /human added to machine doors (static arrow_hybrid_frame rollout 2026-10-03, sovereign-directed).",
  "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
@@ -52,13 +52,13 @@
   "rule": "Always visible. The 7 organs are canonical per arifOS §2.1 (2026-09-14) and AAA P2 (2026-09-21). HERMES and CHRON are Tier-3 boundary services, not organs, and are NOT in this strip — they appear in the machine-doors footer.",
   "as_of": "2026-10-05",
   "items": [
-   { "label": "arifOS",   "href": "/canon/",                   "role": "authority" },
-   { "label": "A-FORGE",  "href": "/forge/",                   "role": "execution" },
-   { "label": "AAA",      "href": "/machines/",                "role": "attention" },
+   { "label": "arifOS",   "href": "https://arifos.arif-fazil.com/",    "role": "authority" },
+   { "label": "A-FORGE",  "href": "https://a-forge.arif-fazil.com/",   "role": "execution" },
+   { "label": "AAA",      "href": "https://aaa.arif-fazil.com/",       "role": "attention" },
    { "label": "GEOX",     "href": "https://geox.arif-fazil.com",  "role": "domain:earth" },
    { "label": "WEALTH",   "href": "https://wealth.arif-fazil.com","role": "domain:capital" },
    { "label": "WELL",     "href": "https://well.arif-fazil.com",  "role": "domain:vitality" },
-   { "label": "arifFlow", "href": null,                         "role": "metabolism",   "note": "arifFlow is the metabolism/telemetry organ; the 7th strip entry. /pulse/ is intentionally 410 (F13 audit 2026-10-05). System status: see Evidence → /999/." }
+   { "label": "arifFlow", "href": "https://arifflow.arif-fazil.com/", "role": "metabolism",   "note": "arifFlow is the metabolism/telemetry organ; the 7th strip entry. /pulse/ is intentionally 410 (F13 audit 2026-10-05). System status: see Evidence → /999/." }
   ]
  },
  "primary_links": {
@@ -252,7 +252,17 @@
    },
    {
     "label": "arifOS",
-    "href": "/canon/",
+    "href": "https://arifos.arif-fazil.com/",
+    "agent_organ": true
+   },
+   {
+    "label": "A-FORGE",
+    "href": "https://a-forge.arif-fazil.com/",
+    "agent_organ": true
+   },
+   {
+    "label": "AAA",
+    "href": "https://aaa.arif-fazil.com/",
     "agent_organ": true
    },
    {
@@ -269,6 +279,12 @@
     "label": "WELL",
     "href": "https://well.arif-fazil.com",
     "agent_organ": true
+   },
+   {
+    "label": "arifFlow",
+    "href": "https://arifflow.arif-fazil.com/",
+    "agent_organ": true,
+    "note": "Serves a live JSON status payload (diagnosis/fq). Added 2026-10-07 - arifFlow was absent from the agent surface entirely."
    },
    {
     "label": "Agent contract",
