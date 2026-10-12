@@ -1,9 +1,9 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "v2026.08.08",
+  "version": "v2026.10.12",
   "doctrine": "Trinity IA. Sovereign + 3 scopes (HUMAN · INSTITUTION · EARTH) + cross-cutting /laws + L3 asset register. AI agents replace institutions, not humans.",
-  "ratified_by": "sovereign (F13) — FRAME + syedos registered 2026-08-08. syedos APEX name collision resolved.",
-  "ratified_at": "2026-08-08T10:43:43Z",
+  "ratified_by": "sovereign (F13) — FRAME + syedos registered 2026-08-08. syedos APEX name collision resolved. public-claims-generator registered 2026-10-12.",
+  "ratified_at": "2026-10-12T05:24:55Z",
   "trinity_scopes": [
     {
       "scope": "HUMAN",
@@ -270,6 +270,21 @@
       "port": 18085,
       "systemd_unit": "frame-organ.service",
       "doctrine": "L3 Federation Reference & Assessment Measurement Engine. Reads kunci-mas.flat.env. Wants arifos+aforge. Running since 2026-08-06. Was unregistered until 2026-08-08. Governance: T2 (service restart needs 888_SEAL). NOT a sovereign organ — no F1–F13 authority. Utility-grade compute node."
+    },
+    {
+      "asset": "public-claims-generator",
+      "layer": "L1",
+      "role": "observation_contract_compiler",
+      "kind": "generator",
+      "owner_organ": "AAA",
+      "github": "ariffazil/AAA",
+      "path": "/root/AAA/scripts/public-claims/generate-public-claims.cjs",
+      "serves": "https://mcp.arif-fazil.com/shared/claims.json",
+      "cadence": "*/15 * * * * — jitu-guard public-claims",
+      "posture": "PRODUCE_ONLY",
+      "ratified_by": "sovereign (F13)",
+      "ratified_at": "2026-10-12",
+      "doctrine": "L1 observation-contract compiler (AAA-owned infra, kept outside the served root). SOURCE→COMPILE→SERVE: probes the 3 declared sources (kernel /health required; mcp manifest + aaa a2a optional), emits one conformant claims.json under structural honesty — UNMEASURED ≠ pass; UNREACHABLE on source-down; a verdict only where the binding supplies a state_map or pass/fail rule. No judgement, no execution, no seal authority."
     }
   ],
   "trinity_visual_bridge": {
