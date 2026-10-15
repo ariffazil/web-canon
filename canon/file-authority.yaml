@@ -45,13 +45,18 @@ canon:
   "canon/typography.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/components.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/templates.json":         { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
-  "canon/routes.yaml":            { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/redirects.yaml":         { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/sites.yaml":             { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/public-state.schema.json": { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/federation.json":        { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/geometry.json":          { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
   "canon/file-authority.yaml":    { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/design-primer.md":       { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/design-rules.json":      { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/page-instruments.json": { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/tool-surfaces.json":     { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/releases.json":          { state: CANON, owner: WEB_ATLAS, allowed_mutators: [A-FORGE, ARIF] }
+  "canon/ZEN-LINKAGE.md":         { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
 
   # Atlas long-form docs
   "atlas/WEB_ATLAS.md":                   { state: CANON, owner: ARIF, allowed_mutators: [A-FORGE, ARIF] }
