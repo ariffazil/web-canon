@@ -64,11 +64,11 @@ is dynamic.
 | `/var/www/html/canon/` | `/root/web-canon/canon/` | `canon-sync.sh` | 6bb138a (12 JSON/YAML) |
 | `/var/www/html/canon/atlas/` | `/root/web-canon/atlas/` | `atlas-sync.sh` (NEW) | (initial) |
 | `/var/www/html/wiki/` | `/var/www/html/arif-fazil-wiki/` (rendered) | `wiki-sync.sh` (NEW) | (manual deploy) |
-| `/var/www/html/_shared/` | `/root/arif-fazil.com/public/_shared/` | via `deploy-vps.sh` | (build artifact) |
-| `/var/www/html/arif/` | `/root/arif-fazil.com/dist/` | via `deploy-vps.sh` | 9455e41 (SPA) |
+| `/var/www/html/_shared/` | `/root/arif-fazil.com/sites/arif-fazil.com/public/_shared/` | via `deploy-vps.sh` | (build artifact) |
+| `/var/www/html/arif/` | `/root/arif-fazil.com/sites/arif-fazil.com/dist/` | via `deploy-vps.sh` | 9455e41 (SPA) |
 | `/var/www/html/arifos/` | `/opt/arifos/app/static/` | via systemd `arifos` | (kernel build) |
 | Root docs (`AGENTS.md`, `README.md`, `DEPLOY.md`, `FEDERATION.md`) | `/root/arif-fazil.com/` | via `deploy-vps.sh` | (committed) |
-| Agent manifests (`llms.txt`, `agents.txt`, `missions.json`, `surfaces.json`) | `/root/arif-fazil.com/public/` | via `deploy-vps.sh` | (committed) |
+| Agent manifests (`llms.txt`, `agents.txt`, `missions.json`, `surfaces.json`) | `/root/arif-fazil.com/sites/arif-fazil.com/public/` | via `deploy-vps.sh` | (committed) |
 
 **Static mutation contract (F1 AMANAH):**
 - Source-of-truth = git repo
