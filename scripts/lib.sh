@@ -14,8 +14,12 @@
 # Callers MUST already have set -euo pipefail. This lib does not re-set it.
 
 # ── Paths ───────────────────────────────────────────────────────────────────
-WEB_CANON="/root/web-canon"
-LIVE_WEB="/var/www/html"
+# 2026-10-25 (333-AGI): env-overridable defaults so these lanes can be
+# FALSIFIED in a sandbox (absent / partial tree) without editing the lib.
+# A gate nobody can make fail is an unproven gate. Defaults byte-identical
+# to the previous hardcodes.
+WEB_CANON="${WEB_CANON:-/root/web-canon}"
+LIVE_WEB="${LIVE_WEB:-/var/www/html}"
 FLOW_URL="http://127.0.0.1:7073"
 ARIFOS_URL="http://127.0.0.1:8088"
 

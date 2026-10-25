@@ -27,7 +27,13 @@ source "$(dirname "$0")/lib.sh"
 load_secrets
 
 # ── Paths ───────────────────────────────────────────────────────────────────
-SOURCE="${WEB_CANON}/wiki-build"
+# SOURCE reconciled with the real producer (2026-10-25).
+# /root/scripts/wiki-build.sh runs `mkdocs build -f <cfg>` with
+# site_dir=${LIVE_WEB}/wiki — it never writes ${WEB_CANON}/wiki-build.
+# Pointing the gate at a path nothing creates made it block on correct
+# state and print an instruction that could not satisfy the check.
+# Producer owns the write; this lane validates the produced tree.
+SOURCE="${LIVE_WEB}/wiki"
 LIVE="${LIVE_WEB}/wiki"
 TS=$(date -u +%Y%m%dT%H%M%SZ)
 DRY_RUN="${WIKI_SYNC_LIVE:-0}"
@@ -36,35 +42,40 @@ FAIL=0
 banner "WIKI SYNC — $TS"
 
 # ── 1. Source check ─────────────────────────────────────────────────────────
-# The source is the rendered wiki output. If absent, fall back to a
-# known-good live mirror and warn (Tier 1 — non-fatal).
+# DEFECT 2026-10-22: this lane used to "self-heal" by adopting the live
+# mirror as its source when the staging dir was absent. That turned the
+# validator into a no-op copier — it could only re-copy what was already
+# live, so new content could never arrive and absence looked healthy.
+# Fail loudly instead. Absent live tree = the build lane is dead, which is
+# the fault worth reporting.
 log "1. Source check"
 if [ ! -d "$SOURCE" ]; then
   log "   source not present: ${SOURCE}"
-  log "   tip: render the wiki from /root/arif-fazil-wiki/ first"
-  log "   tip: source is typically /var/www/html/wiki-built/ or a build artifact"
-  # Use the live mirror as the source-of-truth IF it was previously seeded.
-  # This is a self-healing lane — keep the live mirror as canon if source is
-  # absent, so we don't introduce drift.
-  if [ -d "$LIVE" ] && [ "$(count_files "$LIVE")" -gt 0 ]; then
-    log "   fallback: using live mirror as source (self-heal)"
-    SOURCE="$LIVE"
-  else
-    fail "wiki: neither source nor live mirror present"
-    exit 1
-  fi
+  log "   the live wiki is produced by /root/scripts/wiki-build.sh"
+  log "   (regen index -> mkdocs build -f ${WEB_CANON}/wiki-mkdocs.yml)"
+  fail "wiki: build artifact absent — run wiki-build.sh, then re-run this check"
+  exit 1
 fi
 
 # ── 2. Required entities check (Karpathy-style) ─────────────────────────────
 log "2. Required entities check"
+# 2026-10-25: reconciled with the ACTUAL source (/root/AAA/wiki) and the
+# current producer output. The previous set (atlas / constitution /
+# federation / llms.txt) described the retired 2026-08 arif-fazil-wiki
+# layout; no build has emitted those paths since the source moved, so the
+# gate could only ever fail. A validator that names entities nobody
+# produces is a lying gate.
 REQUIRED=(
   "index.html"
   "404.html"
-  "atlas"
-  "constitution"
-  "federation"
-  "llms.txt"
   "sitemap.xml"
+  "INDEX"
+  "arifos"
+  "axioms"
+  "concepts"
+  "entities"
+  "scars"
+  "skills"
 )
 for entity in "${REQUIRED[@]}"; do
   if [ -e "$SOURCE/$entity" ]; then
@@ -90,13 +101,18 @@ fi
 
 # ── 4. Dry-run switch ───────────────────────────────────────────────────────
 if [ "$DRY_RUN" != "1" ]; then
-  log "DRY RUN — validation passed. Set WIKI_SYNC_LIVE=1 to sync."
-  if [ -d "$LIVE" ]; then
-    log "  diff source vs live:"
-    diff -rq "$SOURCE" "$LIVE" 2>/dev/null || true
-  else
-    log "  live mirror missing — would create on deploy"
-  fi
+  log "DRY RUN — validation passed. Set WIKI_SYNC_LIVE=1 to (re)promote."
+  log "  producer owns the write: /root/scripts/wiki-build.sh -> ${LIVE}"
+  exit 0
+fi
+
+# SOURCE == LIVE by construction (the producer builds straight into the
+# served tree). A backup+rsync here would copy a directory onto itself and
+# report SEALED for zero work. Say what is true: nothing to promote.
+if [ "$SOURCE" = "$LIVE" ]; then
+  log "4. Promote — SKIPPED (single writer)"
+  log "   source and target are the same tree; wiki-build.sh is the only writer."
+  log "   Validation above is the whole contract of this lane."
   exit 0
 fi
 
