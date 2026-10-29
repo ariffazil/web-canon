@@ -58,6 +58,9 @@ theme:
 
 nav:
   - Home: index.md
+  - Genesis: genesis/index.md
+  - Refusal: refusal/index.md
+  - Receipts: receipts/index.md
   - Architecture: arifos/AAA.md
   - Organs: entities/FEDERATION_ENTITIES.md
   - Constitution: axioms/RITUAL_PRECEDENCE.md
