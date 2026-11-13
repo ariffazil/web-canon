@@ -93,7 +93,7 @@ nav:
   - Reference:
       - Index: index.md
       - Concepts:
-          - Apex Theory: concepts/INTELLIGENCE_TREE.md
+          - Intelligence Tree: concepts/INTELLIGENCE_TREE.md
           - Memory: concepts/CONCEPT_MEMORY_C.md
           - Reality: concepts/CONCEPT_REALITY.md
           - Anti-Fabrication: concepts/ANTI_FABRICATION.md
