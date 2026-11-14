@@ -36,7 +36,9 @@
    "motion": "floor-lamps-pulse",
    "data": "arifos-live",
    "torus_count": 1,
-   "status": "proposed"
+   "status": "proposed",
+   "ring": "mind",
+   "shell": "RootShell"
   },
   "/human": {
    "territory": "human",
@@ -46,7 +48,9 @@
    "motion": "breathing-line",
    "data": "well-vitals",
    "torus_count": 0,
-   "status": "proposed"
+   "status": "proposed",
+   "ring": "body",
+   "shell": "RootShell"
   },
   "/arif": {
    "territory": "sovereign",
@@ -203,6 +207,18 @@
    "data": "static-canon",
    "torus_count": 1,
    "shell": "ArticleShell",
+   "status": "proposed"
+  },
+  "/proof": {
+   "territory": "institution",
+   "palette": "institution",
+   "ring": "mind",
+   "instrument": "the-seal",
+   "description": "The Seal - claim hashes, vault chain, ZK-PC status. MIND verification plane.",
+   "motion": "static-calm",
+   "data": "vault-chain",
+   "torus_count": 1,
+   "shell": "RootShell",
    "status": "proposed"
   }
  },

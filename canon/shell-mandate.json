@@ -1,7 +1,7 @@
 {
  "$schema": "./public-state.schema.json",
  "schema": "canon/shell-mandate/v2026.11",
- "version": "M1.2",
+ "version": "M1.3",
  "ratified_by": "sovereign directive 2026-11-14 (feat/m1-canon-shell-kit)",
  "doctrine": "M1 shell mandate. Routes listed here MUST render through an ATLAS shell: exactly one HeaderCanon, no bespoke nav/hero chrome, torus_count <= 1, ring accent scoped. Gate enforces at prebuild (F4: a failing design does not deploy). Routes marked route_pattern are dynamic (slug) renderers — the gate validates the renderer page module, not each slug. Legacy routes migrate progressively; add them here as they convert.",
  "routes": {
@@ -33,6 +33,27 @@
    "page": "src/pages/DoctrinePage.tsx",
    "torus_count": 1,
    "note": "M1.2 - full doctrine content (13 floors + 13 shadow paradoxes) ported verbatim from static prerender into ArticleShell; d-* styles scoped."
+  },
+  "/institution": {
+   "shell": "RootShell",
+   "ring": "mind",
+   "page": "src/pages/InstitutionPage.tsx",
+   "torus_count": 1,
+   "note": "M1.3 - MIND ring: proof engine onto shell."
+  },
+  "/proof": {
+   "shell": "RootShell",
+   "ring": "mind",
+   "page": "src/pages/ProofArrow.tsx",
+   "torus_count": 1,
+   "note": "M1.3 - MIND ring: SPA proof surface. Public canonical /work/proof/ stays a STATIC crypto vault by design (evidence integrity)."
+  },
+  "/human": {
+   "shell": "RootShell",
+   "ring": "body",
+   "page": "src/pages/Human.tsx",
+   "torus_count": 0,
+   "note": "M1.3 - BODY ring: the pulse onto shell. Torus deliberately 0 — the pulse IS the anchor (no second geometric anchor allowed on the breath page)."
   }
  }
 }

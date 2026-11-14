@@ -149,7 +149,7 @@ function main() {
       if (spec.route_pattern === true) continue;
       const inst = (loadJson('page-instruments.json').instruments || {})[route];
       check(`mandate.${route}.instrumented`, !!inst, 'missing page-instruments entry');
-      const torusOk = inst && Number(inst.torus_count) === Number(spec.torus_count || 1);
+      const torusOk = inst && Number(inst.torus_count) === Number(spec.torus_count ?? 1);
       check(
         `mandate.${route}.one-torus`,
         !!torusOk && Number(inst.torus_count) <= 1,
