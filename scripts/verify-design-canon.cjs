@@ -113,6 +113,63 @@ function main() {
   check('rules.allowed_families', JSON.stringify(rules.rules.allowed_color_families.values) === JSON.stringify(['human', 'institution', 'earth', 'sovereign', 'neutral']), 'family list drift');
   check('rules.state_enum', JSON.stringify(rules.rules.require_state_enum.value) === JSON.stringify(['rest', 'hold', 'sealed', 'void']), 'state enum drift');
 
+  // 7. M1 shell mandate — mandated routes MUST render through an ATLAS shell
+  //    (single HeaderCanon, no bespoke nav/hero chrome, ONE torus, ring scoped).
+  //    Failure class prevented: the 46-page bespoke-chrome drift of 2026-08→11.
+  const MANDATE = path.join(CANON_DIR, 'shell-mandate.json');
+  if (fs.existsSync(MANDATE)) {
+    const mandate = loadJson('shell-mandate.json').routes || {};
+    const SITE_SRC = '/root/arif-fazil.com/sites/arif-fazil.com';
+    const FORBIDDEN_CHROME = [
+      'ArrowNavbar',
+      'ConstellationNav',
+      'ConstellationHeader',
+      'PalantirTelemetryHud',
+      'LiveClockHero',
+      'ArrowFooter',
+    ];
+    for (const [route, spec] of Object.entries(mandate)) {
+      const pageFile = path.join(SITE_SRC, spec.page || '');
+      const havePage = fs.existsSync(pageFile);
+      check(`mandate.${route}.page-exists`, havePage, `page module missing: ${spec.page}`);
+      if (!havePage) continue;
+      const src = fs.readFileSync(pageFile, 'utf8');
+      check(
+        `mandate.${route}.shell-import`,
+        src.includes(spec.shell),
+        `page must render through ${spec.shell}`
+      );
+      const chromeHits = FORBIDDEN_CHROME.filter((n) => src.includes(n));
+      check(
+        `mandate.${route}.no-bespoke-chrome`,
+        chromeHits.length === 0,
+        chromeHits.length ? `forbidden chrome imports: ${chromeHits.join(', ')}` : 'clean'
+      );
+      const inst = (loadJson('page-instruments.json').instruments || {})[route];
+      check(`mandate.${route}.instrumented`, !!inst, 'missing page-instruments entry');
+      const torusOk = inst && Number(inst.torus_count) === Number(spec.torus_count || 1);
+      check(
+        `mandate.${route}.one-torus`,
+        !!torusOk && Number(inst.torus_count) <= 1,
+        `torus mismatch: instrument=${inst ? inst.torus_count : 'MISSING'} mandate=${spec.torus_count}`
+      );
+    }
+  }
+
+  // 8. M1 RGBY dark accents — WCAG-AA on carbon (#0A0B0D), 4.5:1 for accent-as-text.
+  const CARBON = '#0A0B0D';
+  const RGBY = {
+    'accent-red(soul)': ['#E05A4E', 4.5],
+    'accent-blue(mind)': ['#7FB3FF', 4.5],
+    'accent-yellow(body)': ['#F2C879', 4.5],
+    'accent-green(earth)': ['#58C9A0', 4.5],
+    'bone-on-carbon': ['#E8E6DF', 4.5],
+  };
+  for (const [name, [hex, min]] of Object.entries(RGBY)) {
+    const ratio = contrast(hex, CARBON);
+    check(`rgby.${name}`, ratio >= min, `${hex} on ${CARBON} = ${ratio.toFixed(2)}:1 (need >= ${min})`);
+  }
+
   const fails = results.filter((r) => !r.ok);
   console.log(`\n═ DESIGN-CANON: ${results.length - fails.length}/${results.length} checks · ${fails.length} violations ${fails.length ? '🔴' : '✅'}`);
   process.exit(fails.length ? 1 : 0);

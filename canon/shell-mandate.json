@@ -1,0 +1,16 @@
+{
+  "$schema": "./public-state.schema.json",
+  "schema": "canon/shell-mandate/v2026.11",
+  "version": "M1.0",
+  "ratified_by": "sovereign directive 2026-11-14 (feat/m1-canon-shell-kit)",
+  "doctrine": "M1 shell mandate. Routes listed here MUST render through an ATLAS shell: exactly one HeaderCanon, no bespoke nav/hero chrome, torus_count <= 1, ring accent scoped. Gate enforces at prebuild (F4: a failing design does not deploy). Legacy 46 routes migrate progressively - add them here as they convert.",
+  "routes": {
+    "/words/amodei-flight-recorder": {
+      "shell": "ArticleShell",
+      "ring": "soul",
+      "page": "src/pages/AmodeiFlightRecorder.tsx",
+      "torus_count": 1,
+      "note": "First canonical proof page - Amodei six-essay synthesis in ArticleShell, ring-soul (red/sovereign)."
+    }
+  }
+}
