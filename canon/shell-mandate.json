@@ -1,24 +1,38 @@
 {
-  "$schema": "./public-state.schema.json",
-  "schema": "canon/shell-mandate/v2026.11",
-  "version": "M1.1",
-  "ratified_by": "sovereign directive 2026-11-14 (feat/m1-canon-shell-kit)",
-  "doctrine": "M1 shell mandate. Routes listed here MUST render through an ATLAS shell: exactly one HeaderCanon, no bespoke nav/hero chrome, torus_count <= 1, ring accent scoped. Gate enforces at prebuild (F4: a failing design does not deploy). Routes marked route_pattern are dynamic (slug) renderers — the gate validates the renderer page module, not each slug. Legacy routes migrate progressively; add them here as they convert.",
-  "routes": {
-    "/words/amodei-flight-recorder": {
-      "shell": "ArticleShell",
-      "ring": "soul",
-      "page": "src/pages/AmodeiFlightRecorder.tsx",
-      "torus_count": 1,
-      "note": "First canonical proof page - Amodei six-essay synthesis in ArticleShell, ring-soul (red/sovereign)."
-    },
-    "/words/writing/:slug": {
-      "route_pattern": true,
-      "shell": "ArticleShell",
-      "ring": "soul",
-      "page": "src/pages/EssayPage.tsx",
-      "torus_count": 1,
-      "note": "M1.1 - universal essay renderer upgraded. ALL essays (92 registry entries) inherit the shell through this single renderer."
-    }
+ "$schema": "./public-state.schema.json",
+ "schema": "canon/shell-mandate/v2026.11",
+ "version": "M1.2",
+ "ratified_by": "sovereign directive 2026-11-14 (feat/m1-canon-shell-kit)",
+ "doctrine": "M1 shell mandate. Routes listed here MUST render through an ATLAS shell: exactly one HeaderCanon, no bespoke nav/hero chrome, torus_count <= 1, ring accent scoped. Gate enforces at prebuild (F4: a failing design does not deploy). Routes marked route_pattern are dynamic (slug) renderers — the gate validates the renderer page module, not each slug. Legacy routes migrate progressively; add them here as they convert.",
+ "routes": {
+  "/words/amodei-flight-recorder": {
+   "shell": "ArticleShell",
+   "ring": "soul",
+   "page": "src/pages/AmodeiFlightRecorder.tsx",
+   "torus_count": 1,
+   "note": "First canonical proof page - Amodei six-essay synthesis in ArticleShell, ring-soul (red/sovereign)."
+  },
+  "/words/writing/:slug": {
+   "route_pattern": true,
+   "shell": "ArticleShell",
+   "ring": "soul",
+   "page": "src/pages/EssayPage.tsx",
+   "torus_count": 1,
+   "note": "M1.1 - universal essay renderer upgraded. ALL essays (92 registry entries) inherit the shell through this single renderer."
+  },
+  "/words": {
+   "shell": "RootShell",
+   "ring": "soul",
+   "page": "src/pages/WordsEssays.tsx",
+   "torus_count": 1,
+   "note": "M1.2 - WORDS hub (serves /words, /words/, /words/essays)."
+  },
+  "/words/doctrine": {
+   "shell": "ArticleShell",
+   "ring": "soul",
+   "page": "src/pages/DoctrinePage.tsx",
+   "torus_count": 1,
+   "note": "M1.2 - full doctrine content (13 floors + 13 shadow paradoxes) ported verbatim from static prerender into ArticleShell; d-* styles scoped."
   }
+ }
 }

@@ -180,6 +180,30 @@
    "torus_count": 1,
    "shell": "ArticleShell",
    "status": "proposed"
+  },
+  "/words": {
+   "territory": "words",
+   "palette": "sovereign",
+   "ring": "soul",
+   "instrument": "essays-ledger",
+   "description": "WORDS hub - essay ledger across 15 series, search + series filters, ArticleShell pages behind it.",
+   "motion": "static-calm",
+   "data": "essays-json",
+   "torus_count": 1,
+   "shell": "RootShell",
+   "status": "proposed"
+  },
+  "/words/doctrine": {
+   "territory": "words",
+   "palette": "sovereign",
+   "ring": "soul",
+   "instrument": "floors-doctrine",
+   "description": "Doctrine - 13 floors + 13 shadow paradoxes ported verbatim from prerender into ArticleShell. d-* legacy styles scoped under .doctrine-legacy.",
+   "motion": "static-calm",
+   "data": "static-canon",
+   "torus_count": 1,
+   "shell": "ArticleShell",
+   "status": "proposed"
   }
  },
  "build_order": [
