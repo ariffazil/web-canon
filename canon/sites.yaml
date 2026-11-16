@@ -202,8 +202,9 @@ tombstones:
     since: "2026-08-01"
 
   - host: makcikgpt.arif-fazil.com
-    reason: "Redirected to /institution/makcikgpt (was /wealth/makcikgpt)"
+    reason: "RETIRED 2026-11-17 — legacy host; DNS record absent; content lives at /world/makcikgpt/"
     since: "2026-08-01"
+    retired_at: "2026-11-17"
 
   - host: apex.arif-fazil.com
     reason: "APEX runtime decommissioned; redirect to root"
@@ -273,15 +274,10 @@ redirects:
     code: 301
     permanent: true
 
-  - from: makcikgpt.arif-fazil.com
-    to: https://arif-fazil.com/institution/makcikgpt/
-    code: 301
-    permanent: true
-
 # ─── ALIASES (short memorable URLs) ─────────────────────────────────────
 aliases:
   - from: /makcikgpt
-    to: /institution/makcikgpt
+    to: /world/makcikgpt/
   - from: /writings
     to: /arif/writings
   - from: /vitals

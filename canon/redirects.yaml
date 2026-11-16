@@ -55,11 +55,7 @@ redirects:
     code: 301
     permanent: true
 
-  # Legacy / retired (was /wealth/makcikgpt)
-  - from: makcikgpt.arif-fazil.com
-    to: https://arif-fazil.com/institution/makcikgpt/
-    code: 301
-    permanent: true
+  # Legacy / retired (was /wealth/makcikgpt) — host RETIRED 2026-11-17; DNS absent.
   - from: arifosmcp.arif-fazil.com
     to: https://arif-fazil.com/earth/mcp/
     code: 301
@@ -74,7 +70,7 @@ redirects:
 
 aliases:
   - from: /makcikgpt
-    to: /institution/makcikgpt
+    to: /world/makcikgpt/
   - from: /writings
     to: /arif/writings
   - from: /vitals

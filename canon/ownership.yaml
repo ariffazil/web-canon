@@ -292,8 +292,9 @@ retired_candidates:
       Do not 301 without MCP client migration.
   - id: makcikgpt_dns
     url: "https://makcikgpt.arif-fazil.com/"
-    status: DNS_GAP
+    status: RETIRED
     finding: >-
-      Caddy vhost 301 -> /world/makcikgpt/ (target 200); Cloudflare returns 404 because the
-      DNS record is absent. One edge record, not an origin change.
+      F13 2026-11-17: legacy host retired. DNS record absent; Caddy vhost removed (backed up
+      to /root/backups/caddy-vhosts-retired-20261117/). Content lives at /world/makcikgpt/
+      (200). No edge credential lane required.
 
