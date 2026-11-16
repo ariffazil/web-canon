@@ -7,6 +7,13 @@
 version: "3.0.0"
 observed_at: "2026-08-01T08:00:00Z"
 ratified_by: "sovereign (F13) — D1-D9 ratified 2026-08-01, 999_SEAL"
+reconciled_at: "2026-11-17"
+reconciliation: |
+  Live architecture is two-layer: human doors on arif-fazil.com; machine surfaces on
+  subdomains (mcp, aaa, geox, wealth, well, frame, hermes, chron). The `redirects` list
+  below is legacy (2026-08-01) and is NOT enforced for protocol endpoints. Canonical
+  machine ownership: /root/web-canon/canon/ownership.yaml. `/vitals/` → `/petronas/`
+  is a deliberate F13 2026-11-14 alias; `wellness.` is canonical and `well.` is back-compat.
 doctrine: |
   Trinity IA. Three trinity scopes (HUMAN, INSTITUTION, EARTH) plus a sovereign
   anchor (/arif) and cross-cutting /laws. AI agents live INSIDE institution

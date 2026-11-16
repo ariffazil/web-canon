@@ -1,0 +1,299 @@
+# FEDERATION OWNERSHIP MAP — one datum, one owner
+# STATUS: CANON — ratified 2026-11-17. Source proposal: /root/forge_work/proposals/ownership/ownership-v1.yaml
+# Authority: F13 "fix all" 2026-11-17; owner WEB_ATLAS; allowed mutators A-FORGE/ARIF.
+# Consumer: check_ownership.py + every site/deploy audit. Failure class: truth duplication across surfaces.
+
+version: "1.0.0"
+status: CANON
+as_of: "2026-11-17"
+author: "333-AGI"
+ratified_by: "F13 — 'fix all' 2026-11-17 (lease request LEASE-REQUEST.md)"
+promoted_at: "2026-11-17T03:15:00+08:00"
+doctrine: |
+  One datum, one owner. A surface may render what it owns, may summarise another
+  owner's state in one line with a link, and must not re-render the owner's data.
+  Ownership is a property of the datum, not of the page or the host.
+rule: |
+  Every rendered datum has exactly one owner. Every non-owner surface links to the
+  owner. A surface that renders data it does not own is a defect (F2 truth, F4 clarity).
+  A view (e.g. /999/ for the ledger) is allowed only when the map declares it as a view
+  and names the owner it links to.
+
+# Canonical invariants — F13 assessment 2026-11-17.
+# Enforced today: OWN-001 (disjointness), OWN-002 (may_render=>must_link),
+# OWN-003 (view owns nothing), OWN-006 (public boundary), OWN-008 (output semantics).
+# Documented, not yet machine-checked: OWN-004 (observation time), OWN-005 (synthetic
+# status label), OWN-007 (canonical owner changes require an F13 lease).
+invariants:
+  - { id: OWN-001, rule: exactly_one_owner_per_domain }
+  - { id: OWN-002, rule: non_owner_surfaces_must_declare_source }
+  - { id: OWN-003, rule: views_must_not_claim_canonical_authority }
+  - { id: OWN-004, rule: live_values_must_include_observation_time }
+  - { id: OWN-005, rule: synthetic_status_must_be_explicitly_labelled }
+  - { id: OWN-006, rule: public_surfaces_must_not_expose_internal_actor_telemetry }
+  - { id: OWN-007, rule: canonical_owner_changes_require_f13_lease }
+  - { id: OWN-008, rule: declaration_pass_does_not_imply_runtime_pass }
+
+# OWN-006 probe. The boundary is approved (F13 2026-11-17) but not yet executed
+# (T3: Rust rebuild + Caddy reload). The checker must fail until it is executed.
+public_boundary:
+  forbidden_signatures: [per_actor, risk_class, execution_trace]
+  targets:
+    - "https://arifflow.arif-fazil.com/"
+    - "https://arifflow.arif-fazil.com/health"
+
+# ── DOMAINS ─────────────────────────────────────────────────────────────────
+domains:
+  truth:
+    owner: "arif-fazil.com/arifos/"
+    question: "What is true right now?"
+    data: [floors_measured, organ_health, kernel_verdict, execution_readiness, fq, runtime_identity, capability_drift, federation_edges]
+    must_link_from: [aaa, mcp, laws, ledger, wiki]
+    signatures: [thermodynamic_verdict, execution_readiness, organs_alive, capability_drift, vault_chain]
+
+  attention:
+    owner: "aaa.arif-fazil.com"
+    question: "What requires attention right now?"
+    data: [pending_for_human, holds, decision_queue]
+    must_link_from: [truth, mcp, narrative]
+    signatures: [pending_for_human, "Meja Perhatian", "perlu keputusanmu"]
+
+  capability:
+    owner: "mcp.arif-fazil.com"
+    question: "What can be accessed right now?"
+    data: [mcp_tools, prompts, resources, endpoints, protocol_versions]
+    must_link_from: [truth, attention, wiki, narrative]
+    signatures: [mcp_endpoint, "tools/list", arif_init]
+
+  proof:
+    owner: "arif-fazil.com/ledger"
+    question: "What happened, and can it be verified?"
+    data: [seal_chain, receipt_hashes, head_seq, gaps]
+    must_link_from: [truth, attention, mcp, laws]
+    views: ["arif-fazil.com/999/"]
+    signatures: [head_seq, canonical_gaps, seal_chain, receipt_hash]
+
+  law:
+    owner: "arif-fazil.com/laws/"
+    question: "What are the laws?"
+    data: [floors_text, amendments, evidence_mappings]
+    must_link_from: [truth, wiki, mcp, narrative]
+    signatures: ["Core Laws", "F1", "F13"]
+
+  knowledge:
+    owner: "wiki.arif-fazil.com"
+    question: "What is the doctrine, in detail?"
+    data: [definitions, citations, provenance, long_form_reference]
+    must_link_from: [laws, truth, mcp, narrative]
+    signatures: ["Ω-Wiki", "knowledge base", "citation"]
+
+  meaning:
+    owner: "hermes.arif-fazil.com"
+    question: "What does this mean for a human?"
+    data: [human_edge, meaning_integrity, qualia_boundary]
+    must_link_from: [narrative, truth]
+    signatures: [qualia_boundary, meaning_integrity]
+
+  time:
+    owner: "chron.arif-fazil.com"
+    question: "What did we expect, and when will we know?"
+    data: [predictions, resolutions, calibration]
+    must_link_from: [truth, narrative]
+    signatures: [prediction, resolution, calibration]
+
+  earth:
+    owner: "geox.arif-fazil.com"
+    question: "What is the earth doing?"
+    data: [seismic, wells, basins, prospects]
+    must_link_from: [narrative]
+    signatures: [seismic, well, basin]
+
+  capital:
+    owner: "wealth.arif-fazil.com"
+    question: "What is capital doing?"
+    data: [prices, npv, irr, risk, portfolio]
+    must_link_from: [narrative]
+    signatures: [NPV, IRR, Brent, gold]
+
+  human_readiness:
+    owner: "wellness.arif-fazil.com"
+    question: "What is the human's state?"
+    data: [vitality, readiness, dignity]
+    must_link_from: [narrative, truth]
+    signatures: [vitality, readiness, maruah]
+
+  identity:
+    owner: "arif-fazil.com/.well-known/did.json"
+    question: "Who is this?"
+    data: [did, verification_methods, services]
+    must_link_from: [every surface]
+    signatures: ["did:web", verificationMethod]
+
+  narrative:
+    owner: "arif-fazil.com"
+    question: "Who is Arif, and what has he made?"
+    data: [about, work, words, world, earth_narrative]
+    must_link_from: [every surface]
+    signatures: []
+
+  execution:
+    owner: "A-FORGE (internal)"
+    internal: true
+    question: "Who acts?"
+    data: [leases, runs, receipts]
+    must_link_from: [truth, attention]
+    signatures: [lease, forge_lease]
+
+# ── SURFACES ────────────────────────────────────────────────────────────────
+# owns: domains this surface owns (must be disjoint across all surfaces)
+# may_render: domains it is allowed to summarise in one line (must link to owner)
+# scan: local source or live URL used by check_ownership.py for signature warnings
+surfaces:
+  - id: truth
+    url: "https://arif-fazil.com/arifos/"
+    owns: [truth]
+    may_render: [proof]
+    must_link: [attention, capability, law, knowledge]
+    scan: "/root/arif-fazil.com/sites/arif-fazil.com/src/pages/RealityOverview.tsx"
+
+  - id: attention
+    url: "https://aaa.arif-fazil.com/"
+    owns: [attention]
+    may_render: [truth]
+    must_link: [truth, capability, proof]
+    scan: "/root/AAA/state/aaa-zen-v2.html"
+
+  - id: capability
+    url: "https://mcp.arif-fazil.com/"
+    owns: [capability]
+    may_render: []
+    must_link: [truth, attention, law, knowledge]
+    scan: "/var/www/html/mcp/index.html"
+
+  - id: proof
+    url: "https://arif-fazil.com/ledger"
+    owns: [proof]
+    may_render: []
+    must_link: [truth]
+    scan: "/var/www/html/arif/ledger/index.html"
+
+  - id: proof_view
+    url: "https://arif-fazil.com/999/"
+    owns: []
+    may_render: [proof]
+    must_link: [proof]
+    view_of: proof
+    scan: "/var/www/html/arif/999/index.html"
+
+  - id: law
+    url: "https://arif-fazil.com/laws/"
+    owns: [law]
+    may_render: []
+    must_link: [knowledge, truth]
+    scan: "/var/www/html/arif/laws/index.html"
+
+  - id: knowledge
+    url: "https://wiki.arif-fazil.com/"
+    owns: [knowledge]
+    may_render: []
+    must_link: [law, truth]
+    scan: "https://wiki.arif-fazil.com/"
+
+  - id: meaning
+    url: "https://hermes.arif-fazil.com/"
+    owns: [meaning]
+    may_render: []
+    must_link: [truth, narrative]
+    scan: "https://hermes.arif-fazil.com/"
+
+  - id: time
+    url: "https://chron.arif-fazil.com/"
+    owns: [time]
+    may_render: []
+    must_link: [truth, narrative]
+    scan: "https://chron.arif-fazil.com/"
+
+  - id: earth
+    url: "https://geox.arif-fazil.com/"
+    owns: [earth]
+    may_render: []
+    must_link: [truth, narrative]
+    scan: "https://geox.arif-fazil.com/"
+
+  - id: capital
+    url: "https://wealth.arif-fazil.com/"
+    owns: [capital]
+    may_render: []
+    must_link: [truth, narrative]
+    scan: "https://wealth.arif-fazil.com/"
+
+  - id: human_readiness
+    url: "https://wellness.arif-fazil.com/"
+    owns: [human_readiness]
+    may_render: []
+    must_link: [truth, narrative]
+    scan: "https://wellness.arif-fazil.com/"
+
+  - id: well_backcompat
+    url: "https://well.arif-fazil.com/"
+    owns: []
+    may_render: [human_readiness]
+    must_link: [human_readiness]
+    view_of: human_readiness
+    status: BACK_COMPAT
+    scan: "https://well.arif-fazil.com/"
+
+  - id: identity
+    url: "https://arif-fazil.com/.well-known/did.json"
+    owns: [identity]
+    may_render: []
+    must_link: [narrative]
+    scan: "/var/www/html/arif/.well-known/did.json"
+
+  - id: narrative
+    url: "https://arif-fazil.com/"
+    owns: [narrative]
+    may_render: [identity, truth, attention, capability]
+    must_link: [truth, attention, capability, proof, law, knowledge]
+    scan: "https://arif-fazil.com/"
+
+  - id: sovereign
+    url: "https://arif-fazil.com/arif"
+    owns: []
+    may_render: [narrative, identity, law]
+    must_link: [truth, attention, capability, proof, law, knowledge]
+    scan: "/var/www/html/arif/index.html"
+
+# ── RETIRED / BOUNDARY CANDIDATES (not owners) ──────────────────────────────
+retired_candidates:
+  - id: legacy_cockpit
+    url: "https://aaa.arif-fazil.com/cockpit/"
+    status: RETIRED
+    finding: >-
+      Public cockpit retired 2026-11-17 (F13 approved). It published false synthetic status
+      (A2A OFFLINE / KERNEL OFFLINE while both were live), re-rendered truth/attention/proof,
+      and had no demonstrated unique decision capability. Old SPA + 892KB bundle moved to
+      /var/www/html/_attic/aaa-20261117-cockpit-retire/; source /root/AAA/cockpit preserved.
+      A retirement page now serves /cockpit/ (200, noindex) with the replacement map.
+      Receipt: /root/forge_work/receipts/RECEIPT-AAA-COCKPIT-RETIRE-20261117.md
+  - id: arifflow_public
+    url: "https://arifflow.arif-fazil.com/"
+    status: BOUNDARY_LIVE
+    finding: >-
+      Public aggregate only since 2026-11-17: per_actor and risk_class are redacted on the
+      public host; internal 127.0.0.1:7073 keeps the full payload. Binary deployed, service
+      restarted, live verified. Registry tombstone note is superseded by this boundary.
+  - id: well_backcompat
+    url: "https://well.arif-fazil.com/"
+    status: BACK_COMPAT
+    finding: >-
+      Caddy 2026-08-01: wellness.arif-fazil.com is the canonical human-readiness surface;
+      well.arif-fazil.com is retained for back-compat. Both route to 127.0.0.1:18083.
+      Do not 301 without MCP client migration.
+  - id: makcikgpt_dns
+    url: "https://makcikgpt.arif-fazil.com/"
+    status: DNS_GAP
+    finding: >-
+      Caddy vhost 301 -> /world/makcikgpt/ (target 200); Cloudflare returns 404 because the
+      DNS record is absent. One edge record, not an origin change.
+

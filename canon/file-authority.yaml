@@ -37,6 +37,11 @@ canon:
     owner: WEB_ATLAS
     allowed_mutators: [A-FORGE, ARIF]
     derived_outputs: [ "nav components (TrinityNav)" ]
+  "canon/ownership.yaml":
+    state: CANON
+    owner: WEB_ATLAS
+    allowed_mutators: [A-FORGE, ARIF]
+    derived_outputs: [ "scripts/check_ownership.py" ]
   "canon/design-tokens.json":
     state: CANON
     owner: WEB_ATLAS

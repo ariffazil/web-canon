@@ -104,9 +104,9 @@
       },
       {
         "label": "arifFlow",
-        "href": "https://arifflow.arif-fazil.com/",
+        "href": "https://arif-fazil.com/arifos/",
         "role": "metabolism",
-        "note": "arifFlow is the metabolism/telemetry organ; the 7th strip entry. /pulse/ is intentionally 410 (F13 audit 2026-10-05). System status: see Evidence → /999/."
+        "note": "arifFlow aggregate is rendered in the observatory (/arifos/); per-actor telemetry is internal. /pulse/ is intentionally 410 (F13 audit 2026-10-05). System status: see Evidence → /999/."
       }
     ]
   },
@@ -336,9 +336,9 @@
       },
       {
         "label": "arifFlow",
-        "href": "https://arifflow.arif-fazil.com/",
+        "href": "https://arifflow.arif-fazil.com/health",
         "agent_organ": true,
-        "note": "Serves a live JSON status payload (diagnosis/fq). Added 2026-10-07 - arifFlow was absent from the agent surface entirely."
+        "note": "Serves aggregate JSON (diagnosis/fq/vector); per_actor and risk_class are redacted on the public host. Full per-actor stays internal :7073. Added 2026-10-07."
       },
       {
         "label": "Agent contract",
