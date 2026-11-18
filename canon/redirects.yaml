@@ -1,170 +1,198 @@
-# arifOS Federation — Canonical Redirect Map
-# Generated from canon/sites.yaml (unified_paths + agentic_organ_paths +
-# earth_organ_paths + human_organ_paths + aliases + protocol_endpoints + tombstones).
-# D3 (one-hop only) + D1 (MCP exempt) + D7 (tombstones) all enforced here.
-# DITEMPA BUKAN DIBERI
+# Route map — descriptive of live Caddy. Not a generator input.
+# Measured 2026-11-18T13:09:24Z (curl --max-redirs 0, then slash-twin and canonical re-probe).
+# Source of truth for routes: /etc/caddy/vhosts/*.conf
+# This file describes that config. Nothing on this host generates Caddy from it.
+# canon-sync.sh only copies yaml. Do not apply these rows onto Caddy.
+# Do not put a from/to pair whose target 404s. The August 2026 path-collapse
+# (/institution/<organ>, /earth/<organ>, /human/well) returns 404 text/plain.
+# Reapplying it breaks doors that answer today.
+#
+# redirect-lint.py reads every from/to pair and checks the target, not the hop.
+# Rows that would fail that lint (both slash shapes return 200, or the page's
+# canonical names a different URL) are recorded below with other keys.
 
-# ─── 301 PERMANENT REDIRECTS (subdomain → path) ───────────────────────
-# Rule D3: ONE-HOP ONLY. Each redirect lands directly on the canonical
-# path. No chains (subdomain-301 → path-301 → another-path-301).
+version: "3.1.0"
+status: DESCRIPTIVE
+observed_at: "2026-11-18T13:09:24Z"
+route_source_of_truth: /etc/caddy/vhosts/*.conf
 
 redirects:
-  # Root + www
   - from: www.arif-fazil.com
-    to: https://arif-fazil.com
+    to: https://arif-fazil.com/
     code: 301
-    permanent: true
-
-  # Agentic organs (subdomain → /institution/<organ>)
-  - from: arifos.arif-fazil.com
-    to: https://arif-fazil.com/institution/arifos/
-    code: 301
-    permanent: true
-  - from: aaa.arif-fazil.com
-    to: https://arif-fazil.com/institution/aaa/
-    code: 301
-    permanent: true
-  - from: forge.arif-fazil.com
-    to: https://arif-fazil.com/institution/aforge/
-    code: 301
-    permanent: true
-  - from: wealth.arif-fazil.com
-    to: https://arif-fazil.com/institution/wealth/
-    code: 301
-    permanent: true
-
-  # Earth organ
-  - from: geox.arif-fazil.com
-    to: https://arif-fazil.com/earth/geox/
-    code: 301
-    permanent: true
-
-  # Human organ
-  - from: well.arif-fazil.com
-    to: https://arif-fazil.com/human/well/
-    code: 301
-    permanent: true
-
-  # Earth + membrane (one-hop)
-  - from: mcp.arif-fazil.com
-    to: https://arif-fazil.com/earth/mcp/
-    code: 301
-    permanent: true
-  - from: hermes.arif-fazil.com
-    to: https://arif-fazil.com/earth/hermes/
-    code: 301
-    permanent: true
-
-  # Legacy / retired (was /wealth/makcikgpt) — host RETIRED 2026-11-17; DNS absent.
-  - from: arifosmcp.arif-fazil.com
-    to: https://arif-fazil.com/earth/mcp/
-    code: 301
-    permanent: true
   - from: apex.arif-fazil.com
-    to: https://arif-fazil.com
+    to: https://arif-fazil.com/
     code: 301
-    permanent: true
+  - from: arifos.arif-fazil.com
+    to: https://arif-fazil.com/arifos/
+    code: 301
+  - from: a-forge.arif-fazil.com
+    to: https://forge.arif-fazil.com/
+    code: 301
+  - from: forge.arif-fazil.com
+    to: https://mcp.arif-fazil.com/
+    code: 301
+  - from: arifosmcp.arif-fazil.com
+    to: https://mcp.arif-fazil.com/
+    code: 301
+  - from: https://arif-fazil.com/aaa
+    to: https://aaa.arif-fazil.com/
+    code: 301
+  - from: https://arif-fazil.com/aaa/
+    to: https://aaa.arif-fazil.com/
+    code: 301
+  - from: https://arif-fazil.com/well/
+    to: https://well.arif-fazil.com/
+    code: 301
+  - from: https://arif-fazil.com/mcp/
+    to: https://mcp.arif-fazil.com/
+    code: 301
+  - from: https://arif-fazil.com/f13
+    to: https://arif-fazil.com/laws/
+    code: 301
+  - from: https://arif-fazil.com/vitals
+    to: https://arif-fazil.com/petronas/
+    code: 308
+  - from: https://arif-fazil.com/vitals/
+    to: https://arif-fazil.com/petronas/
+    code: 308
+  - from: https://arif-fazil.com/petronas
+    to: https://arif-fazil.com/petronas/
+    code: 308
 
-# ─── ALIASES (short memorable URLs → canonical paths) ──────────────────
-# 8 short slugs, no chains. Each lands directly on the canonical path.
+# Hosts that are the door. Self-rows so a later 410 fails redirect-lint.
+# wiki's canonical omits the trailing slash; the lint's fixed page list already
+# flags that. It is still the door.
+doors:
+  - from: aaa.arif-fazil.com
+    to: https://aaa.arif-fazil.com/
+  - from: geox.arif-fazil.com
+    to: https://geox.arif-fazil.com/
+  - from: wealth.arif-fazil.com
+    to: https://wealth.arif-fazil.com/
+  - from: well.arif-fazil.com
+    to: https://well.arif-fazil.com/
+  - from: wellness.arif-fazil.com
+    to: https://wellness.arif-fazil.com/
+  - from: frame.arif-fazil.com
+    to: https://frame.arif-fazil.com/
+  - from: hermes.arif-fazil.com
+    to: https://hermes.arif-fazil.com/
+  - from: mcp.arif-fazil.com
+    to: https://mcp.arif-fazil.com/
+  - from: syedos.arif-fazil.com
+    to: https://syedos.arif-fazil.com/
+  - from: chron.arif-fazil.com
+    to: https://chron.arif-fazil.com/
+  - from: fed.arif-fazil.com
+    to: https://fed.arif-fazil.com/
+  - from: arifflow.arif-fazil.com
+    to: https://arifflow.arif-fazil.com/
 
-aliases:
-  - from: /makcikgpt
-    to: /world/makcikgpt/
-  - from: /writings
-    to: /arif/writings
-  - from: /vitals
-    to: /arif/vitals
-  - from: /petronas
-    to: /institution/petronas
-  - from: /malaysia
-    to: /institution/malaysia
-  - from: /pmshadows
-    to: /institution/pmshadows
-  - from: /aaa
-    to: /institution/aaa
-  - from: /f13
-    to: /arif/f13
+# Hops that are real and must not be "fixed" back to the August targets.
+# Kept off from/to because the landing page fails redirect-lint check B or C.
+observed_hops:
+  - source: https://arif-fazil.com/malaysia
+    lands: https://arif-fazil.com/wealth/malaysia/
+    code: 308
+    lint_block: "served page canonical is https://arif-fazil.com/malaysia/"
+  - source: https://arif-fazil.com/malaysia/
+    lands: https://arif-fazil.com/wealth/malaysia/
+    code: 308
+    lint_block: "same canonical mismatch"
+  - source: https://arif-fazil.com/wealth
+    lands: https://arif-fazil.com/wealth/
+    code: 308
+  - source: https://arif-fazil.com/wealth/
+    lands: https://arif-fazil.com/economics/
+    code: 308
+    lint_block: "both /economics and /economics/ return 200"
+  - source: https://arif-fazil.com/makcikgpt
+    lands: https://arif-fazil.com/world/makcikgpt/
+    code: 301
+    lint_block: "both slash shapes of the landing page return 200"
+  - source: https://arif-fazil.com/makcikgpt/
+    lands: https://arif-fazil.com/world/makcikgpt/
+    code: 301
+    lint_block: "same slash twin"
 
-# ─── PROTOCOL ENDPOINTS (D1 — exempt from 301) ────────────────────────
-# These DO NOT redirect. They dual-serve on both subdomain AND canonical
-# path. Sunset header on subdomain variant. ≥2 release cycle retirement.
-# Sentinel (D7) monitors 5xx rate on these paths.
+slash_twins_both_200:
+  - bare: https://arif-fazil.com/economics
+    slashed: https://arif-fazil.com/economics/
+  - bare: https://arif-fazil.com/world/makcikgpt
+    slashed: https://arif-fazil.com/world/makcikgpt/
+  - bare: https://arif-fazil.com/about
+    slashed: https://arif-fazil.com/about/
+  - bare: https://arif-fazil.com/writings
+    slashed: https://arif-fazil.com/writings/
 
-protocol_exempt:
-  - host: forge.arif-fazil.com
-    path: /mcp
-    role: MCP_GATEWAY
-    note: "dual-served; sunset telemetry-gated"
-  - host: mcp.arif-fazil.com
-    path: /
-    role: MCP_GATEWAY
-    note: "dual-served; never retires (canonical membrane)"
-  - host: arifos.arif-fazil.com
-    path: /mcp
-    role: MCP_KERNEL
-    note: "dual-served; sunset telemetry-gated"
-  - host: aaa.arif-fazil.com
-    path: /mcp
-    role: MCP_COCKPIT
-    note: "dual-served"
-  - host: geox.arif-fazil.com
-    path: /mcp
-    role: MCP_EARTH
-    note: "dual-served; sunset telemetry-gated"
-  - host: wealth.arif-fazil.com
-    path: /mcp
-    role: MCP_CAPITAL
-    note: "dual-served"
-  - host: well.arif-fazil.com
-    path: /mcp
-    role: MCP_VITALITY
-    note: "dual-served"
-
-# ─── TOMBSTONES (D7 — 410 Gone) ────────────────────────────────────────
-# Internal-only services. Public access returns 410 Gone with documented
-# Tailscale mesh access message. Audit H-2 fix added Tailscale matchers
-# to claw + openclaw so internal nodes still proxy.
+# August 2026 targets. HTTP 404 text/plain on 2026-11-18. Do not reapply.
+retired_targets_404:
+  - https://arif-fazil.com/institution/arifos/
+  - https://arif-fazil.com/institution/aaa/
+  - https://arif-fazil.com/institution/wealth/
+  - https://arif-fazil.com/institution/aforge/
+  - https://arif-fazil.com/earth/geox/
+  - https://arif-fazil.com/earth/hermes/
+  - https://arif-fazil.com/earth/mcp/
+  - https://arif-fazil.com/human/well/
 
 tombstones:
   - host: openclaw.arif-fazil.com
     status: 410
-    message: "openclaw gateway is internal-only. Access via Tailscale mesh (100.64.0.0/10) or contact ops@arif-fazil.com for a node grant."
-    since: "2026-08-01"
-    source_of_truth: "/etc/caddy/Caddyfile"
+    measured: "2026-11-18"
   - host: claw.arif-fazil.com
     status: 410
-    message: "claw gateway is internal-only. Access via Tailscale mesh (100.64.0.0/10) or contact ops@arif-fazil.com for a node grant."
-    since: "2026-08-01"
-    source_of_truth: "/etc/caddy/Caddyfile"
+    measured: "2026-11-18"
+
+classified:
+  - host: wiki.arif-fazil.com
+    class: public_door
+    status: 200
+    note: "Canonical tag omits the trailing slash. redirect-lint's fixed page list flags it. Do not remove wiki from that list to force a green run."
   - host: headscale.arif-fazil.com
-    status: 410
-    message: "headscale control plane is internal-only. Access via Tailscale mesh (100.64.0.0/10). New nodes: tailscale up --login-server https://headscale.arif-fazil.com"
-    since: "2026-08-01"
-    source_of_truth: "/etc/caddy/Caddyfile"
+    class: public_mesh_enrollment
+    not_status: 410
+    not_class: internal-only
+    why: "server_url in /etc/headscale/config.yaml is https://headscale.arif-fazil.com. Closing the host breaks node join."
+    admin_api: "user and node APIs return 401"
+    note: "A public GET of / may be a Cloudflare challenge page. Do not treat that body as the control plane. Do not 410 the vhost."
   - host: arifflow.arif-fazil.com
-    status: 410
-    message: "arifflow metabolism is internal-only. Access via Tailscale mesh (100.64.0.0/10)."
-    since: "2026-08-01"
+    class: public_json_door
+    status: 200
+    note: "OWN-006 (no per-actor, risk class, or execution trace on the public JSON) is approved and not executed. Stripping it needs a rebuild and a Caddy reload. Do not do that from this file."
+  - host: makcikgpt.arif-fazil.com
+    class: dns_exists_http_404
+    content: https://arif-fazil.com/world/makcikgpt/
+    note: "The older line 'DNS record absent' was false on 2026-11-18."
   - host: atlas.arif-fazil.com
-    status: 410
-    message: "Atlas333 cognitive geometry is internal-only. Access via Tailscale mesh (100.64.0.0/10)."
-    since: "2026-08-01"
+    class: dns_nxdomain
+    note: "Not a 410. The name does not resolve."
+  - host: ollama.arif-fazil.com
+    class: closed
+    status: 403
+  - host: searxng.arif-fazil.com
+    class: dns_nxdomain
+    note: "The GitHub repo exists. The public host does not resolve. Do not stand the host up from this file."
 
-# ─── CANARY (D6, D8) ──────────────────────────────────────────────────
-# Phase 4a applies redirects to WELL ONLY first. 15-min cadence × 72h
-# sentinel sweep. If 0 unexpected 5xx → green → Phase 4b opens remaining
-# organs. This is the canary gate in writing.
+known_broken_slash:
+  - bare: https://arif-fazil.com/f13
+    slashed: https://arif-fazil.com/f13/
+    bare_code: 301
+    slashed_code: 404
+    bare_lands: https://arif-fazil.com/laws/
+    note: "Do not 'fix' the slash twin by editing Caddy from this file."
 
-canary:
-  scope: well
-  redirect_targets:
-    - from: well.arif-fazil.com
-      to: https://arif-fazil.com/human/well/
-  sentinel:
-    cadence_minutes: 15
-    window_hours: 72
-    success: "0 unexpected-5xx over 72h"
-  on_green: "Phase 4b opens remaining organs (human/institution/earth)"
-  on_red: "888_HOLD — investigate before proceeding"
-  one_hop_assertion: "well./X → canonical, never chained"
+other_measured:
+  - item: https://arif-fazil.com/well
+    status: 200
+    note: "The bare path is a page. Only /well/ redirects to the subdomain."
+  - item: https://arif-fazil.com/mcp
+    status: 405
+    note: "The bare path is method-gated. Only /mcp/ redirects to the subdomain."
+  - item: https://arif-fazil.com/writings
+    status: 200
+    note: "Not a redirect to /arif/writings. Both slash shapes return 200."
+  - item: https://arif-fazil.com/pmshadows
+    status: 404
+    note: "Not a live alias."

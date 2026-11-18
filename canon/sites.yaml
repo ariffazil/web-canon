@@ -1,329 +1,193 @@
-# arifOS Federation — Canonical Site Registry (TRINITY IA, v2026.08.01)
-# ONE source of truth for site identity, ownership, and audience.
-# Doctrine: Trinity — HUMAN · INSTITUTION · EARTH (with sovereign anchor /arif + cross-cutting /laws)
-# AI agents replace institutions, not humans. The IA mirrors this.
-# Schema: canon/public-state.schema.json
+# Site registry — descriptive of live Caddy. Not a Caddy generator.
+# Measured 2026-11-18T13:09:24Z. Hop table: canon/redirects.yaml (one copy).
+# Route source of truth: /etc/caddy/vhosts/*.conf
+# Datum ownership: canon/ownership.yaml (2026-11-17). Do not contradict it.
+# This file does not drive Caddy. canon-sync.sh only copies yaml.
 
-version: "3.0.0"
-observed_at: "2026-08-01T08:00:00Z"
-ratified_by: "sovereign (F13) — D1-D9 ratified 2026-08-01, 999_SEAL"
-reconciled_at: "2026-11-17"
-reconciliation: |
-  Live architecture is two-layer: human doors on arif-fazil.com; machine surfaces on
-  subdomains (mcp, aaa, geox, wealth, well, frame, hermes, chron). The `redirects` list
-  below is legacy (2026-08-01) and is NOT enforced for protocol endpoints. Canonical
-  machine ownership: /root/web-canon/canon/ownership.yaml. `/vitals/` → `/petronas/`
-  is a deliberate F13 2026-11-14 alias; `wellness.` is canonical and `well.` is back-compat.
-doctrine: |
-  Trinity IA. Three trinity scopes (HUMAN, INSTITUTION, EARTH) plus a sovereign
-  anchor (/arif) and cross-cutting /laws. AI agents live INSIDE institution
-  (they are the new institution). Earth is the void's edge (the membrane
-  + edge of the unknown). Each scope pulls accent from exactly one primer
-  family. Red is rationed (sovereign strip · verdict chips · seals only).
+version: "3.1.0"
+status: DESCRIPTIVE
+observed_at: "2026-11-18T13:09:24Z"
+reconciled_at: "2026-11-18"
+route_source_of_truth: /etc/caddy/vhosts/*.conf
+generator: none
+
+do_not:
+  - "Do not generate or reload Caddy from this file."
+  - "Do not 301 working organ hosts onto /institution, /earth, or /human organ paths. Those paths return 404."
+  - "Do not 410 headscale.arif-fazil.com. Node join uses that hostname."
+  - "Do not git pull arifOS, AAA, WEALTH, HERMES, GEOX, or CHRON over the running trees. Disk on this host is the operational tree. GitHub is a lagging mirror."
+  - "Do not deploy the dirty arif-fazil.com tree to change About. The served page is the short identity line. A longer paragraph in source is unshipped."
+  - "Do not treat https://arif-fazil.com/canon/*.yaml as this file. That URL is the site SPA fallback."
 
 rule: |
-  All public surfaces are paths under arif-fazil.com. Legacy subdomains
-  redirect to canonical paths (one-hop, no chains). Internal services
-  (Tailscale mesh only) get 410 Gone publicly.
+  Two layers. Human doors are paths on arif-fazil.com. Machine and organ doors
+  are their own subdomains and stay there. www, apex, the arifos host, forge,
+  and a-forge are redirects. claw and openclaw are 410. The August 2026 rule
+  "every subdomain 301s onto a path under one domain" is retired.
 
-# ─── TRINITY SCOPES ──────────────────────────────────────────────────────
-trinity_paths:
-  - path: /arif
-    scope: SOVEREIGN
-    canonical_role: f13-anchor
-    primary_audience: [public, sovereign-only-F13]
-    description: "Sovereign anchor. Bare background, no pattern. F13 is the human's seat."
-    primary_organ: none
-    pattern: bare
-    deployable: true
+runtime_sot: |
+  For arifOS, AAA, WEALTH, HERMES, GEOX, and CHRON, the running tree on this
+  host is the operational source. Large ahead/behind counts against origin/main
+  are diverged history, not a pile of unpushed commits. Do not reconcile them
+  from this registry. A-FORGE on main was 5 commits ahead of origin and clean
+  at the 2026-11-18 probe. FRAME and this repo matched their cached GitHub
+  heads before this edit.
 
-  - path: /human
+# Section pages that answer 200. They are not the organ homes.
+section_pages:
+  - path: /human/
     scope: HUMAN
-    canonical_role: substrate-and-dignity
-    primary_audience: [public, health-workers, sociologists]
-    description: "HUMAN scope. The people-side of the federation. Substrate, dignity, witness."
-    primary_organ: WELL
-    accent_family: red
-    pattern: chordial-light
-    deployable: true
-
-  - path: /institution
+    organ_home: false
+    public_organ_door: https://well.arif-fazil.com/
+  - path: /institution/
     scope: INSTITUTION
-    canonical_role: old-and-new-institution
-    primary_audience: [public, regulators, executives]
-    description: |
-      INSTITUTION scope. Old institutions (WEALTH) and new institutions (arifOS,
-      A-FORGE, AAA — the agentic layer) live here. The transformation is visible
-      on the page: old beside new.
-    primary_organ: AAA
-    accent_family: yellow
-    pattern: orthogonal-fractal
-    toroidal_anchor: trinity-ring
-    deployable: true
-
-  - path: /earth
+    organ_home: false
+  - path: /earth/
     scope: EARTH
-    canonical_role: physical-and-void
-    primary_audience: [public, geoscientists, energy-professionals, philosophers]
-    description: |
-      EARTH scope. Known earth (GEOX) plus the void (membrane + edge — HERMES,
-      MCP). The void is the edge of the earth, not a separate scope.
-    primary_organ: GEOX
-    accent_family: teal
-    pattern: chordial-dense
-    deployable: true
-
-  - path: /laws
+    organ_home: false
+    public_organ_door: https://geox.arif-fazil.com/
+  - path: /laws/
     scope: CROSS_CUTTING
-    canonical_role: constitutional-floors
-    primary_audience: [researchers, auditors, sovereign]
-    description: "F1-F13 constitutional floors. The laws that govern the federation. Faintest pattern."
-    primary_organ: arifOS-kernel
-    accent_family: void-blue
-    pattern: orthogonal-fractal-faintest
-    deployable: true
+    note: "https://arif-fazil.com/f13 redirects here. https://arif-fazil.com/f13/ is 404."
+  - path: /arifos/
+    scope: TRUTH
+    note: "The arifos host 301s here. This path is the public truth page. It is not /institution/arifos/."
 
-# ─── AGENTIC ORGANS (live inside /institution) ──────────────────────────
-agentic_organ_paths:
-  - path: /institution/arifos
-    role: AGENTIC_KERNEL
-    description: "arifOS constitutional kernel — judge, seal gate, F1-F13 enforcement."
-    legacy_path: /arifos
-    port: 8088
-    deployable: true
+# Design paths from 2026-08-01. Not served. HTTP 404 text/plain on 2026-11-18.
+not_served:
+  - path: /institution/arifos/
+    door: https://arif-fazil.com/arifos/
+  - path: /institution/aforge/
+    door: https://mcp.arif-fazil.com/
+  - path: /institution/aaa/
+    door: https://aaa.arif-fazil.com/
+  - path: /institution/wealth/
+    door: https://wealth.arif-fazil.com/
+  - path: /earth/geox/
+    door: https://geox.arif-fazil.com/
+  - path: /earth/hermes/
+    door: https://hermes.arif-fazil.com/
+  - path: /earth/mcp/
+    door: https://mcp.arif-fazil.com/
+  - path: /human/well/
+    door: https://well.arif-fazil.com/
 
-  - path: /institution/aforge
-    role: AGENTIC_EXECUTOR
-    description: "A-FORGE — execution after SEAL. The hands."
-    legacy_path: /forge
-    port: 7071
-    deployable: false  # runtime-owned-gateway
-
-  - path: /institution/aaa
-    role: AGENTIC_COCKPIT  # THE BRIDGE
-    description: "AAA — cockpit, A2A gateway, agent identity registry. The bridge between human and agentic sides."
-    legacy_path: /aaa
-    port: 3001
-    toroidal_center: true
-    accent_exception: amber  # ONLY non-primer exception
-    deployable: true
-
-  - path: /institution/wealth
-    role: OLD_INSTITUTION
-    description: "WEALTH — capital compute. The legacy institution alongside the new."
-    legacy_path: /wealth
-    port: 18082
-    deployable: true
-
-  - path: /institution/ledger
-    role: FEDERATION_MEMORY
-    description: "VAULT999 immutable ledger. Public proof surface, not direct vault."
-    deployable: true
-
-# ─── EARTH ORGANS ────────────────────────────────────────────────────────
-earth_organ_paths:
-  - path: /earth/geox
-    role: EARTH_KNOWN
-    description: "GEOX — earth intelligence. Seismic, wells, basins. Physics-gated geoscience."
-    legacy_path: /geox
-    port: 8081
-    deployable: true
-
-  - path: /earth/hermes
-    role: EARTH_EDGE  # meets the void
-    description: "HERMES — multi-modal bridge. Edge of earth, where the known meets unknown. Live Telegram gateway (port 18089) + multimodal relay."
-    legacy_path: (TBD)
-    port: 18089
-    posture: LIVE  # edge gateway, multimodal relay, F13-signed Telegram channel
-    deployable: true  # live since 2026-08; corrected 2026-08-07 from REFLECT_ONLY drift
-
-  - path: /earth/mcp
-    role: EARTH_MEMBRANE
-    description: "MCP gateway — the membrane through which agents and humans commune."
-    legacy_path: /mcp
-    deployable: false  # runtime-owned-gateway
-
-# ─── HUMAN ORGAN ──────────────────────────────────────────────────────────
-human_organ_paths:
-  - path: /human/well
-    role: HUMAN_SUBSTRATE
-    description: "WELL — human and machine readiness. Vitality, biometric, reflection."
-    legacy_path: /well
-    port: 18083
-    deployable: false  # runtime-owned-organ
-
-# ─── PROTOCOL ENDPOINTS (D1 — exempt from 301) ──────────────────────────
-# MCP endpoints are NOT 301-redirected. They dual-serve on canonical paths
-# AND subdomain paths. Sunset header on subdomains. ≥2 release cycle
-# retirement after Phase 6.
-protocol_endpoints:
-  - host: forge.arif-fazil.com
-    path: /mcp
-    role: MCP_GATEWAY
-    redirect: never
-    sunset: telemetry-gated
-
-  - host: mcp.arif-fazil.com
-    path: /
-    role: MCP_GATEWAY
-    redirect: never
-
-  - host: arifos.arif-fazil.com
-    path: /mcp
-    role: MCP_KERNEL
-    redirect: never
-    sunset: telemetry-gated
-
+# What a GET of / returned on 2026-11-18. Ports are not recorded here; read systemd.
+public_doors:
+  - host: arif-fazil.com
+    kind: human_root
+    status: 200
   - host: aaa.arif-fazil.com
-    path: /mcp
-    role: MCP_COCKPIT
-    redirect: never
-
+    kind: attention
+    status: 200
+    datum_owner: canon/ownership.yaml#attention
   - host: geox.arif-fazil.com
-    path: /mcp
-    role: MCP_EARTH
-    redirect: never
-    sunset: telemetry-gated
-
+    kind: earth
+    status: 200
   - host: wealth.arif-fazil.com
-    path: /mcp
-    role: MCP_CAPITAL
-    redirect: never
-
+    kind: capital
+    status: 200
   - host: well.arif-fazil.com
-    path: /mcp
-    role: MCP_VITALITY
-    redirect: never
-
-# ─── TOMBSTONES (D7 — 410 Gone) ──────────────────────────────────────────
-tombstones:
-  - host: arifosmcp.arif-fazil.com
-    reason: "Redirected to /mcp/ (path)"
-    since: "2026-08-01"
-
-  - host: makcikgpt.arif-fazil.com
-    reason: "RETIRED 2026-11-17 — legacy host; DNS record absent; content lives at /world/makcikgpt/"
-    since: "2026-08-01"
-    retired_at: "2026-11-17"
-
-  - host: apex.arif-fazil.com
-    reason: "APEX runtime decommissioned; redirect to root"
-    since: "2026-08-01"
-
-  - host: openclaw.arif-fazil.com
-    reason: "D7 drift fix 2026-08-01 — internal-only via Tailscale mesh (100.64.0.0/10)"
-    since: "2026-08-01"
-
-  - host: claw.arif-fazil.com
-    reason: "D7 drift fix 2026-08-01 — internal-only via Tailscale mesh (100.64.0.0/10)"
-    since: "2026-08-01"
-
+    kind: vitality
+    status: 200
+    note: "wellness.arif-fazil.com serves the same page. wellness is the canonical name; well is the back-compat host."
+  - host: wellness.arif-fazil.com
+    kind: vitality
+    status: 200
+  - host: frame.arif-fazil.com
+    kind: witness
+    status: 200
+  - host: hermes.arif-fazil.com
+    kind: meaning
+    status: 200
+  - host: mcp.arif-fazil.com
+    kind: capability
+    status: 200
+    datum_owner: canon/ownership.yaml#capability
+  - host: wiki.arif-fazil.com
+    kind: knowledge
+    status: 200
+  - host: chron.arif-fazil.com
+    kind: json
+    status: 200
+  - host: fed.arif-fazil.com
+    kind: json
+    status: 200
   - host: arifflow.arif-fazil.com
-    reason: "arifflow not deployed as public surface (internal-only)"
-    since: "2026-08-01"
-
-  - host: atlas.arif-fazil.com
-    reason: "Atlas333 not deployed as public surface (internal-only)"
-    since: "2026-08-01"
-
+    kind: json
+    status: 200
+    note: "Public JSON door. OWN-006 is not executed."
+  - host: syedos.arif-fazil.com
+    kind: third_party_dashboard
+    status: 200
+    webroot: /var/www/html/syedos
   - host: headscale.arif-fazil.com
-    reason: "D7 drift fix 2026-08-01 — internal-only via Tailscale mesh (100.64.0.0/10)"
-    since: "2026-08-01"
+    kind: public_mesh_enrollment
+    not_status: 410
+    note: "Stay up. server_url is this hostname. Admin APIs are 401. Do not describe it as internal-only."
+  - host: forge.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://mcp.arif-fazil.com/
+  - host: a-forge.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://forge.arif-fazil.com/
+  - host: arifos.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://arif-fazil.com/arifos/
+  - host: arifosmcp.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://mcp.arif-fazil.com
+  - host: apex.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://arif-fazil.com/
+  - host: www.arif-fazil.com
+    kind: redirect
+    status: 301
+    lands: https://arif-fazil.com/
+  - host: openclaw.arif-fazil.com
+    kind: gone
+    status: 410
+  - host: claw.arif-fazil.com
+    kind: gone
+    status: 410
+  - host: makcikgpt.arif-fazil.com
+    kind: missing_page
+    status: 404
+    content: https://arif-fazil.com/world/makcikgpt/
+  - host: ollama.arif-fazil.com
+    kind: closed
+    status: 403
+  - host: atlas.arif-fazil.com
+    kind: nxdomain
+  - host: searxng.arif-fazil.com
+    kind: nxdomain
 
-# ─── REDIRECTS (one-hop, never chained) ──────────────────────────────────
-# Generated from unified_paths + agentic_organ_paths + earth_organ_paths
-# + human_organ_paths. Caddyfile consumes this directly.
-redirects:
-  - from: www.arif-fazil.com
-    to: https://arif-fazil.com
-    code: 301
-    permanent: true
+method_gates:
+  - url: https://mcp.arif-fazil.com/mcp
+    get_status: 405
+    meaning: "The route exists and is method-gated."
+  - url: https://aaa.arif-fazil.com/a2a
+    get_status: 400
+    meaning: "The route exists and rejects an empty GET."
+  - url: https://arif-fazil.com/mcp
+    get_status: 405
 
-  - from: arifos.arif-fazil.com
-    to: https://arif-fazil.com/institution/arifos/
-    code: 301
-    permanent: true
-
-  - from: aaa.arif-fazil.com
-    to: https://arif-fazil.com/institution/aaa/
-    code: 301
-    permanent: true
-
-  - from: geox.arif-fazil.com
-    to: https://arif-fazil.com/earth/geox/
-    code: 301
-    permanent: true
-
-  - from: wealth.arif-fazil.com
-    to: https://arif-fazil.com/institution/wealth/
-    code: 301
-    permanent: true
-
-  - from: well.arif-fazil.com
-    to: https://arif-fazil.com/human/well/
-    code: 301
-    permanent: true
-
-  - from: forge.arif-fazil.com
-    to: https://arif-fazil.com/institution/aforge/
-    code: 301
-    permanent: true
-
-  - from: mcp.arif-fazil.com
-    to: https://arif-fazil.com/earth/mcp/
-    code: 301
-    permanent: true
-
-# ─── ALIASES (short memorable URLs) ─────────────────────────────────────
-aliases:
-  - from: /makcikgpt
-    to: /world/makcikgpt/
-  - from: /writings
-    to: /arif/writings
-  - from: /vitals
-    to: /arif/vitals
-  - from: /petronas
-    to: /institution/petronas
-  - from: /malaysia
-    to: /institution/malaysia
-  - from: /pmshadows
-    to: /institution/pmshadows
-  - from: /aaa
-    to: /institution/aaa
-  - from: /f13
-    to: /arif/f13
-
-# ─── CANARY ROUTE (D6, D8) ──────────────────────────────────────────────
-canary:
-  scope: well  # D6 — Phase 4a applies to well ONLY first
-  sentinel_cadence_minutes: 15
-  sentinel_window_hours: 72
-  success_criterion: "0 unexpected-5xx over 72h on well"
-  on_green: "Phase 4b opens remaining org redirects"
-  on_red: "888_HOLD — investigate before proceeding"
-  one_hop_only: true  # D3 — well./X → canonical, never chained
-
-# ─── ROOT (Caddyfile-compatible summary) ─────────────────────────────────
 surfaces:
   - host: arif-fazil.com
     role: SOVEREIGN_ROOT
-    canonical_role: human-sovereign-root
-    primary_audience: [public, institutions, collaborators]
-    must_not_become: [operations-dashboard]
-    build: "npm run build"
     stack: [React 19, TypeScript, Vite, Tailwind CSS, Framer Motion]
     webroot: /var/www/html/arif
-    deployable: true
+    note: "earth, words, world, work, and pilot are also served from /var/www/html. A 200 on a path is not proof the path exists; confirm the body."
   - host: syedos.arif-fazil.com
     role: SOVEREIGN_DASHBOARD
-    canonical_role: third-party-sovereign-dashboard
-    owner: "@rico_ricaldo_33"
-    primary_audience: [trader, public]
     webroot: /var/www/html/syedos
-    deployable: true
-    caddy_handle: root * /var/www/html/syedos
-    services:
-      - gold_api: localhost:3456 (GOLD signal/ticker; APEX name deprecated 2026-08-08)
-      - upload: localhost:18900 (receipt intake)
-    canon_ref: federation.json#syedos (L3 sovereign_dashboard)
 
+about_page:
+  served: "short identity line on the 2026-11-16 bundle"
+  source: "a longer paragraph exists in the site source and is not what visitors get"
+  action: "leave it. Do not build or deploy the dirty site tree to force them together."
