@@ -32,7 +32,6 @@ exclude_docs: |
 theme:
   name: material
   language: en
-  logo: Ω
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
